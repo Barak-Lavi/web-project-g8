@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Humburger menu lib-->
     <script src="Main.js"></script>
     <title>SpaceTrip-HomePage</title>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 <body>
     <div class="topnav" id="myTopnav">
@@ -23,7 +26,73 @@
     <h1>Check Home Page</h1>
     <!--<input type="button" value="open child" onclick=window.open("LogIn.html",'login', width=400 height=50 left=150 top=200)/>-->
 
-  
+    <div class="grid-container">
+        <div class="item1"> 
+            <form action="/action_page.php">
+                <label for="Planets">Current location:</label>
+                <select name="Planets" id="Planets">
+                  <option value="Jupiter">Jupiter</option>
+                  <option value="Mars">Mars</option>
+                  <option value="Earth">Earth</option>
+                  <option value="ISS">ISS</option>
+                  <option value="Venus">Venus</option>
+                </select>
+        </div>
+        <div class="item2">
+            <form action="/action_page.php">
+                <label for="Planets">Destination:</label>
+                <select name="Planets" id="Planets">
+                  <option value="Jupiter">Jupiter</option>
+                  <option value="Mars">Mars</option>
+                  <option value="Earth">Earth</option>
+                  <option value="ISS">ISS</option>
+                  <option value="Venus">Venus</option>
+                </select>
+        </div>
+        <div class="item3">
+            <form action="/action_page.php">
+                <label for="Tickets">Quantity:</label>
+                <select name="Tickets" id="Tickets">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+        </div>
+        <div class="item4">
+            <form>
+                <div class="nativeDatePicker">
+                  <label for="DepartureDate">Departure date:</label>
+                  <input type="date" id="DepartureDate" name="DepartureDate">
+                  <span class="validity"></span>
+                </div>
+                <div class="fallbackDatePicker">
+                    </select>
+                  </span>
+                </div>
+              </form>
+        </div>
+        <div class="item5">
+            <form>
+                <div class="nativeDatePicker">
+                  <label for="ComebackDate">Comeback date:</label>
+                  <input type="date" id="ComebackDate" name="ComebackDate">
+                  <span class="validity"></span>
+                </div>
+                <div class="fallbackDatePicker">
+                    </select>
+                  </span>
+                </div>
+              </form>
+        </div>
+        <div class="item6">
+            <input type="submit" id="Searchflight"  value="Search Flight">
+        </div>
+       
+        
+    
+
     </div>
     <div class="footer">
         <a href="ContactUs.html">Contact Us</a> <!--place the link to the other pages-->

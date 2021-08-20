@@ -1,3 +1,40 @@
-﻿body
-{
+﻿
+.grid-container{
+  display:grid;
+  grid-template-areas:
+ 'header1 header1 header1'
 }
+
+
+#Jupiter{
+  width: 60%;
+  height: 500px;
+}
+
+#Mars{
+  width: 60%;
+  height: 500px;
+}
+
+#Earth{
+  width: 60%;
+  height: 500px;
+}
+
+#Venus{
+  width: 60%;
+  height: 500px;
+}
+ 
+#ISS{
+  width: 60%;
+  height: 500px;
+}
+
+ 
+.items1 {
+  grid-area: header1;
+  padding: 20px ;
+  margin: 20px;
+  }
+

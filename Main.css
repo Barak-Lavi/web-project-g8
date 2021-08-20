@@ -1,8 +1,5 @@
 ﻿
 
-body
-{
-}
 /* Add a black background color to the top navigation */
 .topnav {
     background-color: #333;
@@ -66,9 +63,56 @@ body
 }
 }
 
+.grid-container{
+    display:grid;
+    grid-template-areas:
+   'header1 header2 header3'
+   'header4 header5 header6';
+}
 
+.item1 {
+   grid-area: header1;
+   padding: 20px ;
+   border: 2px solid black;
+   margin: 20px;
+   }
 
+.item2 {
+   grid-area: header2;
+   padding: 20px ;
+   border: 2px solid black;
+   margin: 20px;
+   }
 
+.item3 {
+   grid-area: header3;
+   padding: 20px ;
+   border: 2px solid black;
+   margin: 20px;
+}
+
+.item4 {
+   grid-area: header4;
+   padding: 20px ;
+   border: 2px solid black;
+   margin: 20px;
+}
+
+.item5 {
+    grid-area: header5;
+    padding: 20px ;
+    border: 2px solid black;
+    margin: 20px;
+ }
+
+ .item6 {
+    grid-area: header6;
+    padding: 20px ;
+    margin: 20px;
+ }
+#Searchflight {
+    width: 200px; height: 50px;
+}
 
 .footer {
     position: fixed;
@@ -83,3 +127,4 @@ body
     margin: 2px;
     font-size: 150%;
 }
+
