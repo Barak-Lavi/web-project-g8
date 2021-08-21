@@ -10,6 +10,9 @@
     <script src="Main.js"></script>
     <script src="LogIn.js"></script>
     <title>SpaceTrip-HomePage</title>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 <body>
     <div class="topnav" id="myTopnav">
@@ -26,6 +29,7 @@
     </div>
     <h1>Check Home Page</h1>
 
+<<<<<<< HEAD
 
     <form id="LogInForm" action="/action_page.php" class="form-container">
         <h1>Login</h1>
@@ -132,6 +136,79 @@
     </form>
 
 
+=======
+    <div class="grid-container">
+        <div class="item1"> 
+            <form action="/action_page.php">
+                <label for="Planets">Current location:</label>
+                <select name="Planets" id="Planets">
+                  <option value="Jupiter">Jupiter</option>
+                  <option value="Mars">Mars</option>
+                  <option value="Earth">Earth</option>
+                  <option value="ISS">ISS</option>
+                  <option value="Venus">Venus</option>
+                </select>
+             </form>
+        </div>
+        <div class="item2">
+            <form action="/action_page.php">
+                <label for="Planets">Destination:</label>
+                <select name="Planets" id="Planets">
+                  <option value="Jupiter">Jupiter</option>
+                  <option value="Mars">Mars</option>
+                  <option value="Earth">Earth</option>
+                  <option value="ISS">ISS</option>
+                  <option value="Venus">Venus</option>
+                </select>
+            </form>
+        </div>
+        <div class="item3">
+            <form action="/action_page.php">
+                <label for="Tickets">Quantity:</label>
+                <select name="Tickets" id="Tickets">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+            </form>
+        </div>
+        <div class="item4">
+            <form>
+                <div class="nativeDatePicker">
+                  <label for="DepartureDate">Departure date:</label>
+                  <input type="date" id="DepartureDate" name="DepartureDate">
+                  <span class="validity"></span>
+                </div>
+                <div class="fallbackDatePicker">
+                    <!--</select>-->
+                    <!--</span>-->
+                </div>
+              </form>
+        </div>
+        <div class="item5">
+            <form>
+                <div class="nativeDatePicker">
+                  <label for="ComebackDate">Comeback date:</label>
+                  <input type="date" id="ComebackDate" name="ComebackDate">
+                  <span class="validity"></span>
+                </div>
+                <div class="fallbackDatePicker">
+                    <!--</select>-->
+                    <!--</span>-->
+                </div>
+              </form>
+        </div>
+        <div class="item6">
+            <input type="submit" id="Searchflight"  value="Search Flight">
+        </div>
+       
+        
+    
+
+    </div>
+>>>>>>> a56db0bca0d81eef8f511cde3e227e72d295d02c
     <div class="footer">
         <b onclick="openContactForm()">Contact Us</b>
         <b onclick="openPrivacyForm()">Privacy Policy</b>
