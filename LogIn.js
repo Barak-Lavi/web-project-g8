@@ -1,16 +1,18 @@
-function openForm() {
-    
-    document.getElementById("LogInForm").style.display = "block";
+var currentTab = 0; // Current tab is set to be the first tab (0)
+
+$ = function (id) {
+    return document.getElementById(id);
 }
 
-function closeForm() {
-    document.getElementById("LogInForm").style.display = "none";
+var show = function (id) {
+    $(id).style.display = 'block';
+    if (id == 'regForm') {
+        showTab(currentTab);
+    }
 }
-function openRegForm() {
-    document.getElementById("regForm").style.display = "block";
-    showTab(currentTab); // Display the current tab
+var hide = function (id) {
+    $(id).style.display = 'none';
 }
-var currentTab = 0; // Current tab is set to be the first tab (0)
 
 
 function showTab(n) {
@@ -82,30 +84,3 @@ function fixStepIndicator(n) {
     //... and adds the "active" class to the current step:
     x[n].className += " active";
 }
-function openContactForm(){
-
-    document.getElementById("contact").style.display = "block";
-}
-
-function closeContactForm() {
-    document.getElementById("contact").style.display = "none";
-}
-
-function openPrivacyForm() {
-
-    document.getElementById("Privacy").style.display = "block";
-}
-
-function closePrivacyForm() {
-    document.getElementById("Privacy").style.display = "none";
-}
-function openTermsForm() {
-
-    document.getElementById("Terms").style.display = "block";
-}
-
-function closeTermsForm() {
-    document.getElementById("Terms").style.display = "none";
-}
-
-
