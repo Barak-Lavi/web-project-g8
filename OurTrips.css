@@ -5,7 +5,10 @@
 
 /* Position the image container (needed to position the left and right arrows) */
 .container {
-    position: relative;
+    position: center;
+    margin:auto;
+    width:50%;
+ 
 }
 
 /* Hide the images by default */
@@ -52,7 +55,7 @@
     color: #f2f2f2;
     font-size: 12px;
     padding: 8px 12px;
-    position: absolute;
+    position: relative;
     top: 0;
 }
 
@@ -78,11 +81,9 @@
 }
 
 /* Add a transparency effect for thumnbail images */
-.demo {
-    opacity: 0.6;
-}
+
 
     .active,
     .demo:hover {
-        opacity: 1;
+        opacity: 0.6;
     }

@@ -4,9 +4,13 @@ $ = function (id) {
     return document.getElementById(id);
 }
 
+
 var show = function (id) {
     $(id).style.display = 'block';
     if (id == 'regForm') {
+        showTab(currentTab);
+    }
+    if (id == 'searchResult') {
         showTab(currentTab);
     }
 }

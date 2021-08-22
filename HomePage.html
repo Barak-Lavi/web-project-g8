@@ -16,7 +16,9 @@
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 <body>
+
     <div class="topnav" id="myTopnav">
+      
         <a class="active" href="HomePage.html">Home Page</a>
         <a href="OurTrips.html">Our Trips</a>
         <a href="MyOrders.html">My Orders</a>
@@ -28,8 +30,6 @@
         <b onclick="show('LogInForm')">Log In</b>
         <b onclick="show('regForm')">Sign Up</b>
     </div>
-    <h1>Check Home Page</h1>
-
 
 
     <form id="LogInForm" action="/action_page.php" class="form-container">
@@ -96,7 +96,7 @@
 
     </form>
 
-    <form id="contact" action="action_page.php" class="form-container">
+    <form id="contact" action="" class="form-container">
         <h1>Contact Us</h1>
         <label for="fname">First Name</label>
         <input type="text" id="fname" name="firstname" placeholder="Your name..">
@@ -146,77 +146,119 @@
     </form>
 
 
- 
-    <form id="searchMenu" class="Search-form" action="/action_page.php">
+
+    <form id="searchMenu" class="Search-form" action="">
         <div class="grid-container">
             <div class="item1">
-                    <label for="Planets">Current location:</label>
-                    <select name="Planets" id="Planets">
-                        <option value="Jupiter">Jupiter</option>
-                        <option value="Mars">Mars</option>
-                        <option value="Earth">Earth</option>
-                        <option value="ISS">ISS</option>
-                        <option value="Venus">Venus</option>
-                    </select>
+                <label for="Planets">Current location:</label>
+                <select name="Planets" id="Planets">
+                    <option value="Jupiter">Jupiter</option>
+                    <option value="Mars">Mars</option>
+                    <option value="Earth">Earth</option>
+                    <option value="ISS">ISS</option>
+                    <option value="Venus">Venus</option>
+                </select>
             </div>
             <div class="item2">
-               
-                    <label for="Planets">Destination:</label>
-                    <select name="Planets" id="Planets">
-                        <option value="Jupiter">Jupiter</option>
-                        <option value="Mars">Mars</option>
-                        <option value="Earth">Earth</option>
-                        <option value="ISS">ISS</option>
-                        <option value="Venus">Venus</option>
-                    </select>
-                
+
+                <label for="Planets">Destination:</label>
+                <select name="Planets" id="Planets">
+                    <option value="Jupiter">Jupiter</option>
+                    <option value="Mars">Mars</option>
+                    <option value="Earth">Earth</option>
+                    <option value="ISS">ISS</option>
+                    <option value="Venus">Venus</option>
+                </select>
+
             </div>
             <div class="item3">
-              
-                    <label for="Tickets">Quantity:</label>
-                    <select name="Tickets" id="Tickets">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-             
+
+                <label for="Tickets">Quantity:</label>
+                <select name="Tickets" id="Tickets">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+
             </div>
             <div class="item4">
-               
-                    <div class="nativeDatePicker">
-                        <label for="DepartureDate">Departure date:</label>
-                        <input type="date" id="DepartureDate" name="DepartureDate">
-                        <span class="validity"></span>
-                    </div>
-                    <div class="fallbackDatePicker">
-                        <!--</select>-->
-                        <!--</span>-->
-                    </div>
-                
+
+                <div class="nativeDatePicker">
+                    <label for="DepartureDate">Departure date:</label>
+                    <input type="date" id="DepartureDate" name="DepartureDate">
+                    <span class="validity"></span>
+                </div>
+                <div class="fallbackDatePicker">
+                    <!--</select>-->
+                    <!--</span>-->
+                </div>
+
             </div>
             <div class="item5">
-                
-                    <div class="nativeDatePicker">
-                        <label for="ComebackDate">Comeback date:</label>
-                        <input type="date" id="ComebackDate" name="ComebackDate">
-                        <span class="validity"></span>
-                    </div>
-                    <div class="fallbackDatePicker">
-                        <!--</select>-->
-                        <!--</span>-->
-                    </div>
-                
+
+                <div class="nativeDatePicker">
+                    <label for="ComebackDate">Comeback date:</label>
+                    <input type="date" id="ComebackDate" name="ComebackDate">
+                    <span class="validity"></span>
+                </div>
+                <div class="fallbackDatePicker">
+                    <!--</select>-->
+                    <!--</span>-->
+                </div>
+
             </div>
             <div class="item6">
-                <input type="submit" id="Searchflight" value="Search Flight">
+                <button type="submit" id="Searchflight" ><!--onclick="show('searchResult')"-->Search Flight
+                    </button>
             </div>
         </div>
     </form>
-
     
 
+    <form id="searchResult">
+        <div id="resultsFound"><h1>Results Found</h1></div>
+        <div class="tab">
+            <h2>TO DO search result table and choose flight , nextbutton countinue to purches</h2>
+            <!--table of output search-->
+        </div>
+        <div class="tab">
+            <h2>TO DO choose amount of tickets</h2>
+            <!--culc total price with tickets amount
+            button purches only if credut info exist-->
+        </div>
+        <div class="tab">
+            <h2>payment aproved</h2>
+            
+        </div>
+    </form>
+
+    <div class="recommandedShutteles">
+        <!--the form shows ,ost recommanded trips based on the client shearch history-->
+        <h1>Future Shutteles</h1>
+        <h2>Recommanded for you</h2>
+        <form class="recommanded" action="">
+            Fly To <?php echo htmlspecialchars($_POST['location']); ?>.<br />
+            Departure date:<?php echo (int)$_POST['Departure date']; ?> .<br />
+            Remaining tickets:<?php echo (int)$_POST['remaining tickets:']; ?>.<br />
+            For total of:<?php echo (int)$_POST['remaining tickets:']; ?> $.<br />
+        </form>
+        <form class="recommanded" action="">
+            Fly To <?php echo htmlspecialchars($_POST['location']); ?>.<br />
+            Departure date:<?php echo (int)$_POST['Departure date']; ?> .<br />
+            Remaining tickets:<?php echo (int)$_POST['remaining tickets:']; ?>.<br />
+            For total of:<?php echo (int)$_POST['remaining tickets:']; ?> $.<br />
+        </form>
+        <form class="recommanded" action="">
+            Fly To <?php echo htmlspecialchars($_POST['location']); ?>.<br />
+            Departure date:<?php echo (int)$_POST['Departure date']; ?> .<br />
+            Remaining tickets:<?php echo (int)$_POST['remaining tickets:']; ?>.<br />
+            For total of:<?php echo (int)$_POST['remaining tickets:']; ?> $.<br />
+        </form>
+
+    </div>
+    <br /><br /><br />
     <div class="footer">
         <b onclick="show('contact')">Contact Us</b>
         <b onclick="show('Privacy')">Privacy Policy</b>
