@@ -13,6 +13,7 @@ function startTime() {
     setTimeout("startTime()", 4000);
 }
 */
+
 var slideIndex = 1;
 showSlides(slideIndex);
 
@@ -43,3 +44,8 @@ function showSlides(n) {
     dots[slideIndex - 1].className += " active";
     captionText.innerHTML = dots[slideIndex - 1].alt;
 }
+
+function toggleElements(showElement, hideElements) {
+    document.querySelectorAll(hideElements).forEach(el => el.style.display = "none");
+    document.querySelector(showElement).style.display = "block";
+  }
