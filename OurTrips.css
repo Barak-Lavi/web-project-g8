@@ -1,22 +1,20 @@
 ﻿
 body {
     width: 100%;
-   
   }
   
+
+
   .class1{
     width: 20%;
     float: left;
     height: 100px;
   }
   
-
-  
   .class2{
     width: 80%;
     float: left;
     height: 100px;
-
   }
   .container{
     position: center;
@@ -24,12 +22,6 @@ body {
     width:80%;
   }
 
-
-  
-  p {
-    padding-top: 25px;
-    text-align: center;
-  }
 
 * {
     box-sizing: border-box;
@@ -102,7 +94,7 @@ body {
 /* Position the "next button" to the right */
 .next {
     top: 40%;
-    right: 25.5%;
+    right: 7.5%;
     border-radius: 3px 0 0 3px;
 }
 
@@ -193,3 +185,4 @@ table {
     font-size: .7rem;
 }
   
+

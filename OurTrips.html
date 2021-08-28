@@ -11,10 +11,9 @@
     <script src="OurTrips.js"></script>
 
     <title>SpaceTrip-OurTrips</title>
-    
 </head>
 
-<body onload="showSlides(1);">
+<body onload="showSlides(1)">
     <div class="topnav" id="myTopnav">
         <a href="HomePage.html">Home Page </a> <!--place the link to the other pages-->
         <a class="active" href="OurTrips.html">Our Trips</a>
@@ -27,17 +26,81 @@
     </div>
     <br /><br>
 
-    <div class="class1" >
-        <h1>Mars Colony</h1>
-        <h2>Attractions</h2>
-        <p>In Mars colony there are alot of fun things<br>
-           you can do such as go to bars and bars in <br>
-           space is different than what we have here on <br>
-           Earth </p>
-      </div>
+
+    <div class="class1">
+        <div class="info info1">
+           <h2>Mars Colony</h2>
+           <h3>Attractions :</h3>
+           <p>In Mars colony there are alot of fun things
+              you can do such as go to bars and bars in 
+              space is different than what we have here on 
+              Earth </p>
+           <h3>Unique places</h3>
+           <p>1- Night Mars bar<br>
+              2- Desert of Mars<br>
+              3- Mars colony
+           </p>
+        </div>
+
+        <div class="info info2" style="display: none;">
+            <h2>Moon Colony</h2>
+            <h3>Attractions :</h3>
+            <p>In Mars colony there are alot of fun things
+               you can do such as go to bars and bars in 
+               space is different than what we have here on 
+               Earth </p>
+            <h3>Unique places</h3>
+            <p>1- Night Mars bar<br>
+               2- Desert of Mars<br>
+               3- Mars colony
+            </p>
+         </div>
+
+         <div class="info info3" style="display: none;">
+            <h2>Jupiter Moons Exploration</h2>
+            <h3>Attractions :</h3>
+            <p>In Mars colony there are alot of fun things
+               you can do such as go to bars and bars in 
+               space is different than what we have here on 
+               Earth </p>
+            <h3>Unique places</h3>
+            <p>1- Night Mars bar<br>
+               2- Desert of Mars<br>
+               3- Mars colony
+            </p>
+         </div>
+
+         <div class="info info4" style="display: none;">
+            <h2>Venus Flying Colony</h2>
+            <h3>Attractions :</h3>
+            <p>In Mars colony there are alot of fun things
+               you can do such as go to bars and bars in 
+               space is different than what we have here on 
+               Earth </p>
+            <h3>Unique places</h3>
+            <p>1- Night Mars bar<br>
+               2- Desert of Mars<br>
+               3- Mars colony
+            </p>
+         </div>
+
+         <div class="info info5" style="display: none;">
+            <h2>The International Space Station Luxry hotel</h2>
+            <h3>Attractions :</h3>
+            <p>In Mars colony there are alot of fun things
+               you can do such as go to bars and bars in 
+               space is different than what we have here on 
+               Earth </p>
+            <h3>Unique places</h3>
+            <p>1- Night Mars bar<br>
+               2- Desert of Mars<br>
+               3- Mars colony
+            </p>
+         </div>
+ 
+    </div>
 
     <div class="class2">
-
 
     <div class="container">
 
@@ -97,19 +160,19 @@
         <!-- Thumbnail images -->
         <div class="row">
             <div class="column">
-                <img class="demo cursor" src="images/MarsColony.jpg" style="width: 100%; height: 100px;" onclick="currentSlide(1); toggleElements('.table1', '.table')" alt="Mars Colony">
+                <img class="demo cursor" src="images/MarsColony.jpg" style="width: 100%; height: 100px;" onclick="currentSlide(1); toggleElements('.table1', '.table'); toggleElements('.info1', '.info')" alt="Mars Colony">
             </div>
             <div class="column">
-                <img class="demo cursor" src="images/MoonColony.jpg" style="width: 100%; height: 100px;" onclick="currentSlide(2) ; toggleElements('.table2', '.table')" alt="Moon Colony">
+                <img class="demo cursor" src="images/MoonColony.jpg" style="width: 100%; height: 100px;" onclick="currentSlide(2) ; toggleElements('.table2', '.table'); toggleElements('.info2', '.info')" alt="Moon Colony">
             </div>
             <div class="column" >
-                <img class="demo cursor" src="images/JupiterMoons.gif" style="width: 100%; height: 100px;" onclick="currentSlide(3) ; toggleElements('.table3', '.table')" alt="Jupiter Moons exploration">  
+                <img class="demo cursor" src="images/JupiterMoons.gif" style="width: 100%; height: 100px;" onclick="currentSlide(3) ; toggleElements('.table3', '.table'); toggleElements('.info3', '.info')" alt="Jupiter Moons exploration">  
             </div>
             <div class="column">
-                <img class="demo cursor" src="images/VenusFlyingColony.jpg" style="width: 100%; height: 100px;" onclick="currentSlide(4) ; toggleElements('.table4', '.table')" alt="Venus Flying Colony">
+                <img class="demo cursor" src="images/VenusFlyingColony.jpg" style="width: 100%; height: 100px;" onclick="currentSlide(4) ; toggleElements('.table4', '.table'); toggleElements('.info4', '.info')" alt="Venus Flying Colony">
             </div>
             <div class="column">
-                <img class="demo cursor" src="images/ISS.jpg" style="width: 100%; height: 100px;" onclick="currentSlide(5) ; toggleElements('.table5', '.table')" alt="The International Space Station Luxry hotel">
+                <img class="demo cursor" src="images/ISS.jpg" style="width: 100%; height: 100px;" onclick="currentSlide(5) ; toggleElements('.table5', '.table'); toggleElements('.info5', '.info')" alt="The International Space Station Luxry hotel">
             </div>
           
             <div class="table table1" style="display: none;">
@@ -249,6 +312,6 @@
  
     </div>
     </div>
- 
+    
 </body>
 </html>
