@@ -1,15 +1,42 @@
 ﻿
+body {
+    width: 100%;
+   
+  }
+  
+  .class1{
+    width: 20%;
+    float: left;
+    height: 100px;
+  }
+  
+
+  
+  .class2{
+    width: 80%;
+    float: left;
+    height: 100px;
+
+  }
+  .container{
+    position: center;
+    margin:auto;
+    width:80%;
+  }
+
+
+  
+  p {
+    padding-top: 25px;
+    text-align: center;
+  }
+
 * {
     box-sizing: border-box;
 }
 
 /* Position the image container (needed to position the left and right arrows) */
-.container {
-    position: center;
-    margin:auto;
-    width:50%;
- 
-}
+
 
 /* Hide the images by default */
 
@@ -28,7 +55,7 @@
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     top: 20%;
-    left: 50%;
+    left: 60%;
     text-align: center;
   }
 
