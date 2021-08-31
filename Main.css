@@ -7,11 +7,16 @@
 
     */
 }
+* {
+    box-sizing: border-box;
+}
 body {
     background-image: url("images/backgroundSuttele2.jpg"); 
     background-repeat: no-repeat;
     background-size:cover;
 }
+/*-----------------------------------Top Navigation----------------------------------*/
+
 /* Add a black background color to the top navigation */
 .topnav {
     background-color: #333;
@@ -86,7 +91,224 @@ body {
     text-decoration: none;
     font-size: 17px;
 }
+/*---------------------------------------------------------------------*/
+/*-----------------------------------Home Page----------------------------------*/
+.Search-form {
+    display: block;
+    width: 60%;
+    margin: auto;
+    border: 5px solid #333;
+    background-color: #04AA6D;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
 
+#searchResult {
+    display: none;
+}
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        'header1 header2 header3'
+        'header4 header5 header6';
+}
+
+.item {
+    padding: 20px;
+    border: 2px solid black;
+    margin: 20px;
+}
+
+.item1 {
+    grid-area: header1;
+}
+
+.item2 {
+    grid-area: header2;
+}
+
+.item3 {
+    grid-area: header3;
+}
+
+
+.item4 {
+    grid-area: header4;
+}
+
+.item5 {
+    grid-area: header5;
+}
+
+.item-6 {
+    grid-area: header6;
+    padding: 20px;
+    border: none;
+    margin: 20px;
+}
+
+#Searchflight {
+    width: 200px;
+    height: 50px;
+}
+
+/*---------------------------------Search Result Form------------------------------------*/
+
+.FlightInfoCol {
+    float: left;
+    width: 25%;
+    padding: 10px;
+    border: 2px solid black;
+}
+/* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .FlightInfoCol {
+        width: 100%;
+    }
+}
+/* Clear floats after the columns */
+.FlightInfoRow:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/*-------------------------------.Recommanded Shutteles--------------------------------------*/
+/*the recommanded shutteles will be offered by the client search history
+    by defualt it will offer the closest departure time
+*/
+.recommandedShutteles {
+    display: table;
+    width: 60%;
+    margin: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid #333;
+    background-color: #04AA6D;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+    .recommandedShutteles .recommanded {
+        display: block;
+        float: left;
+        width: 33%;
+        border: 5px solid #333;
+        text-align: left;
+    }
+
+/*---------------------------------------------------------------------*/
+/*--------------------------------Pop Ups-------------------------------------*/
+/* Add styles to the form container */
+.form-container {
+    display: none;
+    position: fixed;
+    padding: 10px;
+    width: 330px;
+    left: 50%;
+    margin-left: -150px;
+    top: 30%;
+    margin-top: -100px;
+    background: #FFF;
+    z-index: 20;
+    box-shadow: -8px 8px 10px 3px rgba(0,0,0,0.2);
+}
+
+/* The popup form - hidden by default*/
+#LogInForm:after, #regForm:after, #contact:after, #Privacy:after, #Terms:after {
+    content: "";
+    position: fixed;
+    background: rgba(0,0,0,0.5);
+    z-index: -2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#LogInForm:before, #regForm:before, #contact:before, #Privacy:before, #Terms:before {
+    position: absolute;
+    content: "";
+    background: #FFF;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password], .form-container input[type=date] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+    /* When the inputs get focus, do something */
+    .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+        padding: 20px;
+    }
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+    background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover {
+    opacity: 1;
+}
+
+
+/*----------------------------Registration & purches multi pages form-----------------------------------------*/
+/* Hide all steps by default: */
+.tab {
+    display: none;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+    /* Mark the active step: */
+    .step.active {
+        opacity: 1;
+    }
+
+    /* Mark the steps that are finished and valid: */
+    .step.finish {
+        background-color: #04AA6D;
+    }
+
+/*---------------------------------------------------------------------*/
+/*--------------------------------Footer-------------------------------------*/
 
 
 .footer {
@@ -109,4 +331,40 @@ body {
         color: black;
 }
 
+/*---------------------------------------------------------------------*/
+/*---------------------------Q&A accordion desgin-------------------------------------*/
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
 
+.active .accordion:hover {
+    background-color: #ccc;
+}
+
+.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+/*---------------------------------------------------------------------*/

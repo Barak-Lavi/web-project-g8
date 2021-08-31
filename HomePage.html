@@ -5,20 +5,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Main.css" />
-    <link rel="stylesheet" href="popUpForms.css" />
-    <link rel="stylesheet" href="HomePage.css" />
+    <!--link to the humborger icon for mobile application-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Humburger menu lib-->
     <script src="Main.js"></script>
-    <script src="popUpForms.js"></script>
+
     <title>SpaceTrip-HomePage</title>
     <meta charset="UTF-8">
-    <title>test</title>
-    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+   
+   
 </head>
 <body>
-
+    <!-------------------Top Navigation --------------------->
     <div class="topnav" id="myTopnav">
-      
+
         <a class="active" href="HomePage.html">Home Page</a>
         <a href="OurTrips.html">Our Trips</a>
         <a href="MyOrders.html">My Orders</a>
@@ -31,7 +30,7 @@
         <b onclick="show('regForm')">Sign Up</b>
     </div>
 
-
+    <!-------------------Pop Up Forms --------------------->
     <form id="LogInForm" action="/action_page.php" class="form-container">
         <h1>Login</h1>
 
@@ -49,7 +48,7 @@
     <form id="regForm" action="" class="form-container">
 
         <h1>Register:</h1>
-        <div class="tab">
+        <div class="tab register">
 
             <label for="Fname"><b>First name</b></label>
             <input type="text" placeholder="First name..." oninput="this.Fname" required>
@@ -65,24 +64,22 @@
 
         </div>
 
-        <div class="tab">
+        <div class="tab register">
             <label for="email"><b>Email</b></label>
             <input type="text" placeholder="Email..." oninput="email" required>
 
             <label for="userName"><b>User Name</b></label>
-            <input type="text" placeholder="User name..." oninput="email" required>
+            <input type="text" placeholder="User name..." oninput="username" required>
 
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Password..." oninput="psw" required>
         </div>
 
-        <div class="tab">
 
-        </div>
         <div style="overflow:auto;">
             <div style="float:right;">
-                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                <button type="button" id="prevBtn" onclick="nextPrev(-1,'tab register','regForm', 'prevBtn', 'nextBtn')">Previous</button>
+                <button type="submit" id="nextBtn" onclick="nextPrev(1,'tab register','regForm', 'prevBtn', 'nextBtn')">Next</button>
             </div>
         </div>
 
@@ -95,6 +92,7 @@
         </div>
 
     </form>
+
 
     <form id="contact" action="" class="form-container">
         <h1>Contact Us</h1>
@@ -120,6 +118,25 @@
         <button type="submit" class="btn cancel" onclick="hide('contact')">Close</button>
     </form>
 
+    <form id="Q&A" class="form-container">
+        <h1>Q&A</h1>
+        <button type="button" class="accordion" onclick="accordion()">Question 1</button>
+        <div class="panel">
+            <p>Lorem ipsum...</p>
+        </div>
+
+        <button type="button" class="accordion" onclick="accordion()">Question 2</button>
+        <div class="panel">
+            <p>Lorem ipsum...</p>
+        </div>
+
+        <button type="button" class="accordion" onclick="accordion()">Question 3</button>
+        <div class="panel">
+            <p>Lorem ipsum...</p>
+        </div>
+        <button type="submit" class="btn cancel" onclick="hide('Q&A')">Close</button>
+    </form>
+
     <form id="Privacy" class="form-container">
         <h1>Privacy Policy</h1>
         <p>
@@ -132,6 +149,8 @@
         <button type="submit" class="btn cancel" onclick="hide('Privacy')">Close</button>
 
     </form>
+
+
     <form id="Terms" class="form-container">
         <h1>Terms of Use</h1>
         <p>
@@ -145,13 +164,63 @@
 
     </form>
 
+    <!--the purchase form will request the info for all the tickets, person1 person2....person5-->
+    <form id="purchesForm" action="" class="form-container">
+        <div class="tab purchesForm">
+            <div id="Person">
+                <h3>Person 1:</h3>
+                <label for="Fname"><b>First name</b></label>
+                <input type="text" placeholder="First name..." oninput="this.Fname" required>
+                <label for="Lname"><b>Last name</b></label>
+                <input type="text" placeholder="Last name..." oninput="this.Lname" required>
+            </div>
+        </div>
 
 
-    <form id="searchMenu" class="Search-form" action="">
+        <div class="tab purchesForm">
+            <label for="cname">Name on Card</label>
+            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+            <label for="ccnum">Credit card number</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <label for="expmonth">Exp Month</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+            <label for="expyear">Exp Year</label>
+            <input type="text" id="expyear" name="expyear" placeholder="2018">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv" placeholder="352">
+        </div>
+        <div class="tab purchesForm">
+            <label for="email"><i class="fa fa-envelope"></i> Send the bill to Email</label>
+            <input type="text" id="email" name="email" placeholder="john@example.com" required>
+
+            <h2>total price:</h2>
+            <h2>press submit to complete the purches</h2>
+        </div>
+
+        <div style="overflow:auto;">
+            <div style="float:right;">
+                <button type="button" id="prevBtn2" onclick="nextPrev(-1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')">Previous</button>
+                <button type="submit" id="nextBtn2" onclick="nextPrev(1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')">Next</button>
+            </div>
+        </div>
+
+        <button type="submit" class="btn cancel" onclick="hide('purchesForm')">Close</button>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+
+        </div>
+
+    </form>
+
+    <!------------------------------------------------>
+    <!-------------------Home Page --------------------->
+    <form id="searchMenu" class="Search-form">
         <div class="grid-container">
-            <div class="item1">
+            <div class="item 1">
                 <label for="Planets">Current location:</label>
-                <select name="Planets" id="Planets">
+                <select  name="Planets" id="Planets" required>
                     <option value="Jupiter">Jupiter</option>
                     <option value="Mars">Mars</option>
                     <option value="Earth">Earth</option>
@@ -159,7 +228,7 @@
                     <option value="Venus">Venus</option>
                 </select>
             </div>
-            <div class="item2">
+            <div class="item 2">
 
                 <label for="Planets">Destination:</label>
                 <select name="Planets" id="Planets">
@@ -171,10 +240,10 @@
                 </select>
 
             </div>
-            <div class="item3">
+            <div class="item 3">
 
                 <label for="Tickets">Quantity:</label>
-                <select name="Tickets" id="Tickets">
+                <select name="Tickets" id="Tickets" >
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -183,11 +252,11 @@
                 </select>
 
             </div>
-            <div class="item4">
+            <div class="item 4">
 
                 <div class="nativeDatePicker">
                     <label for="DepartureDate">Departure date:</label>
-                    <input type="date" id="DepartureDate" name="DepartureDate">
+                    <input type="date" id="DepartureDate" name="DepartureDate" required>
                     <span class="validity"></span>
                 </div>
                 <div class="fallbackDatePicker">
@@ -196,11 +265,11 @@
                 </div>
 
             </div>
-            <div class="item5">
+            <div class="item 5">
 
                 <div class="nativeDatePicker">
                     <label for="ComebackDate">Comeback date:</label>
-                    <input type="date" id="ComebackDate" name="ComebackDate">
+                    <input type="date" id="ComebackDate" name="ComebackDate" required>
                     <span class="validity"></span>
                 </div>
                 <div class="fallbackDatePicker">
@@ -209,30 +278,40 @@
                 </div>
 
             </div>
-            <div class="item6">
-                <button type="submit" id="Searchflight" ><!--onclick="show('searchResult')"-->Search Flight
-                    </button>
+            <div class="item-6">
+                <button type="button" id="Searchflight" onclick="show('searchResult')"> Search Flight</button>
+            </div>
+
+        </div>
+    </form>
+
+
+    <form id="searchResult" class="Search-form">
+        <h1>Choose Departure Flight</h1>
+        <div class="FlightInfoRow">
+            <div id="departure" class="FlightInfoCol">From: </div> <!--add function that returns location and datetime-->
+            <div id="destination" class="FlightInfoCol">To: </div><!--add function that returns location and datetime-->
+            <div id=" price" class="FlightInfoCol">Total</div>
+            <div class="FlightInfoCol">
+                <input type="checkbox" id="ChooseFlight" name="ChooseFlight" required>
+                <label for="ChooseFlight">Choose Flight</label><br />
             </div>
         </div>
-    </form>
-    
 
-    <form id="searchResult">
-        <div id="resultsFound"><h1>Results Found</h1></div>
-        <div class="tab">
-            <h2>TO DO search result table and choose flight , nextbutton countinue to purches</h2>
-            <!--table of output search-->
+        <h1>Choose Return Flight</h1>
+        <div class="FlightInfoRow">
+            <div id="departure" class="FlightInfoCol">From: </div> <!--add function that returns location and datetime-->
+            <div id="destination" class="FlightInfoCol">To: </div><!--add function that returns location and datetime-->
+            <div id=" price" class="FlightInfoCol">Total</div>
+            <div class="FlightInfoCol">
+                <input type="checkbox" id="ChooseFlight" name="ChooseFlight" required>
+                <label for="ChooseFlight">Choose Flight</label><br />
+            </div>
         </div>
-        <div class="tab">
-            <h2>TO DO choose amount of tickets</h2>
-            <!--culc total price with tickets amount
-            button purches only if credut info exist-->
-        </div>
-        <div class="tab">
-            <h2>payment aproved</h2>
-            
-        </div>
+        <button type="button" value="Purches" onclick="show('purchesForm')">Purches</button>
+
     </form>
+
 
     <div class="recommandedShutteles">
         <!--the form shows ,ost recommanded trips based on the client shearch history-->
@@ -258,13 +337,15 @@
         </form>
 
     </div>
-    <br /><br /><br />
+    <!------------------------------------------------>
+    <!-------------------Footer --------------------->
     <div class="footer">
         <b onclick="show('contact')">Contact Us</b>
         <b onclick="show('Privacy')">Privacy Policy</b>
         <b onclick="show('Terms')">Terms</b>
-        <a href="Q&A.html">Q&A</a>
+        <b onclick="show('Q&A')">Q&A</b>
     </div>
+    <!------------------------------------------------>
 </body>
 </html>
 
