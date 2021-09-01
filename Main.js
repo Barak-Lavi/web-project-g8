@@ -161,7 +161,6 @@ function fixStepIndicator(n) {
 
 
 
-
 /*
 function myFunction() {
     // Declare variables

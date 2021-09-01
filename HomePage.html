@@ -17,8 +17,8 @@
 <body>
 
     <!-------------------Top Navigation --------------------->
-    <div class="topnav" id="myTopnav">
-
+    <nav class="topnav" id="myTopnav">
+        
         <a class="active" href="HomePage.html">Home Page</a>
         <a href="OurTrips.html">Our Trips</a>
         <a href="MyOrders.html">My Orders</a>
@@ -29,10 +29,10 @@
         </a>
         <b onclick="show('LogInForm')">Log In</b>
         <b onclick="show('regForm')">Sign Up</b>
-    </div>
+    </nav>
     <br /><br />
     <!-------------------Pop Up Forms --------------------->
-    <form id="LogInForm" action="/action_page.php" class="form-container">
+    <form id="LogInForm" class="form-container" action="/TODO"  method="get">
         <h1>Login</h1>
 
         <label for="email"><b>Email</b></label>
@@ -46,7 +46,7 @@
 
     </form>
 
-    <form id="regForm" action="" class="form-container">
+    <form id="regForm" action="" class="form-container" actions="/TODO" method="get">
 
         <h1>Register:</h1>
         <div class="tab register">
@@ -78,9 +78,9 @@
 
 
         <div style="overflow:auto;">
-            <div style="float:right;">
-                <button type="button" id="prevBtn" onclick="nextPrev(-1,'tab register','regForm', 'prevBtn', 'nextBtn')">Previous</button>
-                <button type="submit" id="nextBtn" onclick="nextPrev(1,'tab register','regForm', 'prevBtn', 'nextBtn')">Next</button>
+            <div >
+                <button type="button" class="btn" id="prevBtn" style="float:left;" onclick="nextPrev(-1,'tab register','regForm', 'prevBtn', 'nextBtn')">Previous</button>
+                <button type="submit" class="btn" id="nextBtn" style="float:right;" onclick="nextPrev(1,'tab register','regForm', 'prevBtn', 'nextBtn')">Next</button>
             </div>
         </div>
 
@@ -95,23 +95,18 @@
     </form>
 
 
-    <form id="contact" action="" class="form-container">
+    <form id="contact"  class="form-container" action="/TODO"  method="post">
         <h1>Contact Us</h1>
-        <label for="fname">First Name</label>
+        <label for="fname"><b>First Name</b></label>
         <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
-        <label for="lname">Last Name</label>
+        <label for="lname"><b>Last Name</b></label>
         <input type="text" id="lname" name="lastname" placeholder="Your last name..">
 
-        <label for="Topic">Topic</label>
-        <select id="Topic" name="Topic">
-            <option value="australia">Wanted</option>
-            <option value="canada">tickets</option>
-            <option value="usa">cancelation</option>
-        </select>
-        <br />
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" oninput="email" required>
 
-        <label for="subject">Description</label>
+        <label for="subject"><b>Massege Us</b></label>
         <br />
         <textarea id="subject" name="subject" placeholder="How can we help you.." style="height:100px"></textarea>
 
@@ -119,7 +114,7 @@
         <button type="submit" class="btn cancel" onclick="hide('contact')">Close</button>
     </form>
 
-    <form id="Q&A" class="form-container">
+    <form id="FQA" class="form-container">
         <h1>Q&A</h1>
         <button type="button" class="accordion" onclick="accordion()">Question 1</button>
         <div class="panel">
@@ -166,7 +161,7 @@
     </form>
 
     <!--the purchase form will request the info for all the tickets, person1 person2....person5-->
-    <form id="purchesForm" action="" class="form-container">
+    <form id="purchesForm"  class="form-container" action="/TODO"  method="get">
         <div class="tab purchesForm">
             <div id="Person">
                 <h3>Person 1:</h3>
@@ -200,8 +195,8 @@
 
         <div style="overflow:auto;">
             <div style="float:right;">
-                <button type="button" id="prevBtn2" onclick="nextPrev(-1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')">Previous</button>
-                <button type="submit" id="nextBtn2" onclick="nextPrev(1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')">Next</button>
+                <button type="button" id="prevBtn2" class="btn" onclick="nextPrev(-1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')">Previous</button>
+                <button type="submit" id="nextBtn2" class="btn" onclick="nextPrev(1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')">Next</button>
             </div>
         </div>
 
@@ -217,11 +212,13 @@
 
     <!------------------------------------------------>
     <!-------------------Home Page --------------------->
-    <form id="searchMenu" class="Search-form">
+    
+    <form id="searchMenu" class="Search-form" action="/TODO"  method="get">
         <div class="grid-container">
             <div class="item 1">
                 <label for="Planets">Current location:</label>
                 <select name="Planets" id="Planets" required>
+                    
                     <option value="Jupiter">Jupiter</option>
                     <option value="Mars">Mars</option>
                     <option value="Earth">Earth</option>
@@ -257,7 +254,7 @@
 
                 <div class="nativeDatePicker">
                     <label for="DepartureDate">Departure date:</label>
-                    <input type="date" id="DepartureDate" name="DepartureDate" required>
+                    <input type="date" class="date" id="DepartureDate" name="DepartureDate" required>
                     <span class="validity"></span>
                 </div>
                 <div class="fallbackDatePicker">
@@ -270,7 +267,7 @@
 
                 <div class="nativeDatePicker">
                     <label for="ComebackDate">Comeback date:</label>
-                    <input type="date" id="ComebackDate" name="ComebackDate" required>
+                    <input type="date" class="date" id="ComebackDate" name="ComebackDate" required>
                     <span class="validity"></span>
                 </div>
                 <div class="fallbackDatePicker">
@@ -280,14 +277,15 @@
 
             </div>
             <div class="item-6">
-                <button type="button" id="Searchflight" onclick="show('searchResult')"> Search Flight</button>
+                <button type="button" class="btn" onclick="show('searchResult')"> Search</button>
             </div>
 
         </div>
     </form>
 
 
-    <form id="searchResult" class="Search-form">
+    <form id="searchResult" class="Search-form" action="/TODO"  method="post">
+        
         <h1>Choose Departure Flight</h1>
         <div class="FlightInfoRow">
             <div id="departure" class="FlightInfoCol">From: </div> <!--add function that returns location and datetime-->
@@ -295,47 +293,53 @@
             <div id=" price" class="FlightInfoCol">Total</div>
             <div class="FlightInfoCol">
                 <input type="checkbox" id="ChooseFlight" name="ChooseFlight" required>
-                <label for="ChooseFlight">Choose Flight</label><br />
+                <label for="ChooseFlight">Choose</label><br />
             </div>
         </div>
 
         <h1>Choose Return Flight</h1>
-        <div class="FlightInfoRow">
+        <div class="FlightInfoRow" >
             <div id="departure" class="FlightInfoCol">From: </div> <!--add function that returns location and datetime-->
             <div id="destination" class="FlightInfoCol">To: </div><!--add function that returns location and datetime-->
             <div id=" price" class="FlightInfoCol">Total</div>
             <div class="FlightInfoCol">
                 <input type="checkbox" id="ChooseFlight" name="ChooseFlight" required>
-                <label for="ChooseFlight">Choose Flight</label><br />
+                <label for="ChooseFlight">Choose</label><br />
             </div>
         </div>
-        <button type="button" value="Purches" onclick="show('purchesForm')">Purches</button>
+        <button type="button" class="btn" value="Purches" onclick="show('purchesForm')">Purchase</button>
 
     </form>
 
-
-    <div class="recommandedShutteles">
+    <!--fiiled with Example!!!-->
+    <div class="recommandedShutteles" action="/TODO"  method="get">
         <!--the form shows ,ost recommanded trips based on the client shearch history-->
         <h1>Future Shutteles</h1>
         <h2>Recommanded for you</h2>
-        <form class="recommanded" action="">
-            Fly To <?php echo htmlspecialchars($_POST['location']); ?>.<br />
-            Departure date:<?php echo (int)$_POST['Departure date']; ?> .<br />
-            Remaining tickets:<?php echo (int)$_POST['remaining tickets:']; ?>.<br />
-            For total of:<?php echo (int)$_POST['remaining tickets:']; ?> $.<br />
+
+        <form class="recommanded" action="/TODO" method="get">
+            <h4>Fly To: Mars</h4>
+            <h4>Departure date: 09/09/2021</h4>
+            <h4>Remaining tickets: 30</h4>
+            <h4>For total of:20,000$</h4>
+            <button type="button" class="btn" >go to shuttele</button>
+
         </form>
-        <form class="recommanded" action="">
-            Fly To <?php echo htmlspecialchars($_POST['location']); ?>.<br />
-            Departure date:<?php echo (int)$_POST['Departure date']; ?> .<br />
-            Remaining tickets:<?php echo (int)$_POST['remaining tickets:']; ?>.<br />
-            For total of:<?php echo (int)$_POST['remaining tickets:']; ?> $.<br />
+        <form class="recommanded" action="/TODO" method="get">
+            <h4>Fly To: Venus</h4>
+            <h4>Departure date:10/10/2021</h4>
+            <h4>Remaining tickets: 2!!</h4>
+            <h4>For total of: 15,000$</h4>
+            <button type="button" class="btn">go to shuttele</button>
         </form>
-        <form class="recommanded" action="">
-            Fly To <?php echo htmlspecialchars($_POST['location']); ?>.<br />
-            Departure date:<?php echo (int)$_POST['Departure date']; ?> .<br />
-            Remaining tickets:<?php echo (int)$_POST['remaining tickets:']; ?>.<br />
-            For total of:<?php echo (int)$_POST['remaining tickets:']; ?> $.<br />
+        <form class="recommanded" action="/TODO" method="get">
+            <h4>Fly To: Mars</h4>
+            <h4>Departure date:11/11/2021</h4>
+            <h4>Remaining tickets:45</h4>
+            <h4>For total of:18,000$</h4>
+            <button type="button" class="btn">go to shuttele</button>
         </form>
+
 
     </div>
     <!------------------------------------------------>
@@ -344,7 +348,7 @@
         <b onclick="show('contact')">Contact Us</b>
         <b onclick="show('Privacy')">Privacy Policy</b>
         <b onclick="show('Terms')">Terms</b>
-        <b onclick="show('Q&A')">Q&A</b>
+        <b onclick="show('FQA')">Q&A</b>
     </div>
     <!------------------------------------------------>
 </body>
