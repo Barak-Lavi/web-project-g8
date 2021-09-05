@@ -96,6 +96,91 @@ body {
   width: 80%;
 }
 
+.Fixed {
+  z-index: 1;
+  border: solid black;
+  background-color: khaki;
+  position: fixed;
+  top: 60%;
+  right: 3%;
+}
+
+
+    /* Add styles to the form container */
+    .Info-container {
+      display: none;
+      position: fixed;
+      padding: 10px;
+      width: 330px;
+      margin-left: -150px;
+      margin-top: -100px;
+      z-index: 1;
+      box-shadow: -8px 8px 10px 3px rgba(0,0,0,0.2);
+      top: 30%;
+      left: 50%;
+      right: 50%;
+  }
+  
+  
+      /* The popup form - hidden by default*/
+  #FillInformation:after {
+      content: "";
+      position: fixed;
+      background: rgba(0,0,0,0.5);
+      z-index: -2;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+  }
+  
+  #FillInformation:before {
+      position: absolute;
+      content: "";
+      background: #FFF;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+  }
+  
+
+  .Info-container  input[type=text], .Info-container  input[type=password], .Info-container  input[type=date] {
+    width: 300px;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: var(--greyishblue);
+}
+
+        /* When the inputs get focus, do something */
+    .Info-container  input[type=text]:focus, .Info-container  input[type=password]:focus {
+        background-color: var(--lightblue);
+        outline: none;
+        padding: 20px;
+    }
+
+
+    /* Add a red background color to the cancel button */
+.Info-container  .cancel {
+    background-color: var(--closeBoutton);
+    margin-top:5px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: var(--greyishblue);
+    resize: none;
+}
+
+
+
 .CasualJobs{
     position: relative;
 }
@@ -135,44 +220,49 @@ body {
 
 
   .CasualJobs:hover .picture {
-    opacity: 0.5;
+    opacity: 0.3;
   }
 
   .GraphicDesigner:hover .picture {
-    opacity: 0.5;
+    opacity: 0.3;
   }
  
   .AlgorithmsDeveloper:hover .picture {
-    opacity: 0.5;
+    opacity: 0.3;
   }
  
   .MarketingManager:hover .picture {
-    opacity: 0.5;
+    opacity: 0.3;
   }
  
   .DataAnalyst:hover .picture {
-    opacity: 0.5;
+    opacity: 0.3;
   }
 
   
   .CasualJobs:hover .overlay {
     opacity: 1;
+    z-index: 0.5;
   }
 
   .GraphicDesigner:hover .overlay {
     opacity: 1;
+    z-index: 1;
   }
 
   .AlgorithmsDeveloper:hover .overlay {
     opacity: 1;
+    z-index: 1;
   }
 
   .MarketingManager:hover .overlay {
     opacity: 1;
+    z-index: 1;
   }
 
   .DataAnalyst:hover .overlay {
     opacity: 1;
+    z-index: 1;
   }
  
  

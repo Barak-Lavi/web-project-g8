@@ -23,6 +23,31 @@
     </div>
 
 <div class="container">
+
+    <div class="Fixed"> 
+        <h3>If you're interested in a specific job :</h3>
+        <b onclick="show('FillInformation')">Click to fill your info</b>
+           <!-------------------Pop Up Forms --------------------->
+    <form id="FillInformation" class="Info-container" action="/TODO"  method="get">
+        <h3>Click to fill your info</h3>
+
+        <label for="firstname"><b>First name</b></label>
+        <input type="text" placeholder="Enter firstname" oninput="firstname" required>
+
+        <label for="lastname"><b>last name</b></label>
+        <input type="text" placeholder="Enter lastname" oninput="lastname" required>
+        
+        <label for="PhoneNumber"><b>Phone number</b></label>
+        <input type="text" placeholder="Enter phone number" oninput="phonenumber" required>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" oninput="email" required>
+
+        <button type="submit" class="btn">submit</button>
+        <button type="submit" class="btn cancel" onclick="hide('LogInForm')">Close</button>
+
+    </form>
+    </div>
     <div class="CasualJobs"> 
         <div class="overlay">
             <div class="textInPic">
