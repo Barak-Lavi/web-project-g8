@@ -30,7 +30,7 @@
         <button class="btn" onclick="show('FillInformation')">Click to fill your info</button>
         
            <!-------------------Pop Up Forms --------------------->
-        <form id="FillInformation" class="Info-container" action="/TODO"  method="get">
+        <form id="FillInformation" class="Info-container" action="/TODO ; /action_page.php"  method="get">
         <h3>Click to fill your info</h3>
 
         <label for="firstname"><b>First name</b></label>
@@ -44,8 +44,9 @@
 
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Enter Email" oninput="email" required>
-
-        <div style="overflow:auto;">
+        <label form="Uploadfiles"><b>Upload files</b></label>
+        <input type="file" id="myFile" name="filename" placeholder="Choose file" oninput="file" required><br>
+        <br><div style="overflow:auto;">
             <div>
             <button type="submit" class="btn">submit</button>
             </div>
