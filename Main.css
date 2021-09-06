@@ -12,10 +12,12 @@
     background-color: rgba(var(--color), 0.8);
     */
 }
+
 * {
     box-sizing: border-box;
    
 }
+
 body {
     background-image: url("images/backgroundSuttele2.jpg");
     background-repeat: no-repeat;

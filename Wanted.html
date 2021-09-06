@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="Wanted.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Humburger menu lib-->
     <script src="Main.js"></script>
+    <script src="Wanted.js"></script>
     <title>Space Trip- Wanted</title>
 
 </head>
@@ -26,9 +27,10 @@
 
     <div class="Fixed"> 
         <h3>If you're interested in a specific job :</h3>
-        <b onclick="show('FillInformation')">Click to fill your info</b>
+        <button class="btn" onclick="show('FillInformation')">Click to fill your info</button>
+        
            <!-------------------Pop Up Forms --------------------->
-    <form id="FillInformation" class="Info-container" action="/TODO"  method="get">
+        <form id="FillInformation" class="Info-container" action="/TODO"  method="get">
         <h3>Click to fill your info</h3>
 
         <label for="firstname"><b>First name</b></label>
@@ -43,11 +45,23 @@
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Enter Email" oninput="email" required>
 
-        <button type="submit" class="btn">submit</button>
-        <button type="submit" class="btn cancel" onclick="hide('LogInForm')">Close</button>
-
+        <div style="overflow:auto;">
+            <div>
+            <button type="submit" class="btn">submit</button>
+            </div>
+        </div>
+        
+            <button type="submit" class="btn cancel" onclick="hide('FillInformation')">Close</button>
+            <!-- Circles which indicates the steps of the form: -->
+            <div style="text-align:center;margin-top:40px">
+            <span class="step"></span>
+            <span class="step"></span>
+            </div>
     </form>
     </div>
+
+   
+
     <div class="CasualJobs"> 
         <div class="overlay">
             <div class="textInPic">

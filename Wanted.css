@@ -1,17 +1,48 @@
 :root {
-    --darkblue: #454D6B;
-    --cream: #D2BFB2;
-    --lightblue: #7C95C0;
-    --greyishblue: #A4AFC5;
-    /*var(--darkblue)
+  --darkblue: #454D6B;
+  --cream: #D2BFB2;
+  --lightblue: #7C95C0;
+  --greyishblue: #A4AFC5;
+  --closeBoutton: #f2685e;
+  /*var(--darkblue)
+  /*var(--cream)
+  /*var(--lightblue)
+  /*var(--greyishblue)
+  /*var(--closeBoutton)
+  background-color: rgba(var(--color), 0.8);
+  */
+}
 
-    */
+* {
+  box-sizing: border-box;
+ 
 }
 
 body {
   background-image: url("images/backgroundSuttele2.jpg"); 
   background-repeat: no-repeat;
   background-size:cover;
+}
+
+.btn {
+  background-color: var(--darkblue);
+  border: none;
+  color: white;
+  padding: 10px 24px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.9;
+  
+}
+.btn:hover {
+   background-color: var(--lightblue);
+   color: white;
+   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 /* Add a black background color to the top navigation */
@@ -99,10 +130,12 @@ body {
 .Fixed {
   z-index: 1;
   border: solid black;
-  background-color: khaki;
+  padding: 10px;
+  margin: 5px;
+  background-color: var(--cream);
   position: fixed;
-  top: 60%;
-  right: 3%;
+  top: 85%;
+  right: 10.5%;
 }
 
 
@@ -117,7 +150,7 @@ body {
       z-index: 1;
       box-shadow: -8px 8px 10px 3px rgba(0,0,0,0.2);
       top: 30%;
-      left: 50%;
+      left: 48%;
       right: 50%;
   }
   
@@ -154,11 +187,11 @@ body {
     background: var(--greyishblue);
 }
 
-        /* When the inputs get focus, do something */
-    .Info-container  input[type=text]:focus, .Info-container  input[type=password]:focus {
-        background-color: var(--lightblue);
-        outline: none;
-        padding: 20px;
+  /* When the inputs get focus, do something */
+  .Info-container  input[type=text]:focus, .Info-container  input[type=password]:focus {
+    background-color: var(--lightblue);
+    outline: none;
+    padding: 20px;
     }
 
 
@@ -242,7 +275,7 @@ textarea {
   
   .CasualJobs:hover .overlay {
     opacity: 1;
-    z-index: 0.5;
+    z-index: 1;
   }
 
   .GraphicDesigner:hover .overlay {
