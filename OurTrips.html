@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Main.css" />
     <link rel="stylesheet" href="OurTrips.css"> 
+    <link rel="stylesheet" href="Tables.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Humburger menu lib-->
     <script src="Main.js"></script>
-    <script src="OurTrips.js"></script>
+   
 
     <title>SpaceTrip-OurTrips</title>
 </head>
 
-<body onload="showSlides(1)">
+<body>
     <nav class="topnav" id="myTopnav">
         <a href="HomePage.html">Home Page </a> <!--place the link to the other pages-->
         <a class="active" href="OurTrips.html">Our Trips</a>
@@ -27,424 +28,348 @@
         <b onclick="show('regForm')">Sign Up</b>
     </nav>
     <br /><br>
-
-
-    <div class="class1">
-        <div class="info info1">
-           <h2>Mars Colony</h2>
-           <h3>Attractions :</h3>
-           <p>In Mars colony there are alot of fun things
-              you can do such as go to bars and bars in 
-              space is different than what we have here on 
-              Earth </p>
-           <h3>Unique places</h3>
-           <p>1- Night Mars bar<br>
-              2- Desert of Mars<br>
-              3- Mars colony
-           </p>
+    <!------------------------------------------------>
+    <div class="ourtrips-container">
+        <div id="Mars" class="Mars">
+            <video autoplay loop muted id="video-container">
+                <source src="videos/Mars.mov">
+            </video>
         </div>
 
-        <div class="info info2" style="display: none;">
+        <div class="Mars-description">
+            <h2>Mars Colony</h2>
+            <h3>Attractions :</h3>
+            <p>
+                In Mars colony there are alot of fun things
+                you can do such as go to bars and bars in
+                space is different than what we have here on
+                Earth
+            </p>
+            <h3>Unique places</h3>
+            <p>
+                1- Night Mars bar<br>
+                2- Desert of Mars<br>
+                3- Mars colony
+            </p>
+            <button type="button" class="btn table" onclick="showTable('Tables','Mars')">Show Trips</button>
+        </div>
+
+        <div id="Moon" class="Moon">
+            <video autoplay loop muted id="video-container">
+                <source src="videos/Moon.mp4">
+            </video>
+        </div>
+
+        <div class="Moon-description">
             <h2>Moon Colony</h2>
             <h3>Attractions :</h3>
-            <p>In Mars colony there are alot of fun things
-               you can do such as go to bars and bars in 
-               space is different than what we have here on 
-               Earth </p>
-            <h3>Unique places</h3>
-            <p>1- Night Mars bar<br>
-               2- Desert of Mars<br>
-               3- Mars colony
+            <p>
+                In Mars colony there are alot of fun things
+                you can do such as go to bars and bars in
+                space is different than what we have here on
+                Earth
             </p>
-         </div>
+            <h3>Unique places</h3>
+            <p>
+                1- Night Mars bar<br>
+                2- Desert of Mars<br>
+                3- Mars colony
+            </p>
 
-         <div class="info info3" style="display: none;">
+            <button type="button" class="btn table" onclick="showTable('Tables','Moon')">Show Trips</button>
+        </div>
+
+
+        <div id="Jupiter Moons" class="Jupiter Moons">
+            <img src="images/JupiterMoons.gif" style="width: 100%; height:100%">
+        </div>
+
+        <div class="Jupiter-description">
             <h2>Jupiter Moons Exploration</h2>
             <h3>Attractions :</h3>
-            <p>In Mars colony there are alot of fun things
-               you can do such as go to bars and bars in 
-               space is different than what we have here on 
-               Earth </p>
-            <h3>Unique places</h3>
-            <p>1- Night Mars bar<br>
-               2- Desert of Mars<br>
-               3- Mars colony
+            <p>
+                In Mars colony there are alot of fun things
+                you can do such as go to bars and bars in
+                space is different than what we have here on
+                Earth
             </p>
-         </div>
-
-         <div class="info info4" style="display: none;">
-            <h2>Venus Flying Colony</h2>
-            <h3>Attractions :</h3>
-            <p>In Mars colony there are alot of fun things
-               you can do such as go to bars and bars in 
-               space is different than what we have here on 
-               Earth </p>
             <h3>Unique places</h3>
-            <p>1- Night Mars bar<br>
-               2- Desert of Mars<br>
-               3- Mars colony
+            <p>
+                1- Night Mars bar<br>
+                2- Desert of Mars<br>
+                3- Mars colony
             </p>
-         </div>
 
-         <div class="info info5" style="display: none;">
+            <button type="button" class="btn table" onclick="showTable('Tables','Jupiter Moons')">Show Trips</button>
+        </div>
+
+        <div id="ISS" class="ISS">
+            <video autoplay loop muted id="video-container">
+                <source src="videos/ISS.mp4">
+            </video>
+        </div>
+
+        <div class="ISS-description">
             <h2>The International Space Station Luxry hotel</h2>
             <h3>Attractions :</h3>
-            <p>In Mars colony there are alot of fun things
-               you can do such as go to bars and bars in 
-               space is different than what we have here on 
-               Earth </p>
-            <h3>Unique places</h3>
-            <p>1- Night Mars bar<br>
-               2- Desert of Mars<br>
-               3- Mars colony
+            <p>
+                In Mars colony there are alot of fun things
+                you can do such as go to bars and bars in
+                space is different than what we have here on
+                Earth
             </p>
-         </div>
- 
-    </div>
+            <h3>Unique places</h3>
+            <p>
+                1- Night Mars bar<br>
+                2- Desert of Mars<br>
+                3- Mars colony
+            </p>
 
-    <div class="class2">
-
-        <div class="container">
-
-            <!-- Full-width images with number text -->
-
-            <div class="mySlides">
-                <div id="Slide1" class="numbertext">1 / 5</div>
-                <div><img src="images/MarsColony.jpg" style="width:100%;height:400px;" class="image"> </div>
-                <div class="TextInImage">
-                    <div class="text"><h2>sami azmi</h2></div>
-                </div>
-            </div>
-
-            <div class="mySlides">
-                <div id="Slide2" class="numbertext">2 / 5</div>
-                <div><img src="images/MoonColony.jpg" style="width:100%;height:400px;" class="image"></div>
-                <div class="TextInImage">
-                    <div class="text"><h2>sami azmi 4324325325432</h2></div>
-                </div>
-            </div>
-
-
-            <div class="mySlides">
-                <div id="Slide3" class="numbertext">3 / 5</div>
-                <div><img src="images/JupiterMoons.gif" style="width: 100%; height: 400px; " class="image"> </div>
-                <div class="TextInImage">
-                    <div class="text"><h2>sami azmi</h2></div>
-                </div>
-            </div>
-
-            <div class="mySlides">
-                <div id="Slide4" class="numbertext">4 / 5</div>
-                <div> <img src="images/VenusFlyingColony.jpg" style="width: 100%; height: 400px;" class="image"></div>
-                <div class="TextInImage">
-                    <div class="text"><h2>sami azmi</h2></div>
-                </div>
-            </div>
-
-            <div class="mySlides">
-                <div id="Slide5" class="numbertext">5 / 5</div>
-                <div> <img src="images/ISS.jpg" style="width: 100%; height: 400px;" class="image"> </div>
-                <div class="TextInImage">
-                    <div class="text"><h2>sami azmi</h2></div>
-                </div>
-            </div>
-
-
-            <!-- Next and previous buttons -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-            <!-- Image text -->
-            <div class="caption-container">
-                <p id="caption"></p>
-            </div>
-
-            <!-- Thumbnail images -->
-            <div class="row">
-                <div class="column">
-                    <img class="demo cursor" src="images/MarsColony.jpg" style="width: 100%; height: 100px;" onclick="currentSlide(1); toggleElements('.table1', '.table'); toggleElements('.info1', '.info')" alt="Mars Colony">
-                </div>
-                <div class="column">
-                    <img class="demo cursor" src="images/MoonColony.jpg" style="width: 100%; height: 100px;" onclick="currentSlide(2) ; toggleElements('.table2', '.table'); toggleElements('.info2', '.info')" alt="Moon Colony">
-                </div>
-                <div class="column">
-                    <img class="demo cursor" src="images/JupiterMoons.gif" style="width: 100%; height: 100px;" onclick="currentSlide(3) ; toggleElements('.table3', '.table'); toggleElements('.info3', '.info')" alt="Jupiter Moons exploration">
-                </div>
-                <div class="column">
-                    <img class="demo cursor" src="images/VenusFlyingColony.jpg" style="width: 100%; height: 100px;" onclick="currentSlide(4) ; toggleElements('.table4', '.table'); toggleElements('.info4', '.info')" alt="Venus Flying Colony">
-                </div>
-                <div class="column">
-                    <img class="demo cursor" src="images/ISS.jpg" style="width: 100%; height: 100px;" onclick="currentSlide(5) ; toggleElements('.table5', '.table'); toggleElements('.info5', '.info')" alt="The International Space Station Luxry hotel">
-                </div>
-
-                <div class="table table1" style="display: none;">
-                    <table id="table1" class="Content1">
-                        <tr>
-                            <th scope="col">Flight ID</th>
-                            <th scope="col">Departure date</th>
-                            <th scope="col">Comeback date</th>
-                            <th scope="col">Current location</th>
-                            <th scope="col">Destination</th>
-                            <th scope="col">Flight time</th>
-                            <th scope="col">Tickets quantity</th>
-                            <th scope="col">Total Price</th>
-                            <th scope="col">Purchase</th>
-                        </tr>
-                        <tr>
-                            <th scope="row">TR-7</th>
-                            <td>7.6.2021</td>
-                            <td>7.6.2022</td>
-                            <td>Earth</td>
-                            <td>Mars</td>
-                            <td>15 months</td>
-                            <td>2</td>
-                            <td>15000000</td>
-                            <td><a class="active" href="TicketPurchase.html" type="button">Purchase</a></td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="table table2" style="display: none;">
-                    <table id="table2" class="Content1">
-                        <tr>
-                            <th scope="col">Flight ID</th>
-                            <th scope="col">Departure date</th>
-                            <th scope="col">Comeback date</th>
-                            <th scope="col">Current location</th>
-                            <th scope="col">Destination</th>
-                            <th scope="col">Flight time</th>
-                            <th scope="col">Tickets quantity</th>
-                            <th scope="col">Total Price</th>
-                            <th scope="col">Purchase</th>
-                        </tr>
-                        <tr>
-                            <th scope="row">TR-7</th>
-                            <td>7.6.2021</td>
-                            <td>7.6.2022</td>
-                            <td>Earth</td>
-                            <td>Mars</td>
-                            <td>15 months</td>
-                            <td>2</td>
-                            <td>20000000</td>
-                            <td><a class="active" href="TicketPurchase.html">Purchase</a></td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="table table3" style="display: none;">
-                    <table id="table3" class="Content1">
-                        <tr>
-                            <th scope="col">Flight ID</th>
-                            <th scope="col">Departure date</th>
-                            <th scope="col">Comeback date</th>
-                            <th scope="col">Current location</th>
-                            <th scope="col">Destination</th>
-                            <th scope="col">Flight time</th>
-                            <th scope="col">Tickets quantity</th>
-                            <th scope="col">Total Price</th>
-                            <th scope="col">Purchase</th>
-                        </tr>
-                        <tr>
-                            <th scope="row">TR-7</th>
-                            <td>7.6.2021</td>
-                            <td>7.6.2022</td>
-                            <td>Earth</td>
-                            <td>Mars</td>
-                            <td>15 months</td>
-                            <td>2</td>
-                            <td>30000000</td>
-                            <td><a class="active" href="TicketPurchase.html">Purchase</a></td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="table table4" style="display: none;">
-                    <table id="table4" class="Content1">
-                        <tr>
-                            <th scope="col">Flight ID</th>
-                            <th scope="col">Departure date</th>
-                            <th scope="col">Comeback date</th>
-                            <th scope="col">Current location</th>
-                            <th scope="col">Destination</th>
-                            <th scope="col">Flight time</th>
-                            <th scope="col">Tickets quantity</th>
-                            <th scope="col">Total Price</th>
-                            <th scope="col">Purchase</th>
-                        </tr>
-                        <tr>
-                            <th scope="row">TR-7</th>
-                            <td>7.6.2021</td>
-                            <td>7.6.2022</td>
-                            <td>Earth</td>
-                            <td>Mars</td>
-                            <td>15 months</td>
-                            <td>2</td>
-                            <td>4324000000</td>
-                            <td><a class="active" href="TicketPurchase.html">Purchase</a></td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="table table5" style="display: none;">
-                    <table id="table5" class="Content1">
-                        <tr>
-                            <th scope="col">Flight ID</th>
-                            <th scope="col">Departure date</th>
-                            <th scope="col">Comeback date</th>
-                            <th scope="col">Current location</th>
-                            <th scope="col">Destination</th>
-                            <th scope="col">Flight time</th>
-                            <th scope="col">Tickets quantity</th>
-                            <th scope="col">Total Price</th>
-                            <th scope="col">Purchase</th>
-                        </tr>
-                        <tr>
-                            <th scope="row">TR-7</th>
-                            <td>7.6.2021</td>
-                            <td>7.6.2022</td>
-                            <td>Earth</td>
-                            <td>Mars</td>
-                            <td>15 months</td>
-                            <td>2</td>
-                            <td>53334000000</td>
-                            <td><a class="active" href="TicketPurchase.html">Purchase</a></td>
-                        </tr>
-                    </table>
-                </div>
-
-            </div>
+            <button type="button" class="btn table" onclick="showTable('Tables','ISS')">Show Trips</button>
         </div>
+
+        <div id="Venus" class="Venus">
+            <img src="images/VenusFlyingColony.jpg" style="width: 100%; height:100%">
+        </div>
+        <div class="Venus-description">
+            <h2>Venus Flying Colony</h2>
+            <h3>Attractions :</h3>
+            <p>
+                In Mars colony there are alot of fun things
+                you can do such as go to bars and bars in
+                space is different than what we have here on
+                Earth
+            </p>
+            <h3>Unique places</h3>
+            <p>
+                1- Night Mars bar<br>
+                2- Desert of Mars<br>
+                3- Mars colony
+            </p>
+
+            <button type="button" class="btn table" onclick="showTable('Tables','Venus')">Show Trips</button>
+        </div>
+
     </div>
-        <!-------------------Pop Up Forms --------------------->
-        <form id="LogInForm" class="form-container" action="/TODO" method="get">
-            <h1>Login</h1>
 
-            <label for="username"><b>Use Name</b></label>
-            <input type="text" placeholder="Enter Use Name" oninput="username" required>
+    <br /><br>
 
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" oninput="psw" required>
 
-            <button type="submit" class="btn">Login</button>
-            <button type="submit" class="btn cancel" onclick="hide('LogInForm')">Close</button>
 
-        </form>
-
-        <form id="regForm" action="" class="form-container" actions="/TODO" method="get">
-
-            <h1>Register:</h1>
-            <div class="tab register">
-
+    <!-------------------Pop Up Forms --------------------->
+    <form id="purchesForm" class="form-container" action="/TODO" method="get">
+        <div class="tab purchesForm">
+            <div id="Person">
+                <h3>Person 1:</h3>
                 <label for="Fname"><b>First name</b></label>
                 <input type="text" placeholder="First name..." oninput="this.Fname" required>
-
                 <label for="Lname"><b>Last name</b></label>
                 <input type="text" placeholder="Last name..." oninput="this.Lname" required>
-
-                <div class="nativeDatePicker">
-                    <label for="Birthdate">Birthdate:</label>
-                    <input type="date" id="Birthdate" name="Birthdate" required>
-                    <span class="validity"></span>
-                </div>
-
             </div>
-
-            <div class="tab register">
-                <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Email..." oninput="email" required>
-
-                <label for="userName"><b>User Name</b></label>
-                <input type="text" placeholder="User name..." oninput="username" required>
-
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Password..." oninput="psw" required>
-            </div>
-
-
-            <div style="overflow:auto;">
-                <div>
-                    <button type="button" class="btn" id="prevBtn" style="float:left;" onclick="nextPrev(-1,'tab register','regForm', 'prevBtn', 'nextBtn')">Previous</button>
-                    <button type="submit" class="btn" id="nextBtn" style="float:right;" onclick="nextPrev(1,'tab register','regForm', 'prevBtn', 'nextBtn')">Next</button>
-                </div>
-            </div>
-
-            <button type="submit" class="btn cancel" onclick="hide('regForm')">Close</button>
-            <!-- Circles which indicates the steps of the form: -->
-            <div style="text-align:center;margin-top:40px;">
-                <span class="step"></span>
-                <span class="step"></span>
-
-            </div>
-
-        </form>
-
-
-        <form id="contact" class="form-container" action="/TODO" method="post">
-            <h1>Contact Us</h1>
-
-            <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" oninput="email" required>
-
-            <label for="subject"><b>Massege Us</b></label>
-            <br />
-            <textarea id="subject" name="subject" placeholder="How can we help you.." style="height:100px"></textarea>
-
-            <button type="submit" class="btn">Send</button>
-            <button type="submit" class="btn cancel" onclick="hide('contact')">Close</button>
-        </form>
-
-        <form id="FQA" class="form-container">
-            <h1>Q&A</h1>
-            <button type="button" class="accordion" onclick="accordion()">Question 1</button>
-            <div class="panel">
-                <p>Lorem ipsum...</p>
-            </div>
-
-            <button type="button" class="accordion" onclick="accordion()">Question 2</button>
-            <div class="panel">
-                <p>Lorem ipsum...</p>
-            </div>
-
-            <button type="button" class="accordion" onclick="accordion()">Question 3</button>
-            <div class="panel">
-                <p>Lorem ipsum...</p>
-            </div>
-            <button type="submit" class="btn cancel" onclick="hide('Q&A')">Close</button>
-        </form>
-
-        <form id="Privacy" class="form-container">
-            <h1>Privacy Policy</h1>
-            <p>
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum."
-            </p>
-            <button type="submit" class="btn cancel" onclick="hide('Privacy')">Close</button>
-
-        </form>
-
-
-        <form id="Terms" class="form-container">
-            <h1>Terms of Use</h1>
-            <p>
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum."
-            </p>
-            <button type="submit" class="btn cancel" onclick="hide('Terms')">Close</button>
-
-        </form>
-        <!-------------------Footer --------------------->
-        <div class="footer">
-            <b onclick="show('contact')">Contact Us</b>
-            <b onclick="show('Privacy')">Privacy Policy</b>
-            <b onclick="show('Terms')">Terms</b>
-            <b onclick="show('FQA')">Q&A</b>
         </div>
-        <!------------------------------------------------>
+
+
+        <div class="tab purchesForm">
+            <label for="cname">Name on Card</label>
+            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+            <label for="ccnum">Credit card number</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <label for="expmonth">Exp Month</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+            <label for="expyear">Exp Year</label>
+            <input type="text" id="expyear" name="expyear" placeholder="2018">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv" placeholder="352">
+        </div>
+        <div class="tab purchesForm">
+            <label for="email"><i class="fa fa-envelope"></i> Send the bill to Email</label>
+            <input type="text" id="email" name="email" placeholder="john@example.com" required>
+
+            <h2>total price:</h2>
+            <h2>press submit to complete the purches</h2>
+        </div>
+
+        <div style="overflow:auto;">
+            <div style="float:right;">
+                <button type="button" id="prevBtn2" class="btn" onclick="nextPrev(-1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')">Previous</button>
+                <button type="submit" id="nextBtn2" class="btn" onclick="nextPrev(1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')">Next</button>
+            </div>
+        </div>
+
+        <button type="submit" class="btn cancel" onclick="hide('purchesForm')">Close</button>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+
+        </div>
+
+    </form>
+    <form id="Tables" class="Tables" method="post">
+        <h1 id="Next flights to">Next flights</h1>
+        <div id="marsFlights" class="flight-table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Flight ID</th>
+                        <th scope="col">Departure date</th>
+                        <th scope="col">Comeback date</th>
+                        <th scope="col">Current location</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Flight time</th>
+                        <th scope="col">Tickets quantity</th>
+                        <th scope="col">Total Price</th>
+                        <th scope="col">Purchase</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">TR-7</th>
+                        <td>7.6.2021</td>
+                        <td>7.6.2022</td>
+                        <td>Earth</td>
+                        <td>Mars</td>
+                        <td>15 months</td>
+                        <td>2</td>
+                        <td>15000000</td>
+                        <td>
+                            <button type="button" class="btn" value="Purches" onclick="show('purchesForm')">Purchase</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="btn cancel" onclick="hide('Tables')">Close</button>
+
+    </form>
+    <form id="LogInForm" class="form-container" action="/TODO" method="get">
+        <h1>Login</h1>
+
+        <label for="username"><b>Use Name</b></label>
+        <input type="text" placeholder="Enter Use Name" oninput="username" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" oninput="psw" required>
+
+        <button type="submit" class="btn">Login</button>
+        <button type="submit" class="btn cancel" onclick="hide('LogInForm')">Close</button>
+
+    </form>
+
+    <form id="regForm" action="" class="form-container" actions="/TODO" method="get">
+
+        <h1>Register:</h1>
+        <div class="tab register">
+
+            <label for="Fname"><b>First name</b></label>
+            <input type="text" placeholder="First name..." oninput="this.Fname" required>
+
+            <label for="Lname"><b>Last name</b></label>
+            <input type="text" placeholder="Last name..." oninput="this.Lname" required>
+
+            <div class="nativeDatePicker">
+                <label for="Birthdate">Birthdate:</label>
+                <input type="date" id="Birthdate" name="Birthdate" required>
+                <span class="validity"></span>
+            </div>
+
+        </div>
+
+        <div class="tab register">
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Email..." oninput="email" required>
+
+            <label for="userName"><b>User Name</b></label>
+            <input type="text" placeholder="User name..." oninput="username" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Password..." oninput="psw" required>
+        </div>
+
+
+        <div style="overflow:auto;">
+            <div>
+                <button type="button" class="btn" id="prevBtn" style="float:left;" onclick="nextPrev(-1,'tab register','regForm', 'prevBtn', 'nextBtn')">Previous</button>
+                <button type="submit" class="btn" id="nextBtn" style="float:right;" onclick="nextPrev(1,'tab register','regForm', 'prevBtn', 'nextBtn')">Next</button>
+            </div>
+        </div>
+
+        <button type="submit" class="btn cancel" onclick="hide('regForm')">Close</button>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+
+        </div>
+
+    </form>
+
+    <form id="contact" class="form-container" action="/TODO" method="post">
+        <h1>Contact Us</h1>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" oninput="email" required>
+
+        <label for="subject"><b>Massege Us</b></label>
+        <br />
+        <textarea id="subject" name="subject" placeholder="How can we help you.." style="height:100px"></textarea>
+
+        <button type="submit" class="btn">Send</button>
+        <button type="submit" class="btn cancel" onclick="hide('contact')">Close</button>
+    </form>
+
+    <form id="FQA" class="form-container">
+        <h1>Q&A</h1>
+        <button type="button" class="accordion" onclick="accordion()">Question 1</button>
+        <div class="panel">
+            <p>Lorem ipsum...</p>
+        </div>
+
+        <button type="button" class="accordion" onclick="accordion()">Question 2</button>
+        <div class="panel">
+            <p>Lorem ipsum...</p>
+        </div>
+
+        <button type="button" class="accordion" onclick="accordion()">Question 3</button>
+        <div class="panel">
+            <p>Lorem ipsum...</p>
+        </div>
+        <button type="submit" class="btn cancel" onclick="hide('Q&A')">Close</button>
+    </form>
+
+    <form id="Privacy" class="form-container">
+        <h1>Privacy Policy</h1>
+        <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum."
+        </p>
+        <button type="submit" class="btn cancel" onclick="hide('Privacy')">Close</button>
+
+    </form>
+
+
+    <form id="Terms" class="form-container">
+        <h1>Terms of Use</h1>
+        <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum."
+        </p>
+        <button type="submit" class="btn cancel" onclick="hide('Terms')">Close</button>
+
+    </form>
+    <!-------------------Footer --------------------->
+    <div class="footer">
+        <b onclick="show('contact')">Contact Us</b>
+        <b onclick="show('Privacy')">Privacy Policy</b>
+        <b onclick="show('Terms')">Terms</b>
+        <b onclick="show('FQA')">Q&A</b>
+    </div>
+    <!------------------------------------------------>
 </body>
 </html>

@@ -4,6 +4,7 @@
     --lightblue: #7C95C0;
     --greyishblue: #A4AFC5;
     --closeBoutton: #f2685e;
+    
     /*var(--darkblue)
     /*var(--cream)
     /*var(--lightblue)
@@ -15,6 +16,7 @@
 
 * {
     box-sizing: border-box;
+    
    
 }
 
@@ -38,7 +40,9 @@ body {
     cursor: pointer;
     width: 100%;
     margin-bottom: 10px;
+    margin-top: 10px;
     opacity: 0.9;
+
     
 }
 .btn:hover {
@@ -148,6 +152,7 @@ select, .date {
     background-color: var(--cream);
     overflow: hidden;
     box-shadow: -8px 8px 10px 3px rgba(0,0,0,0.2);
+    
 }
 .footer b {
     
@@ -232,7 +237,7 @@ select, .date {
     float: left;
     width: 25%;
     padding: 10px;
-    border: 2px solid black;
+
 }
 /* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
@@ -347,9 +352,9 @@ select, .date {
 
 
     /* Add a red background color to the cancel button */
-.form-container .cancel {
+.form-container .cancel, .Tables .cancel {
     background-color: var(--closeBoutton);
-    margin-top:5px;
+    margin-top: 5px;
 }
 
 textarea {
@@ -428,5 +433,3 @@ textarea {
         float: right;
         margin-left: 5px;
     }
-
-    /*---------------------------------------------------------------------*/

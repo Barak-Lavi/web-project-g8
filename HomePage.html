@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Main.css" />
+    <link rel="stylesheet" href="Tables.css" />
     <!--link to the humborger icon for mobile application-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Humburger menu lib-->
     <script src="Main.js"></script>
@@ -278,30 +279,63 @@
         </div>
     </form>
 
+    <br />
+    <form id="searchResult" class="Search-form" action="/TODO" method="post">
 
-    <form id="searchResult" class="Search-form" action="/TODO"  method="post">
-        
         <h1>Choose Departure Flight</h1>
-        <div class="FlightInfoRow">
-            <div id="departure" class="FlightInfoCol">From: </div> <!--add function that returns location and datetime-->
-            <div id="destination" class="FlightInfoCol">To: </div><!--add function that returns location and datetime-->
-            <div id=" price" class="FlightInfoCol">Total</div>
-            <div class="FlightInfoCol">
-                <input type="checkbox" id="ChooseFlight" name="ChooseFlight" required>
-                <label for="ChooseFlight">Choose</label><br />
-            </div>
-        </div>
+       
+        <table class="fl-table">
+            <thead>
+                <tr>
+                    <th scope="col">Flight ID</th>
+                    <th scope="col">From</th><!--add function that returns location and datetime-->
+                    <th scope="col">To</th><!--add function that returns location and datetime-->
+                    <th scope="col">Remaining tickets</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">TR-7</th>
+                    <td>Earth 7.6.2021</td>
+                    <td>Mars 7.6.2022</td>
+                    <td>2</td>
+                    <td>250,000</td>
+                    <td class="FlightInfoCol">
+                        <input type="checkbox" id="ChooseFlight" name="ChooseFlight" required>
+                        <label for="ChooseFlight"></label><br />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
         <h1>Choose Return Flight</h1>
-        <div class="FlightInfoRow" >
-            <div id="departure" class="FlightInfoCol">From: </div> <!--add function that returns location and datetime-->
-            <div id="destination" class="FlightInfoCol">To: </div><!--add function that returns location and datetime-->
-            <div id=" price" class="FlightInfoCol">Total</div>
-            <div class="FlightInfoCol">
-                <input type="checkbox" id="ChooseFlight" name="ChooseFlight" required>
-                <label for="ChooseFlight">Choose</label><br />
-            </div>
-        </div>
+        <table class="fl-table">
+            <thead>
+                <tr>
+                    <th scope="col">Flight ID</th>
+                    <th scope="col">From</th><!--add function that returns location and datetime-->
+                    <th scope="col">To</th><!--add function that returns location and datetime-->
+                    <th scope="col">Remaining tickets</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">TR-7</th>
+                    <td>Earth 7.6.2021</td>
+                    <td>Mars 7.6.2022</td>
+                    <td>2</td>
+                    <td>250,000</td>
+                    <td class="FlightInfoCol">
+                        <input type="checkbox" id="ChooseFlight" name="ChooseFlight" required>
+                        <label for="ChooseFlight"></label><br />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <button type="button" class="btn" value="Purches" onclick="show('purchesForm')">Purchase</button>
 
     </form>

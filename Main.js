@@ -49,23 +49,41 @@ function accordion() {
 
 /*------------------------------------------------------------------------------- */
 /*--------------------------------------Pop Ups----------------------------------------- */
+var currentTab = 0; // Current tab is set to be the first tab (0)
+
 var show = function (id) {
     $(id).style.display = 'block';
     if (id == 'regForm') {
-        showTab(currentTab, "tab", id, 'prevBtn', 'nextBtn');
+        showTab(currentTab, "tab register", id, 'prevBtn', 'nextBtn');
     }
     if (id == 'purchesForm') {
         showTab(currentTab, "tab purchesForm", id, 'prevBtn2', 'nextBtn2');
     }
-
 }
 var hide = function (id) {
     $(id).style.display = 'none';
 }
 
+function showTable(id,TableId) {
+    $(id).style.display = 'block';
+    if (TableId == 'Mars') {
+        document.getElementById('Next flights to').innerHTML = "Next flights to " + TableId;
+    }
+    if (TableId == 'Moon') {
+        document.getElementById('Next flights to').innerHTML = "Next flights to the " + TableId;
+    }
+    if (TableId == 'Jupiter Moons') {
+        document.getElementById('Next flights to').innerHTML = "Next flights to " + TableId;
+    }
+    if (TableId == 'ISS') {
+        document.getElementById('Next flights to').innerHTML = "Next flights to the " + TableId;
+    }
+    if (TableId == 'Venus') {
+        document.getElementById('Next flights to').innerHTML = "Next flights to " + TableId;
+    }
+}
 
 /*---------------------------------------multi pages popup---------------------------------------- */
-var currentTab = 0; // Current tab is set to be the first tab (0)
 
 $ = function (id) {
     return document.getElementById(id);
