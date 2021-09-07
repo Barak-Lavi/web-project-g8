@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Wanted.css"/>
+    <link rel="stylesheet" href="Wanted.css" />
+    <link rel="stylesheet" href="Main.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Humburger menu lib-->
     <script src="Main.js"></script>
     <script src="Wanted.js"></script>
@@ -12,7 +13,7 @@
 
 </head>
 <body>
-    <div class="topnav" id="myTopnav">
+    <nav class="topnav" id="myTopnav">
         <a href="HomePage.html">Home Page</a>
         <a href="OurTrips.html">Our Trips</a> <!--place the link to the other pages-->
         <a href="MyOrders.html">My Orders</a>
@@ -21,122 +22,255 @@
         <a href="javascript:void(0);" class="icon" onclick="responsiveTopnav()">
             <i class="fa fa-bars"></i>
         </a>
+        <b onclick="show('LogInForm')">Log In</b>
+        <b onclick="show('regForm')">Sign Up</b>
+    </nav>
+
+    <div class="container">
+
+        <div class="Fixed">
+            <h3>If you're interested in a specific job :</h3>
+            <button class="btn" onclick="show('FillInformation')">Click to fill your info</button>
+
+            <!-------------------Pop Up Forms --------------------->
+            <form id="FillInformation" class="Info-container" action="/TODO ; /action_page.php" method="get">
+                <h3>Click to fill your info</h3>
+
+                <label for="firstname"><b>First name</b></label>
+                <input type="text" placeholder="Enter firstname" oninput="firstname" required>
+
+                <label for="lastname"><b>last name</b></label>
+                <input type="text" placeholder="Enter lastname" oninput="lastname" required>
+
+                <label for="PhoneNumber"><b>Phone number</b></label>
+                <input type="text" placeholder="Enter phone number" oninput="phonenumber" required>
+
+                <label for="email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" oninput="email" required>
+                <label form="Uploadfiles"><b>Upload files</b></label>
+                <input type="file" id="myFile" name="filename" placeholder="Choose file" oninput="file" required><br>
+                <br><div style="overflow:auto;">
+                    <div>
+                        <button type="submit" class="btn">submit</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn cancel" onclick="hide('FillInformation')">Close</button>
+                <!-- Circles which indicates the steps of the form: -->
+                <div style="text-align:center;margin-top:40px">
+                    <span class="step"></span>
+                    <span class="step"></span>
+                </div>
+            </form>
+        </div>
+
+
+
+        <div class="CasualJobs">
+            <div class="overlay">
+                <div class="textInPic">
+                    <h1>Casual jobs</h1>
+                    <h2>Hotels employees, Secretaries, Cleaning employees, Shefs,</h2>
+                    <h2>Reception employees, Security, Restaurants servers.</h2>
+                    <h2>Bar men: Anywhere you go, if there is no Bars there is no fun.</h2>
+                    <h2>  * Speaks English fluently and 2 more lanuages at least.</h2>
+                    <h2>  * Experienced and talented, at least 2 years of career.</h2>
+                    <h2>  * CLEAR RECORD.</h2>
+                </div>
+            </div>
+            <img src="BarMan.jpg" style="width: 100%; height: 500px;" class="picture">
+        </div>
+
+        <div class="GraphicDesigner">
+            <div class="overlay">
+                <div class="textInPic">
+                    <h2>Graphic Designers</h2>
+                    <h3>It doesn't matter how good it is, it needs to look good.</h3>
+                    <h3>  * 2 years of experience.</h3>
+                    <h3>  * Knowledge in recording and photoshop.</h3>
+                    <h3>  * Control of graphics software.</h3>
+                    <h3>  * Flexible with group and individual work.</h3>
+                    <h3>  * Advantage for those who make videos and animations.</h3>
+                    <h3>  * CREATIVITY.</h3>
+                </div>
+            </div>
+            <img src="GraphicDesign.jpg" style="width: 100%; height: 500px;" class="picture">
+        </div>
+
+        <div class="AlgorithmsDeveloper">
+            <div class="overlay">
+                <div class="textInPic">
+                    <h2>Algorithms Developers</h2>
+                    <h3>Short and effecient. Coding is a life style.</h3>
+                    <h3>  * Knowledge in Javascript, Java, Python, C++.</h3>
+                    <h3>  * Passion and desire to be the best.</h3>
+                    <h3>  * The skills to self teach.</h3>
+                    <h3>  * 2 Years of experience, 3 Personal projects atleast.</h3>
+                </div>
+            </div>
+            <img src="AlgorithmsDeveloper.jpg" style="width: 100%; height: 500px;" class="picture">
+        </div>
+
+        <div class="MarketingManager">
+            <div class="overlay">
+                <div class="textInPic">
+                    <h2>Marketing managers</h2>
+                    <h2>Get the attention of absolutely everybody.</h2>
+                    <h3>  * The ability to attract people, Charisma.</h3>
+                    <h3>  * Excellent marketing understanding.</h3>
+                    <h3>  * Relevant academic degree: Communication, Economy, Marketing.</h3>
+                    <h3>  * Skills and control of computer applications: Excel, Powerpoint.</h3>
+                    <h3>  * High level of formulation and delivering a message.</h3>
+                    <h3>  * 3 years of experience and successful career.</h3>
+                </div>
+            </div>
+            <img src="MarketingManagement.jpg" style="width: 100%; height: 500px;" class="picture">
+        </div>
+
+        <div class="DataAnalyst">
+            <div class="overlay">
+                <div class="textInPic">
+                    <h2>Data analyst and Engineers</h2>
+                    <h3>Be a hero and put everything in the firm in the right place.</h3>
+                    <h3>  * Relevant academic degree: Computer Science, Software engineer, intelligent systems engineer.</h3>
+                    <h3>  * 3 years of experience of Bi and analysing intelligent systems.</h3>
+                    <h3>  * Control of SQL and data managing.</h3>
+                    <h3>  * High skills in python and ability to program well with it.</h3>
+                </div>
+            </div>
+            <img src="DataAnalysisEngineering.jpg" style="width: 100%; height: 500px;" class="picture">
+        </div>
     </div>
+    <!-------------------Pop Up Forms --------------------->
+    <form id="LogInForm" class="form-container" action="/TODO" method="get">
+        <h1>Login</h1>
 
-<div class="container">
+        <label for="username"><b>Use Name</b></label>
+        <input type="text" placeholder="Enter Use Name" oninput="username" required>
 
-    <div class="Fixed"> 
-        <h3>If you're interested in a specific job :</h3>
-        <button class="btn" onclick="show('FillInformation')">Click to fill your info</button>
-        
-           <!-------------------Pop Up Forms --------------------->
-        <form id="FillInformation" class="Info-container" action="/TODO ; /action_page.php"  method="get">
-        <h3>Click to fill your info</h3>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" oninput="psw" required>
 
-        <label for="firstname"><b>First name</b></label>
-        <input type="text" placeholder="Enter firstname" oninput="firstname" required>
+        <button type="submit" class="btn">Login</button>
+        <button type="submit" class="btn cancel" onclick="hide('LogInForm')">Close</button>
 
-        <label for="lastname"><b>last name</b></label>
-        <input type="text" placeholder="Enter lastname" oninput="lastname" required>
-        
-        <label for="PhoneNumber"><b>Phone number</b></label>
-        <input type="text" placeholder="Enter phone number" oninput="phonenumber" required>
+    </form>
+
+    <form id="regForm" action="" class="form-container" actions="/TODO" method="get">
+
+        <h1>Register:</h1>
+        <div class="tab register">
+
+            <label for="Fname"><b>First name</b></label>
+            <input type="text" placeholder="First name..." oninput="this.Fname" required>
+
+            <label for="Lname"><b>Last name</b></label>
+            <input type="text" placeholder="Last name..." oninput="this.Lname" required>
+
+            <div class="nativeDatePicker">
+                <label for="Birthdate">Birthdate:</label>
+                <input type="date" id="Birthdate" name="Birthdate" required>
+                <span class="validity"></span>
+            </div>
+
+        </div>
+
+        <div class="tab register">
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Email..." oninput="email" required>
+
+            <label for="userName"><b>User Name</b></label>
+            <input type="text" placeholder="User name..." oninput="username" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Password..." oninput="psw" required>
+        </div>
+
+
+        <div style="overflow:auto;">
+            <div>
+                <button type="button" class="btn" id="prevBtn" style="float:left;" onclick="nextPrev(-1,'tab register','regForm', 'prevBtn', 'nextBtn')">Previous</button>
+                <button type="submit" class="btn" id="nextBtn" style="float:right;" onclick="nextPrev(1,'tab register','regForm', 'prevBtn', 'nextBtn')">Next</button>
+            </div>
+        </div>
+
+        <button type="submit" class="btn cancel" onclick="hide('regForm')">Close</button>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+
+        </div>
+
+    </form>
+
+
+    <form id="contact" class="form-container" action="/TODO" method="post">
+        <h1>Contact Us</h1>
 
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Enter Email" oninput="email" required>
-        <label form="Uploadfiles"><b>Upload files</b></label>
-        <input type="file" id="myFile" name="filename" placeholder="Choose file" oninput="file" required><br>
-        <br><div style="overflow:auto;">
-            <div>
-            <button type="submit" class="btn">submit</button>
-            </div>
-        </div>
-        
-            <button type="submit" class="btn cancel" onclick="hide('FillInformation')">Close</button>
-            <!-- Circles which indicates the steps of the form: -->
-            <div style="text-align:center;margin-top:40px">
-            <span class="step"></span>
-            <span class="step"></span>
-            </div>
+
+        <label for="subject"><b>Massege Us</b></label>
+        <br />
+        <textarea id="subject" name="subject" placeholder="How can we help you.." style="height:100px"></textarea>
+
+        <button type="submit" class="btn">Send</button>
+        <button type="submit" class="btn cancel" onclick="hide('contact')">Close</button>
     </form>
-    </div>
 
-   
-
-    <div class="CasualJobs"> 
-        <div class="overlay">
-            <div class="textInPic">
-            <h1>Casual jobs</h1>
-            <h2>Hotels employees, Secretaries, Cleaning employees, Shefs,</h2>
-            <h2>Reception employees, Security, Restaurants servers.</h2>
-            <h2>Bar men: Anywhere you go, if there is no Bars there is no fun.</h2>
-            <h2>  * Speaks English fluently and 2 more lanuages at least.</h2>
-            <h2>  * Experienced and talented, at least 2 years of career.</h2>
-            <h2>  * CLEAR RECORD.</h2>
-            </div>
-            </div>
-        <img src="BarMan.jpg" style="width: 100%; height: 500px;" class="picture">
-    </div>
-
-    <div class="GraphicDesigner"> 
-        <div class="overlay">
-            <div class="textInPic">
-            <h2>Graphic Designers</h2>
-            <h3>It doesn't matter how good it is, it needs to look good.</h3>
-            <h3>  * 2 years of experience.</h3>
-            <h3>  * Knowledge in recording and photoshop.</h3>
-            <h3>  * Control of graphics software.</h3>
-            <h3>  * Flexible with group and individual work.</h3>
-            <h3>  * Advantage for those who make videos and animations.</h3>
-            <h3>  * CREATIVITY.</h3>
-            </div>
-            </div>
-        <img src="GraphicDesign.jpg" style="width: 100%; height: 500px;" class="picture">
-    </div>
-
-    <div class="AlgorithmsDeveloper">
-        <div class="overlay">
-            <div class="textInPic" >
-            <h2>Algorithms Developers</h2>
-            <h3>Short and effecient. Coding is a life style.</h3>
-            <h3>  * Knowledge in Javascript, Java, Python, C++.</h3>
-            <h3>  * Passion and desire to be the best.</h3>
-            <h3>  * The skills to self teach.</h3>
-            <h3>  * 2 Years of experience, 3 Personal projects atleast.</h3>
-            </div>
-            </div>
-        <img src="AlgorithmsDeveloper.jpg" style="width: 100%; height: 500px;" class="picture"> 
-    </div>
-
-    <div class="MarketingManager">  
-        <div class="overlay">
-        <div class="textInPic">
-        <h2>Marketing managers</h2>
-        <h2>Get the attention of absolutely everybody.</h2>
-        <h3>  * The ability to attract people, Charisma.</h3>
-        <h3>  * Excellent marketing understanding.</h3>
-        <h3>  * Relevant academic degree: Communication, Economy, Marketing.</h3>
-        <h3>  * Skills and control of computer applications: Excel, Powerpoint.</h3>
-        <h3>  * High level of formulation and delivering a message.</h3>
-        <h3>  * 3 years of experience and successful career.</h3>
+    <form id="FQA" class="form-container">
+        <h1>Q&A</h1>
+        <button type="button" class="accordion" onclick="accordion()">Question 1</button>
+        <div class="panel">
+            <p>Lorem ipsum...</p>
         </div>
-        </div>
-        <img src="MarketingManagement.jpg" style="width: 100%; height: 500px;" class="picture">
-    </div>
 
-    <div class="DataAnalyst">
-        <div class="overlay">
-            <div class="textInPic">
-        <h2>Data analyst and Engineers</h2>
-        <h3>Be a hero and put everything in the firm in the right place.</h3>
-        <h3>  * Relevant academic degree: Computer Science, Software engineer, intelligent systems engineer.</h3>
-        <h3>  * 3 years of experience of Bi and analysing intelligent systems.</h3>
-        <h3>  * Control of SQL and data managing.</h3>
-        <h3>  * High skills in python and ability to program well with it.</h3>
+        <button type="button" class="accordion" onclick="accordion()">Question 2</button>
+        <div class="panel">
+            <p>Lorem ipsum...</p>
         </div>
+
+        <button type="button" class="accordion" onclick="accordion()">Question 3</button>
+        <div class="panel">
+            <p>Lorem ipsum...</p>
         </div>
-        <img src="DataAnalysisEngineering.jpg" style="width: 100%; height: 500px;" class="picture"> 
+        <button type="submit" class="btn cancel" onclick="hide('Q&A')">Close</button>
+    </form>
+
+    <form id="Privacy" class="form-container">
+        <h1>Privacy Policy</h1>
+        <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum."
+        </p>
+        <button type="submit" class="btn cancel" onclick="hide('Privacy')">Close</button>
+
+    </form>
+
+
+    <form id="Terms" class="form-container">
+        <h1>Terms of Use</h1>
+        <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum."
+        </p>
+        <button type="submit" class="btn cancel" onclick="hide('Terms')">Close</button>
+
+    </form>
+    <!-------------------Footer --------------------->
+    <div class="footer">
+        <b onclick="show('contact')">Contact Us</b>
+        <b onclick="show('Privacy')">Privacy Policy</b>
+        <b onclick="show('Terms')">Terms</b>
+        <b onclick="show('FQA')">Q&A</b>
     </div>
-</div>
+    <!------------------------------------------------>
 </body>
 </html>
