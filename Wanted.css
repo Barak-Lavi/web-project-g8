@@ -1,38 +1,70 @@
 
 
-.container{
-  position: center;
-  margin: auto; 
-  width: 80%;
+.Jobs-container {
+    background-color: var(--greyishblue);
+    display: grid;
+    grid-template-areas:
+        'CasualJobs CasualJobs CasualJobs-description'
+        'GraphicDesigner-description GraphicDesigner GraphicDesigner'
+        'AlgorithmsDeveloper AlgorithmsDeveloper AlgorithmsDeveloper-description'
+        'MarketingManager-description MarketingManager MarketingManager'
+        'DataAnalyst DataAnalyst DataAnalyst-description';
+    margin-left: 5%;
+    margin-right: 5%;
+   
+}
+.CasualJobs {
+    grid-area: CasualJobs;
+    position: relative;
+    
 }
 
-.Fixed {
-  z-index: 1;
-  border: solid black;
-  padding: 10px;
-  margin: 5px;
-  background-color: var(--cream);
-  position: fixed;
-  top: 85%;
-  right: 10.5%;
+.CasualJobs-description {
+    grid-area: CasualJobs-description;
+    margin-left: 8px;
+}
+
+.GraphicDesigner {
+    grid-area: GraphicDesigner;
+    position: relative;
+}
+
+.GraphicDesigner-description {
+    grid-area: GraphicDesigner-description;
+    margin-left: 8px;
+}
+
+.AlgorithmsDeveloper {
+    grid-area: AlgorithmsDeveloper;
+    position: relative;
+}
+
+.AlgorithmsDeveloper-description {
+    grid-area: AlgorithmsDeveloper-description;
+    margin-left: 8px;
+}
+
+.MarketingManager {
+    grid-area: MarketingManager;
+    position: relative;
+}
+
+.MarketingManager-description {
+    grid-area: MarketingManager-description;
+    margin-left: 8px;
+}
+.DataAnalyst {
+    grid-area: DataAnalyst;
+    position: relative;
+}
+
+.DataAnalyst-description {
+    grid-area: DataAnalyst-description;
+    margin-left: 8px;
 }
 
 
-    /* Add styles to the form container */
-    .Info-container {
-      display: none;
-      position: fixed;
-      padding: 10px;
-      width: 330px;
-      margin-left: -150px;
-      margin-top: -100px;
-      z-index: 1;
-      box-shadow: -8px 8px 10px 3px rgba(0,0,0,0.2);
-      top: 30%;
-      left: 48%;
-      right: 50%;
-  }
-  
+
   
       /* The popup form - hidden by default*/
   #FillInformation:after {

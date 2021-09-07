@@ -10,6 +10,8 @@
         'jupiter jupiter-description'
         'iss-description iss'
         'venus venus-description';
+    margin-left:10%;
+    margin-right:10%;
 }
 
 .Mars {
