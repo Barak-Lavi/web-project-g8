@@ -1,0 +1,105 @@
+﻿
+/*-------------------------------our trips--------------------------------------*/
+.ourtrips-container {
+    background-color: rgba(0,0,0,0.3);
+    display: grid;
+    grid-template-areas:
+        'mars mars-description'
+        'moon-description moon'
+        'jupiter jupiter-description'
+        'iss-description iss'
+        'venus venus-description';
+    margin-left: 10%;
+    margin-right: 10%;
+    
+}
+
+.Mars {
+        grid-area: mars;
+        position: relative;
+    }
+
+.Mars-description {
+    grid-area: mars-description;
+    margin-left: 8px;
+}
+.Moon {
+    grid-area: moon;
+    position: relative;
+}
+
+.Moon-description {
+    grid-area: moon-description;
+    margin-left: 8px;
+}
+
+.Jupiter {
+    grid-area: jupiter;
+    position: relative;
+}
+.Jupiter-description {
+    grid-area: jupiter-description;
+    margin-left: 8px;
+}
+.ISS {
+    grid-area: iss;
+    position: relative;
+}
+
+.ISS-description {
+    grid-area: iss-description;
+    margin-left: 8px;
+}
+.Venus {
+    grid-area: venus;
+    position: relative;
+}
+
+.Venus-description {
+    grid-area: venus-description;
+    margin-left: 8px;
+}
+#video-container {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.Tables {
+    display: none;
+    padding: 10px;
+    position: fixed;
+    top: 50%;
+    margin-top: -100px;
+    z-index: 20;
+    box-shadow: -8px 8px 10px 3px rgba(0,0,0,0.2);
+    width: 100%;
+}
+
+    .Tables .cancel {
+        width: 100px;
+        float: right;
+    }
+
+#Tables:after {
+    content: "";
+    position: fixed;
+    background: rgba(0,0,0,0.5);
+    z-index: -2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#Tables:before {
+    position: absolute;
+    content: "";
+    background: #FFF;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+

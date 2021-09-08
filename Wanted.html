@@ -4,15 +4,20 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Wanted.css" />
-    <link rel="stylesheet" href="Main.css" />
+    <link rel="stylesheet" href="css/Wanted.css" />
+    <link rel="stylesheet" href="css/Main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Humburger menu lib-->
     <script src="Main.js"></script>
-    <script src="Wanted.js"></script>
+
     <title>Space Trip- Wanted</title>
 
 </head>
 <body>
+    <video autoplay muted loop id="bg-video">
+        <source src="videos/gfp-astro-timelapse.mp4" type="video/mp4">
+    </video>
     <nav class="topnav" id="myTopnav">
         <a href="HomePage.html">Home Page</a>
         <a href="OurTrips.html">Our Trips</a> <!--place the link to the other pages-->
@@ -22,129 +27,136 @@
         <a href="javascript:void(0);" class="icon" onclick="responsiveTopnav()">
             <i class="fa fa-bars"></i>
         </a>
-        <b onclick="show('LogInForm')">Log In</b>
-        <b onclick="show('regForm')">Sign Up</b>
+        <a class="b" onclick="show('LogInForm')">Log In</a>
+        <a class="b" onclick="show('regForm')">Sign Up</a>
     </nav>
     <br /><br />
-    
-
-      
-
-            <!-------------------Pop Up Forms --------------------->
-            <form id="FillInformation" class="form-container" action="/TODO ; /action_page.php" method="get">
-                <h3>Fill your information and sent us your CV</h3>
-
-                <label for="firstname"><b>First name</b></label>
-                <input type="text" placeholder="Enter firstname" oninput="firstname" required>
-
-                <label for="lastname"><b>last name</b></label>
-                <input type="text" placeholder="Enter lastname" oninput="lastname" required>
-
-                <label for="PhoneNumber"><b>Phone number</b></label>
-                <input type="text" placeholder="Enter phone number" oninput="phonenumber" required>
-
-                <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" oninput="email" required>
-                <label form="Uploadfiles"><b>Upload files</b></label>
-                <input type="file" id="myFile" name="filename" placeholder="Choose file" oninput="file" required><br>
-                <br><div style="overflow:auto;">
-                    <div>
-                        <button type="submit" class="btn">submit</button>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn cancel" onclick="hide('FillInformation')">Close</button>
-               
-            </form>
-       
 
 
-        <div class="Jobs-container">
-            <div class="CasualJobs">
-                <img src="BarMan.jpg" style="width: 100%; height: 500px;" class="picture">
 
+
+    <!-------------------Pop Up Forms --------------------->
+    <form id="FillInformation" class="form-container" action="/TODO ; /action_page.php" method="post">
+        <h3>Fill your information and sent us your CV</h3>
+
+        <label for="firstname"><b>First name</b></label>
+        <input type="text" placeholder="Enter firstname" oninput="firstname" required>
+
+        <label for="lastname"><b>last name</b></label>
+        <input type="text" placeholder="Enter lastname" oninput="lastname" required>
+
+        <label for="PhoneNumber"><b>Phone number</b></label>
+        <input type="text" placeholder="Enter phone number" oninput="phonenumber" required>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" oninput="email" required>
+        <label form="Uploadfiles"><b>Upload files</b></label>
+        <input type="file" id="myFile" name="filename" placeholder="Choose file" oninput="file" required><br>
+        <br><div style="overflow:auto;">
+            <div>
+                <button type="submit" class="btn">submit</button>
             </div>
-            <div class="CasualJobs-description">
+        </div>
 
-                <h1>Casual jobs</h1>
-                <h3>Hotels employees, Secretaries, Cleaning employees, Shefs,</h3>
-                <h3>Reception employees, Security, Restaurants servers.</h3>
-                <h3>Bar men: Anywhere you go, if there is no Bars there is no fun.</h3>
-                <h4>  * Speaks English fluently and 2 more lanuages at least.</h4>
-                <h4>  * Experienced and talented, at least 2 years of career.</h4>
-                <h4>  * CLEAR RECORD.</h4>
-                <button type="button" class="btn" onclick="show('FillInformation')">Submit application</button>
+        <button type="submit" class="btn cancel" onclick="hide('FillInformation')">Close</button>
 
-            </div>
-            <div class="GraphicDesigner">
-                <img src="GraphicDesign.jpg" style="width: 100%; height: 500px;" class="picture">
-            </div>
-
-            <div class="GraphicDesigner-description">
-                <h2>Graphic Designers</h2>
-                <h3>It doesn't matter how good it is, it needs to look good.</h3>
-                <h4>  * 2 years of experience.</h4>
-                <h4>  * Knowledge in recording and photoshop.</h4>
-                <h4>  * Control of graphics software.</h4>
-                <h4>  * Flexible with group and individual work.</h4>
-                <h4>  * Advantage for those who make videos and animations.</h4>
-                <h4>  * CREATIVITY.</h4>
-                <button type="button" class="btn" onclick="show('FillInformation')">Submit application</button>
-
-            </div>
+    </form>
 
 
-            <div class="AlgorithmsDeveloper">
-                <img src="AlgorithmsDeveloper.jpg" style="width: 100%; height: 500px;" class="picture">
-            </div>
 
-            <div class="AlgorithmsDeveloper-description">
-
-                <h2>Algorithms Developers</h2>
-                <h3>Short and effecient. Coding is a life style.</h3>
-                <h4>  * Knowledge in Javascript, Java, Python, C++.</h4>
-                <h4>  * Passion and desire to be the best.</h4>
-                <h4>  * The skills to self teach.</h4>
-                <h4>  * 2 Years of experience, 3 Personal projects atleast.</h4>
-                <button type="button" class="btn" onclick="show('FillInformation')">Submit application</button>
-
-            </div>
-
-            <div class="MarketingManager">
-                <img src="MarketingManagement.jpg" style="width: 100%; height: 500px;" class="picture">
-            </div>
-            <div class="MarketingManager-description">
-
-                <h2>Marketing managers</h2>
-                <h2>Get the attention of absolutely everybody.</h2>
-                <h4>  * The ability to attract people, Charisma.</h4>
-                <h4>  * Excellent marketing understanding.</h4>
-                <h4>  * Relevant academic degree: Communication, Economy, Marketing.</h4>
-                <h4>  * Skills and control of computer applications: Excel, Powerpoint.</h4>
-                <h4>  * High level of formulation and delivering a message.</h4>
-                <h4>  * 3 years of experience and successful career.</h4>
-                <button type="button" class="btn" onclick="show('FillInformation')">Submit application</button>
-
-            </div>
-        
-
-            <div class="DataAnalyst">
-                <img src="DataAnalysisEngineering.jpg" style="width: 100%; height: 500px;" class="picture">
-            </div>
-            <div class="DataAnalyst-description">
-
-                <h2>Data analyst and Engineers</h2>
-                <h4>Be a hero and put everything in the firm in the right place.</h4>
-                <h4>  * Relevant academic degree: Computer Science, Software engineer, intelligent systems engineer.</h4>
-                <h4>  * 3 years of experience of Bi and analysing intelligent systems.</h4>
-                <h4>  * Control of SQL and data managing.</h4>
-                <h4>  * High skills in python and ability to program well with it.</h4>
-                <button type="button" class="btn " onclick="show('FillInformation')">Submit application</button>
-
-            </div>
+    <div class="Jobs-container">
+        <div class="CasualJobs">
+            <img src="images/BarMan.jpg" style="width: 100%; height: 500px;" class="picture">
 
         </div>
-    
+        <div class="CasualJobs-description">
+
+            <h1>Casual jobs</h1>
+            <a>Hotels employees, Secretaries, Cleaning employees, Shefs,</a>
+            <br />
+            <a>Reception employees, Security, Restaurants servers.</a>
+            <br />
+            <a>Bar men: Anywhere you go, if there is no Bars there is no fun.</a>
+            <br />
+            <a>  * Speaks English fluently and 2 more lanuages at least.</a>
+            <br />
+            <a>  * Experienced and talented, at least 2 years of career.</a>
+            <br />
+            <a>  * CLEAR RECORD.</a>
+            <br /><br />
+            <button type="button" class="btn" onclick="show('FillInformation')">Submit application</button>
+
+        </div>
+        <div class="GraphicDesigner">
+            <img src="images/GraphicDesign.jpg" style="width: 100%; height: 500px;" class="picture">
+        </div>
+
+        <div class="GraphicDesigner-description">
+            <h2>Graphic Designers</h2>
+            <a>It doesn't matter how good it is, it needs to look good.</a>
+            <br />
+            <a>  * 2 years of experience.</a><br />
+            <a>  * Knowledge in recording and photoshop.</a><br />
+            <a>  * Control of graphics software.</a><br />
+            <a>  * Flexible with group and individual work.</a><br />
+            <a>  * Advantage for those who make videos and animations.</a><br />
+            <a>  * CREATIVITY.</a><br /><br />
+            <button type="button" class="btn" onclick="show('FillInformation')">Submit application</button>
+
+        </div>
+
+
+        <div class="AlgorithmsDeveloper">
+            <img src="images/AlgorithmsDeveloper.jpg" style="width: 100%; height: 500px;" class="picture">
+        </div>
+
+        <div class="AlgorithmsDeveloper-description">
+
+            <h2>Algorithms Developers</h2><br />
+            <a>Short and effecient. Coding is a life style.</a><br />
+            <a>  * Knowledge in Javascript, Java, Python, C++.</a><br />
+            <a>  * Passion and desire to be the best.</a><br />
+            <a>  * The skills to self teach.</a><br />
+            <a>  * 2 Years of experience, 3 Personal projects atleast.</a><br /><br /><br /><br />
+            <button type="button" class="btn" onclick="show('FillInformation')">Submit application</button>
+
+        </div>
+
+        <div class="MarketingManager">
+            <img src="images/MarketingManagement.jpg" style="width: 100%; height: 500px;" class="picture">
+        </div>
+        <div class="MarketingManager-description">
+
+            <h2>Marketing managers</h2>
+            <a>Get the attention of absolutely everybody.</a><br />
+            <a>  * The ability to attract people, Charisma.</a><br />
+            <a>  * Excellent marketing understanding.</a><br />
+            <a>  * Relevant academic degree: Communication, Economy, Marketing.</a><br />
+            <a>  * Skills and control of computer applications: Excel, Powerpoint.</a><br />
+            <a>  * High level of formulation and delivering a message.</a><br />
+            <a>  * 3 years of experience and successful career.</a><br /><br /><br /><br />
+            <button type="button" class="btn" onclick="show('FillInformation')">Submit application</button>
+
+        </div>
+
+
+        <div class="DataAnalyst">
+            <img src="images/DataAnalysisEngineering.jpg" style="width: 100%; height: 500px;" class="picture">
+        </div>
+        <div class="DataAnalyst-description">
+
+            <h2>Data analyst and Engineers</h2><br />
+            <a>Be a hero and put everything in the firm in the right place.</a><br />
+            <a>  * Relevant academic degree: Computer Science, Software engineer, intelligent systems engineer.</a><br />
+            <a>  * 3 years of experience of Bi and analysing intelligent systems.</a><br />
+            <a>  * Control of SQL and data managing.</a><br />
+            <a>  * High skills in python and ability to program well with it.</a><br />
+            <button type="button" class="btn " onclick="show('FillInformation')">Submit application</button>
+
+        </div>
+
+    </div>
+
     <!-------------------Pop Up Forms --------------------->
     <form id="LogInForm" class="form-container" action="/TODO" method="get">
         <h1>Login</h1>
@@ -270,10 +282,10 @@
     </form>
     <!-------------------Footer --------------------->
     <div class="footer">
-        <b onclick="show('contact')">Contact Us</b>
-        <b onclick="show('Privacy')">Privacy Policy</b>
-        <b onclick="show('Terms')">Terms</b>
-        <b onclick="show('FQA')">Q&A</b>
+        <a class="b" onclick="show('contact')">Contact Us</a>
+        <a class="b" onclick="show('Privacy')">Privacy Policy</a>
+        <a class="b" onclick="show('Terms')">Terms</a>
+        <a class="b" onclick="show('FQA')">Q&A</a>
     </div>
     <!------------------------------------------------>
 </body>

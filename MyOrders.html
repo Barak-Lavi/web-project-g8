@@ -4,13 +4,18 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Main.css" />
-    <link rel="stylesheet" href="Tables.css" />
+    <link rel="stylesheet" href="css/Main.css" />
+    <link rel="stylesheet" href="css/Tables.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Humburger menu lib-->
     <script src="Main.js"></script>
     <title>Space Trip- My Orders</title>
 </head>
 <body>
+    <video autoplay muted loop id="bg-video">
+        <source src="videos/gfp-astro-timelapse.mp4" type="video/mp4">
+    </video>
     <nav class="topnav" id="myTopnav">
         <a href="HomePage.html">Home Page</a>
         <a href="OurTrips.html">Our Trips</a> <!--place the link to the other pages-->
@@ -20,8 +25,8 @@
         <a href="javascript:void(0);" class="icon" onclick="responsiveTopnav()">
             <i class="fa fa-bars"></i>
         </a>
-        <b onclick="show('LogInForm')">Log In</b>
-        <b onclick="show('regForm')">Sign Up</b>
+        <a class="b" onclick="show('LogInForm')">Log In</a>
+        <a class="b" onclick="show('regForm')">Sign Up</a>
     </nav>
     <div class="Pagehead"> <h1> My Orders </h1> </div>
     <div class="Table1Head"> <h2>Future flights</h2> </div>
@@ -212,10 +217,10 @@
     </form>
     <!-------------------Footer --------------------->
     <div class="footer">
-        <b onclick="show('contact')">Contact Us</b>
-        <b onclick="show('Privacy')">Privacy Policy</b>
-        <b onclick="show('Terms')">Terms</b>
-        <b onclick="show('FQA')">Q&A</b>
+        <a class="b" onclick="show('contact')">Contact Us</a>
+        <a class="b" onclick="show('Privacy')">Privacy Policy</a>
+        <a class="b" onclick="show('Terms')">Terms</a>
+        <a class="b" onclick="show('FQA')">Q&A</a>
     </div>
     <!------------------------------------------------>
 </body>
