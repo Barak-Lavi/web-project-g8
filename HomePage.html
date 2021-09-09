@@ -36,8 +36,8 @@
         <a class="b" onclick="show('regForm')">Sign Up</a>
     </nav>
     <br /><br />
-    <!-------------------Pop Up Forms --------------------->
-    <form id="LogInForm" class="form-container" action="/TODO" method="get">
+     <!-------------------Pop Up Forms --------------------->
+     <form id="LogInForm" class="form-container" action="/TODO"  method="get">
         <h1>Login</h1>
 
         <label for="username"><b>Use Name</b></label>
@@ -46,46 +46,49 @@
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" oninput="psw" required>
 
-        <button type="submit" class="btn">Login</button>
+        <button type="submit" class="btn" onclick="">Login</button>
         <button type="submit" class="btn cancel" onclick="hide('LogInForm')">Close</button>
 
     </form>
 
-    <form id="regForm" action="" class="form-container" actions="/TODO" method="post">
+    <form id="regForm" action="" class="form-container" actions="/TODO" method="get">
 
         <h1>Register:</h1>
+        <p id="error"></p>
         <div class="tab register">
 
             <label for="Fname"><b>First name</b></label>
-            <input type="text" placeholder="First name..." oninput="this.Fname" required>
+            <input name="fname" type="text" placeholder="First name..." oninput="this.Fname" required>
 
             <label for="Lname"><b>Last name</b></label>
-            <input type="text" placeholder="Last name..." oninput="this.Lname" required>
+            <input name="lname" type="text" placeholder="Last name..." oninput="this.Lname" required>
 
             <div class="nativeDatePicker">
                 <label for="Birthdate">Birthdate:</label>
-                <input type="date" id="Birthdate" name="Birthdate" required>
+                <input name="Birthdate" type="date" id="Birthdate" required>
                 <span class="validity"></span>
             </div>
 
         </div>
 
         <div class="tab register">
+            <div class="email">
             <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Email..." oninput="email" required>
+            <input name="email" type="text" placeholder="Email..." oninput="email" required>
+            </div>
 
             <label for="userName"><b>User Name</b></label>
-            <input type="text" placeholder="User name..." oninput="username" required>
+            <input name="username" type="text" placeholder="User name..." oninput="username" required>
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Password..." oninput="psw" required>
+            <input name="psw" type="password" placeholder="Password..." oninput="psw" required>
         </div>
 
 
         <div style="overflow:auto;">
-            <div>
+            <div >
                 <button type="button" class="btn" id="prevBtn" style="float:left;" onclick="nextPrev(-1,'tab register','regForm', 'prevBtn', 'nextBtn')">Previous</button>
-                <button type="submit" class="btn" id="nextBtn" style="float:right;" onclick="nextPrev(1,'tab register','regForm', 'prevBtn', 'nextBtn')">Next</button>
+                <button type="submit" class="btn" id="nextBtn" style="float:right;" onclick="nextPrev(n,'tab register','regForm', 'prevBtn', 'nextBtn')">Next</button>
             </div>
         </div>
 
@@ -103,8 +106,10 @@
     <form id="contact" class="form-container" action="/TODO" method="post">
         <h1>Contact Us</h1>
 
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" oninput="email" required>
+        <div class="email">
+            <label for="email"><b>Email</b></label>
+            <input name="email" type="text" placeholder="Email..." oninput="email" required>
+            </div>
 
         <label for="subject"><b>Massege Us</b></label>
         <br />
@@ -160,55 +165,55 @@
 
     </form>
 
-    <!--the purchase form will request the info for all the tickets, person1 person2....person5-->
-    <form id="purchesForm" class="form-container" action="/TODO" method="post">
-        <div class="tab purchesForm">
-            <div id="Person">
-                <h3>Person 1:</h3>
-                <label for="Fname"><b>First name</b></label>
-                <input type="text" placeholder="First name..." oninput="this.Fname" required>
-                <label for="Lname"><b>Last name</b></label>
-                <input type="text" placeholder="Last name..." oninput="this.Lname" required>
-            </div>
+<!--the purchase form will request the info for all the tickets, person1 person2....person5-->
+<form id="purchesForm"  class="form-container" action="/TODO"  method="get">
+    <div class="tab purchesForm">
+        <div id="Person">
+            <h3>Person 1:</h3>
+            <label for="fname"><b>First name</b></label>
+            <input name="fname" type="text" placeholder="First name..." oninput="this.Fname" required>
+            <label for="Lname"><b>Last name</b></label>
+            <input name="lname" type="text" placeholder="Last name..." oninput="this.Lname" required>
         </div>
+    </div>
 
 
-        <div class="tab purchesForm">
-            <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-            <label for="ccnum">Credit card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-            <label for="expmonth">Exp Month</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="September">
-            <label for="expyear">Exp Year</label>
-            <input type="text" id="expyear" name="expyear" placeholder="2018">
-            <label for="cvv">CVV</label>
-            <input type="text" id="cvv" name="cvv" placeholder="352">
+    <div class="tab purchesForm">
+        <label for="cname">Name on Card</label>
+        <input name="fname" type="text" id="cname"  placeholder="John More Doe">
+        <label for="ccnum">Credit card number</label>
+        <input name="numberOnlyVisa" type="text" id="ccnum"  placeholder="1111-2222-3333-4444">
+        <label for="expmonth">Exp Month</label>
+        <input  type="text" id="expmonth" name="expmonth" placeholder="September">
+        <label for="expyear">Exp Year</label>
+        <input name="numberOnly" type="text" id="expyear"  placeholder="2018">
+        <label for="cvv">CVV</label>
+        <input name="numberOnly" type="text" id="cvv"  placeholder="352">
+    </div>
+    <div class="tab purchesForm">
+        <label for="email"><i class="fa fa-envelope"></i> Send the bill to Email</label>
+        <input type="text" id="email" name="email" placeholder="john@example.com" required>
+
+        <h2>total price:</h2>
+        <h2>press submit to complete the purches</h2>
+    </div>
+
+    <div style="overflow:auto;">
+        <div style="float:right;">
+            <button type="button" id="prevBtn2" class="btn" onclick="nextPrev(-1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')">Previous</button>
+            <button type="button" id="nextBtn2" class="btn" onclick="nextPrev(1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')">Next</button>
         </div>
-        <div class="tab purchesForm">
-            <label for="email"><i class="fa fa-envelope"></i> Send the bill to Email</label>
-            <input type="text" id="email" name="email" placeholder="john@example.com" required>
+    </div>
 
-            <h2>total price:</h2>
-            <h2>press submit to complete the purches</h2>
-        </div>
+    <button type="submit" class="btn cancel" onclick="hide('purchesForm')">Close</button>
+    <!-- Circles which indicates the steps of the form: -->
+    <div style="text-align:center;margin-top:40px;">
+        <span class="step"></span>
+        <span class="step"></span>
 
-        <div style="overflow:auto;">
-            <div style="float:right;">
-                <button type="button" id="prevBtn2" class="btn" onclick="nextPrev(-1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')">Previous</button>
-                <button type="submit" id="nextBtn2" class="btn" onclick="nextPrev(1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')">Next</button>
-            </div>
-        </div>
+    </div>
 
-        <button type="submit" class="btn cancel" onclick="hide('purchesForm')">Close</button>
-        <!-- Circles which indicates the steps of the form: -->
-        <div style="text-align:center;margin-top:40px;">
-            <span class="step"></span>
-            <span class="step"></span>
-
-        </div>
-
-    </form>
+</form>
 
     <!------------------------------------------------>
     <!-------------------Home Page --------------------->
@@ -341,7 +346,7 @@
                 </tr>
             </tbody>
         </table>
-        <button type="button" class="btn" value="Purches" onclick="show('purchesForm')">Purchase</button>
+        <button type="submit" class="btn" value="Purches" onclick="show('purchesForm')">Purchase</button>
 
     </form>
 
@@ -358,9 +363,10 @@
             <br />
             <a>Remaining tickets: 30</a>
             <br />
-            <a>For total of: 20,000$</a>
+            <a>For total of:</a><br />
+            <a>20,000$</a>
             <br />
-            <button type="button" class="btn">go to shuttele</button>
+            <button type="button" class="btn">Go to shuttle</button>
 
         </form>
         <form class="recommanded" action="/TODO" method="get">
@@ -370,9 +376,10 @@
             <br />
             <a>Remaining tickets: 2!!</a>
             <br />
-            <a>For total of: 15,000$</a>
+            <a>For total of:</a><br />
+            <a>15,000$</a>
             <br />
-            <button type="button" class="btn">go to shuttele</button>
+            <button type="button" class="btn">Go to shuttle</button>
         </form>
         <form class="recommanded" action="/TODO" method="get">
             <a class="bolty">Mars</a>
@@ -381,9 +388,10 @@
             <br />
             <a>Remaining tickets:45</a>
             <br />
-            <a>For total of:18,000$</a>
+            <a>For total of:</a><br />
+            <a>45,000$</a>
             <br />
-            <button type="button" class="btn">go to shuttele</button>
+            <button type="button" class="btn">Go to shuttle</button>
         </form>
 
 

@@ -42,19 +42,19 @@
         </div>
 
         <div class="Mars-description">
-            <h2>Mars Colony</h2>
-            <h3>Attractions :</h3>
+            <h2>Mars</h2>
+            
             <p>
-                In Mars colony there are alot of fun things
-                you can do such as go to bars and bars in
-                space is different than what we have here on
-                Earth
+                The colony on Mars is inhabited by a million residents and functions with complete autonomy from Earth.<br />
+                Its red desert beauty is breathtaking and provides an experience of a lifetime.<br />
+                On Mars you can go on vacation with a variety of attractions, join research teams at the various reshearch institutes and even join the Mars community as a permanent resident.
             </p>
-            <h3>Unique places</h3>
+            <h4>Mars's Attractions:</h4>
             <p>
-                1- Night Mars bar<br>
-                2- Desert of Mars<br>
-                3- Mars colony
+                * Hotels<br>
+                * field trips on the red desert of Mars<br>
+                * bar with drinks produced in Mars<br />
+                * A tour of the Iron Mines of Mars
             </p>
             <button type="button" class="btn table" onclick="showTable('Tables','Mars')">Show Trips</button>
         </div>
@@ -66,19 +66,17 @@
         </div>
 
         <div class="Moon-description">
-            <h2>Moon Colony</h2>
-            <h3>Attractions :</h3>
+            <h2>The Moon</h2>
             <p>
-                In Mars colony there are alot of fun things
-                you can do such as go to bars and bars in
-                space is different than what we have here on
-                Earth
+                Seeing the earth from a different perspective.<br />
+                Our moon has the largest extraterrestrial research institute with 20,000 employees, with factories for mining resources and producing fuel for space shuttles.
+                On the moon you can go on vacation and join research teams at the reshearch institute.
             </p>
-            <h3>Unique places</h3>
+            <h4>Attractions:</h4>
             <p>
-                1- Night Mars bar<br>
-                2- Desert of Mars<br>
-                3- Mars colony
+                * Hotels<br>
+                * field trips<br />
+                * A tour of the Moons factories, mines and research facilities
             </p>
 
             <button type="button" class="btn table" onclick="showTable('Tables','Moon')">Show Trips</button>
@@ -91,18 +89,19 @@
 
         <div class="Jupiter-description">
             <h2>Jupiter Moons Exploration</h2>
-            <h3>Attractions :</h3>
+            
             <p>
-                In Mars colony there are alot of fun things
-                you can do such as go to bars and bars in
-                space is different than what we have here on
-                Earth
+                In the moons of Jupiter, many geological studies are currently underway into the sustainability of the stars and the potential for permanent settlement of the human race.
+                Out of 79 moons of Jupiter, studies are conducted on 4 of them: Europa, IO, Ganymede and Callisto.
+                Each of the four moons has a research lab that invites you scientists to join it for future exploration.
+                our shuttles go to Jupiter's moons all together and make 4 stops.
             </p>
-            <h3>Unique places</h3>
+            <h4>research labs</h4>
             <p>
-                1- Night Mars bar<br>
-                2- Desert of Mars<br>
-                3- Mars colony
+                * Europa<br>
+                * IO<br />
+                * Ganymede<br />
+                * Callisto
             </p>
 
             <button type="button" class="btn table" onclick="showTable('Tables','Jupiter Moons')">Show Trips</button>
@@ -116,19 +115,12 @@
 
         <div class="ISS-description">
             <h2>The International Space Station Luxry hotel</h2>
-            <h3>Attractions :</h3>
             <p>
-                In Mars colony there are alot of fun things
-                you can do such as go to bars and bars in
-                space is different than what we have here on
-                Earth
+                After its firts launched in 1998, the station was serves as a microgravity and space environment research.
+                Today the space station serves as a luxury hotel that allows all citizens to fully experience the space experience and become astronauts.<br />
+                With a variety of attractions and research for the whole family to experience.
             </p>
-            <h3>Unique places</h3>
-            <p>
-                1- Night Mars bar<br>
-                2- Desert of Mars<br>
-                3- Mars colony
-            </p>
+            
 
             <button type="button" class="btn table" onclick="showTable('Tables','ISS')">Show Trips</button>
         </div>
@@ -140,17 +132,13 @@
             <h2>Venus Flying Colony</h2>
             <h3>Attractions :</h3>
             <p>
-                In Mars colony there are alot of fun things
-                you can do such as go to bars and bars in
-                space is different than what we have here on
-                Earth
+                with the discovery of Venus's extremely hostile surface environment,
+                Venus built a habitats floating in the upper-middle atmosphere.<br />
+                The flying colony of Venus is a technological marvel which looks like a lot of balloons connected together and hovering between the clouds of Venus.<br />
+                Venus invites you for a romantic vacation between the clouds in a Luxry hotel and to join Venus colony for a permanent resident.
             </p>
-            <h3>Unique places</h3>
-            <p>
-                1- Night Mars bar<br>
-                2- Desert of Mars<br>
-                3- Mars colony
-            </p>
+           
+            
 
             <button type="button" class="btn table" onclick="showTable('Tables','Venus')">Show Trips</button>
         </div>
@@ -161,8 +149,8 @@
 
 
 
-    <!-------------------Pop Up Forms --------------------->
-    <form id="purchesForm" class="form-container" action="/TODO" method="get">
+     <!--the purchase form will request the info for all the tickets, person1 person2....person5-->
+     <form id="purchesForm" class="form-container" action="/TODO" method="post">
         <div class="tab purchesForm">
             <div id="Person">
                 <h3>Person 1:</h3>
@@ -206,10 +194,9 @@
         <div style="text-align:center;margin-top:40px;">
             <span class="step"></span>
             <span class="step"></span>
-
         </div>
-
     </form>
+
     <form id="Tables" class="Tables" method="post">
         <h1 id="Next flights to">Next flights</h1>
         <div id="marsFlights" class="flight-table-wrapper">
@@ -261,39 +248,43 @@
 
     </form>
 
+   
     <form id="regForm" action="" class="form-container" actions="/TODO" method="get">
 
         <h1>Register:</h1>
+        <p id="error"></p>
         <div class="tab register">
 
             <label for="Fname"><b>First name</b></label>
-            <input type="text" placeholder="First name..." oninput="this.Fname" required>
+            <input name="fname" type="text" placeholder="First name..." oninput="this.Fname" required>
 
             <label for="Lname"><b>Last name</b></label>
-            <input type="text" placeholder="Last name..." oninput="this.Lname" required>
+            <input name="lname" type="text" placeholder="Last name..." oninput="this.Lname" required>
 
             <div class="nativeDatePicker">
                 <label for="Birthdate">Birthdate:</label>
-                <input type="date" id="Birthdate" name="Birthdate" required>
+                <input name="Birthdate" type="date" id="Birthdate" required>
                 <span class="validity"></span>
             </div>
 
         </div>
 
         <div class="tab register">
+            <div class="email">
             <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Email..." oninput="email" required>
+            <input name="email" type="text" placeholder="Email..." oninput="email" required>
+            </div>
 
             <label for="userName"><b>User Name</b></label>
-            <input type="text" placeholder="User name..." oninput="username" required>
+            <input name="username" type="text" placeholder="User name..." oninput="username" required>
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Password..." oninput="psw" required>
+            <input name="password" type="password" placeholder="Password..." oninput="psw" required>
         </div>
 
 
         <div style="overflow:auto;">
-            <div>
+            <div >
                 <button type="button" class="btn" id="prevBtn" style="float:left;" onclick="nextPrev(-1,'tab register','regForm', 'prevBtn', 'nextBtn')">Previous</button>
                 <button type="submit" class="btn" id="nextBtn" style="float:right;" onclick="nextPrev(1,'tab register','regForm', 'prevBtn', 'nextBtn')">Next</button>
             </div>
@@ -308,6 +299,7 @@
         </div>
 
     </form>
+
 
     <form id="contact" class="form-container" action="/TODO" method="post">
         <h1>Contact Us</h1>

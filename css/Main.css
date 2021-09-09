@@ -36,7 +36,7 @@ body {
     min-height: 100%;
     transform: translateX(-50%) translateY(-50%);
     z-index: -100;
-    background-image: url(../img/tm-astro-bg.jpg);
+    
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -51,7 +51,7 @@ body {
     font-size: 16px;
     transition-duration: 0.4s;
     cursor: pointer;
-    width: 100%;
+    
     margin-bottom: 10px;
     margin-top: 10px;
     opacity: 0.9;
@@ -61,7 +61,7 @@ body {
         color: var(--green);
         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     }
-select, .date {
+    select, .date {
     outline: 0;
     border: none;
     border-bottom: 1px solid black;
@@ -180,7 +180,6 @@ select, .date {
     }
 
 /*---------------------------------------------------------------------*/
-
 /*-----------------------------------Home Page----------------------------------*/
 .Search-form {
     display: block;
@@ -295,7 +294,7 @@ select, .date {
         font-size:20px;
     }
 
-@media screen and (max-width: 715px) {
+@media screen and (max-width: 820px) {
     .grid-container {
         grid-template-areas:
             'header1'
@@ -315,16 +314,17 @@ select, .date {
     /* Add styles to the form container */
 .form-container {
     display: none;
+    background-color: rgba(0,0,0,0.3);
     position: fixed;
     padding: 10px;
     width: 330px;
     left: 50%;
     margin-left: -150px;
-    top: 30%;
-    margin-top: -100px;
+    top: 10%;
+   
     z-index: 20;
     box-shadow: -8px 8px 10px 3px rgba(0,0,0,0.2);
-    color:var(--darkgrey);
+    color: var(--darkgrey);
 }
 
     /* The popup form - hidden by default*/
@@ -358,6 +358,14 @@ select, .date {
     border: none;
     background: var(--darkgrey);
     color:white;
+}
+
+.form-container input[type=text].invalid, .form-container input[type=password].invalid, .form-container input[type=date].invalid {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: darkred solid;
+    
     
 }
 
@@ -374,6 +382,7 @@ select, .date {
     background-color: var(--darkgrey);
     color: white;
     margin-top: 5px;
+    width:100%;
 }
 
 
@@ -386,6 +395,7 @@ textarea {
     border-radius: 4px;
     background-color: var(--darkgrey);
     resize: none;
+    color:white;
 }
 
 

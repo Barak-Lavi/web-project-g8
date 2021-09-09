@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Humburger menu lib-->
+    <script src="Wanted.js"></script>
     <script src="Main.js"></script>
 
     <title>Space Trip- Wanted</title>
@@ -35,32 +36,6 @@
 
 
 
-    <!-------------------Pop Up Forms --------------------->
-    <form id="FillInformation" class="form-container" action="/TODO ; /action_page.php" method="post">
-        <h3>Fill your information and sent us your CV</h3>
-
-        <label for="firstname"><b>First name</b></label>
-        <input type="text" placeholder="Enter firstname" oninput="firstname" required>
-
-        <label for="lastname"><b>last name</b></label>
-        <input type="text" placeholder="Enter lastname" oninput="lastname" required>
-
-        <label for="PhoneNumber"><b>Phone number</b></label>
-        <input type="text" placeholder="Enter phone number" oninput="phonenumber" required>
-
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" oninput="email" required>
-        <label form="Uploadfiles"><b>Upload files</b></label>
-        <input type="file" id="myFile" name="filename" placeholder="Choose file" oninput="file" required><br>
-        <br><div style="overflow:auto;">
-            <div>
-                <button type="submit" class="btn">submit</button>
-            </div>
-        </div>
-
-        <button type="submit" class="btn cancel" onclick="hide('FillInformation')">Close</button>
-
-    </form>
 
 
 
@@ -175,38 +150,41 @@
     <form id="regForm" action="" class="form-container" actions="/TODO" method="get">
 
         <h1>Register:</h1>
+        <p id="error"></p>
         <div class="tab register">
 
             <label for="Fname"><b>First name</b></label>
-            <input type="text" placeholder="First name..." oninput="this.Fname" required>
+            <input name="fname" type="text" placeholder="First name..." oninput="this.Fname" required>
 
             <label for="Lname"><b>Last name</b></label>
-            <input type="text" placeholder="Last name..." oninput="this.Lname" required>
+            <input name="lname" type="text" placeholder="Last name..." oninput="this.Lname" required>
 
             <div class="nativeDatePicker">
                 <label for="Birthdate">Birthdate:</label>
-                <input type="date" id="Birthdate" name="Birthdate" required>
+                <input name="Birthdate" type="date" id="Birthdate" required>
                 <span class="validity"></span>
             </div>
 
         </div>
 
         <div class="tab register">
-            <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Email..." oninput="email" required>
+            <div class="email">
+                <label for="email"><b>Email</b></label>
+                <input name="email" type="text" placeholder="Email..." oninput="email" required>
+            </div>
 
             <label for="userName"><b>User Name</b></label>
-            <input type="text" placeholder="User name..." oninput="username" required>
+            <input name="username" type="text" placeholder="User name..." oninput="username" required>
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Password..." oninput="psw" required>
+            <input name="password" type="password" placeholder="Password..." oninput="psw" required>
         </div>
 
 
         <div style="overflow:auto;">
             <div>
                 <button type="button" class="btn" id="prevBtn" style="float:left;" onclick="nextPrev(-1,'tab register','regForm', 'prevBtn', 'nextBtn')">Previous</button>
-                <button type="submit" class="btn" id="nextBtn" style="float:right;" onclick="nextPrev(1,'tab register','regForm', 'prevBtn', 'nextBtn')">Next</button>
+                <button type="button" class="btn" id="nextBtn" style="float:right;" onclick="nextPrev(1,'tab register','regForm', 'prevBtn', 'nextBtn')">Next</button>
             </div>
         </div>
 
@@ -219,7 +197,6 @@
         </div>
 
     </form>
-
 
     <form id="contact" class="form-container" action="/TODO" method="post">
         <h1>Contact Us</h1>
@@ -280,6 +257,36 @@
         <button type="submit" class="btn cancel" onclick="hide('Terms')">Close</button>
 
     </form>
+
+    <!-------------------Pop Up Forms --------------------->
+    <form id="FillInformation" class="form-container" action="/TODO" method="get">
+        <h3>Fill your information and sent us your CV</h3>
+
+        <label for="firstname"><b>First name</b></label>
+        <input name="fname" type="text" placeholder="Enter firstname">
+
+        <label for="lastname"><b>last name</b></label>
+        <input name="lname" type="text" placeholder="Enter lastname">
+
+        <label for="PhoneNumber"><b>Phone number</b></label>
+        <input name="phone" type="text" placeholder="Enter phone number">
+
+        <label for="email"><b>Email</b></label>
+        <input name="email" type="text" placeholder="Enter Email">
+        <label form="Uploadfiles"><b>Upload files</b></label>
+        <input type="file" id="myFile" name="filename" placeholder="Choose file"><br>
+        <br><div style="overflow:auto;">
+            <div>
+                <button type="submit" onclick="submitWanted()" class="btn">submit</button>
+            </div>
+        </div>
+        <button type="submit" class="btn cancel" onclick="hide('FillInformation')">Close</button>
+    </form>
+
+
+
+
+
     <!-------------------Footer --------------------->
     <div class="footer">
         <a class="b" onclick="show('contact')">Contact Us</a>

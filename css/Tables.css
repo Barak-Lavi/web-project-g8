@@ -94,7 +94,7 @@ th[scope="row"] {
 
     .fl-table thead th {
         text-align: left;
-        border-bottom: 1px solid #f7f7f9;
+        
     }
 
     .fl-table tbody tr {
@@ -110,7 +110,7 @@ th[scope="row"] {
     }
 
     .fl-table tr td:nth-child(odd) {
-        background: #F8F8F8;
+        
         border-right: 1px solid #E6E4E4;
     }
 
