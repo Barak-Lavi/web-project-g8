@@ -161,8 +161,8 @@
 
 
 
-    <!-------------------Pop Up Forms --------------------->
-    <form id="purchesForm" class="form-container" action="/TODO" method="get">
+     <!--the purchase form will request the info for all the tickets, person1 person2....person5-->
+     <form id="purchesForm" class="form-container" action="/TODO" method="post">
         <div class="tab purchesForm">
             <div id="Person">
                 <h3>Person 1:</h3>
@@ -206,10 +206,9 @@
         <div style="text-align:center;margin-top:40px;">
             <span class="step"></span>
             <span class="step"></span>
-
         </div>
-
     </form>
+
     <form id="Tables" class="Tables" method="post">
         <h1 id="Next flights to">Next flights</h1>
         <div id="marsFlights" class="flight-table-wrapper">
@@ -261,39 +260,43 @@
 
     </form>
 
+   
     <form id="regForm" action="" class="form-container" actions="/TODO" method="get">
 
         <h1>Register:</h1>
+        <p id="error"></p>
         <div class="tab register">
 
             <label for="Fname"><b>First name</b></label>
-            <input type="text" placeholder="First name..." oninput="this.Fname" required>
+            <input name="fname" type="text" placeholder="First name..." oninput="this.Fname" required>
 
             <label for="Lname"><b>Last name</b></label>
-            <input type="text" placeholder="Last name..." oninput="this.Lname" required>
+            <input name="lname" type="text" placeholder="Last name..." oninput="this.Lname" required>
 
             <div class="nativeDatePicker">
                 <label for="Birthdate">Birthdate:</label>
-                <input type="date" id="Birthdate" name="Birthdate" required>
+                <input name="Birthdate" type="date" id="Birthdate" required>
                 <span class="validity"></span>
             </div>
 
         </div>
 
         <div class="tab register">
+            <div class="email">
             <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Email..." oninput="email" required>
+            <input name="email" type="text" placeholder="Email..." oninput="email" required>
+            </div>
 
             <label for="userName"><b>User Name</b></label>
-            <input type="text" placeholder="User name..." oninput="username" required>
+            <input name="username" type="text" placeholder="User name..." oninput="username" required>
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Password..." oninput="psw" required>
+            <input name="password" type="password" placeholder="Password..." oninput="psw" required>
         </div>
 
 
         <div style="overflow:auto;">
-            <div>
+            <div >
                 <button type="button" class="btn" id="prevBtn" style="float:left;" onclick="nextPrev(-1,'tab register','regForm', 'prevBtn', 'nextBtn')">Previous</button>
                 <button type="submit" class="btn" id="nextBtn" style="float:right;" onclick="nextPrev(1,'tab register','regForm', 'prevBtn', 'nextBtn')">Next</button>
             </div>
@@ -308,6 +311,7 @@
         </div>
 
     </form>
+
 
     <form id="contact" class="form-container" action="/TODO" method="post">
         <h1>Contact Us</h1>

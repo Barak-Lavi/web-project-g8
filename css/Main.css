@@ -61,7 +61,7 @@ body {
         color: var(--green);
         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     }
-select, .date {
+    select, .date {
     outline: 0;
     border: none;
     border-bottom: 1px solid black;
@@ -358,6 +358,14 @@ select, .date {
     border: none;
     background: var(--darkgrey);
     color:white;
+}
+
+.form-container input[type=text].invalid, .form-container input[type=password].invalid, .form-container input[type=date].invalid {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: darkred solid;
+    
     
 }
 

@@ -76,10 +76,10 @@
     width: 100%;
 }
 
-    .Tables .cancel {
-        width: 100px;
-        float: right;
-    }
+.Tables .cancel {
+    width: 100px;
+    float: right;
+}
 
 #Tables:after {
     content: "";
@@ -95,7 +95,7 @@
 #Tables:before {
     position: absolute;
     content: "";
-    background: #FFF;
+    background-color: rgba(0,0,0,0.5);
     z-index: -1;
     top: 0;
     left: 0;

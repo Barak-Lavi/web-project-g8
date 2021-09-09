@@ -114,7 +114,11 @@ function nextPrev(n, c, id, prevBtn, nextBtn) {
     // This function will figure out which tab to display
     var x = document.getElementsByClassName(c);
     // Exit the function if any field in the current tab is invalid:
-    if (n == 1 && !validateForm(c)) return false;
+    if (n == 1 && !validateForm(c)) {
+        document.getElementById("error").innerHTML = "Check input on marked fields";
+        return false;
+    }
+    document.getElementById("error").innerHTML = "";
     // Hide the current tab:
     x[currentTab].style.display = "none";
     // Increase or decrease the current tab by 1:
@@ -129,11 +133,49 @@ function nextPrev(n, c, id, prevBtn, nextBtn) {
     showTab(currentTab, c, id, prevBtn, nextBtn);
 }
 
+function validateEmail(email) 
+{
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+    {
+        return true
+    }
+    return false
+}
+
+function containsOnlyChars(str) {
+    if (/^[A-Za-z]*$/.test(str)) {
+        return true
+    }
+    return false
+}
+
+function validateDate(date) {
+    if (Date.parse(date) > Date.now()) {
+        return false;
+    }
+    return true;
+}
+
+function numberOnlyVisa(str) {
+    if (/^[0-9 -]*$/.test(str)) {
+        return true
+    }
+    return false
+}
+
+function numberOnly(str) {
+    if (/^[0-9]*$/.test(str)) {
+        return true
+    }
+    return false
+}
+
 function validateForm(c) {
     // This function deals with validation of the form fields
     var x, y, i, valid = true;
     x = document.getElementsByClassName(c);
     y = x[currentTab].getElementsByTagName("input");
+
     // A loop that checks every input field in the current tab:
     for (i = 0; i < y.length; i++) {
         // If a field is empty...
@@ -142,6 +184,43 @@ function validateForm(c) {
             y[i].className += " invalid";
             // and set the current valid status to false:
             valid = false;
+        }
+        if (y[i].name === "fname" || y[i].name === "lname") {
+            if (!containsOnlyChars(y[i].value)) {
+                y[i].className += " invalid";
+                valid = false;
+            }
+        }
+        if (y[i].name === "email"){
+            if (!validateEmail(y[i].value)){
+                y[i].className += " invalid";
+                valid = false;
+            }
+        }
+
+        if (y[i].name === "Birthdate") {
+            if (!validateDate(y[i].value)) {
+                y[i].className += " invalid";
+                valid = false;
+            }
+        }
+
+        if (y[i].name === "numberOnlyVisa") {
+            if (!numberOnlyVisa(y[i].value)) {
+                y[i].className += " invalid";
+                valid = false;
+            }
+        }
+
+        if (y[i].name === "numberOnly") {
+            if (!numberOnly(y[i].value)) {
+                y[i].className += " invalid";
+                valid = false;
+            }
+        }
+
+        if (valid) {
+            y[i].className = "";
         }
     }
     // If the valid status is true, mark the step as finished and valid:
@@ -162,42 +241,3 @@ function fixStepIndicator(n) {
 }
 
 /*------------------------------------------------------------------------------- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-function myFunction() {
-    // Declare variables
-    var input, filter, ul, li, a, i;
-    input = document.getElementById("mySearch");
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("myMenu");
-    li = ul.getElementsByTagName("li");
-  
-    // Loop through all list items, and hide those who don't match the search query
-    for (i = 0; i < li.length; i++) {
-      a = li[i].getElementsByTagName("a")[0];
-      if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        li[i].style.display = "";
-      } else {
-        li[i].style.display = "none";
-      }
-    }
-  }
-
-*/
-
