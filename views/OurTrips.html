@@ -1,0 +1,372 @@
+﻿<!DOCTYPE html>
+
+<html >
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Main.css" />
+    <link rel="stylesheet" href="OurTrips.css">
+    <link rel="stylesheet" href="Tables.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Humburger menu lib-->
+    <script src="Main.js"></script>
+
+
+    <title>SpaceTrip-OurTrips</title>
+</head>
+
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="gfp-astro-timelapse.mp4" type="video/mp4">
+    </video>
+    <nav class="topnav" id="myTopnav">
+        <a href="http://localhost:3000/homepage">Home Page</a>
+        <a class="active" href="http://localhost:3000/OurTrips">Our Trips</a>
+        <a href="http://localhost:3000/MyOrders">My Orders</a>
+        <a href="http://localhost:3000/Wanted">Wanted</a>
+        <a href="http://localhost:3000/AboutUs">About Us</a>
+        <a href="javascript:void(0);" class="icon" onclick="responsiveTopnav()">
+            <i class="fa fa-bars"></i>
+        </a>
+        <a class="b" onclick="show('LogInForm')">Log In</a>
+        <a class="b" onclick="show('regForm')">Sign Up</a>
+    </nav>
+    <br />
+    <!------------------------------------------------>
+    <div class="ourtrips-container">
+        <div id="Mars" class="Mars">
+            <video autoplay loop muted id="video-container">
+                <source src="Mars.mov">
+            </video>
+        </div>
+
+        <div class="Mars-description">
+            <h2>Mars</h2>
+            
+            <p>
+                The colony on Mars is inhabited by a million residents and functions with complete autonomy from Earth.<br />
+                Its red desert beauty is breathtaking and provides an experience of a lifetime.<br />
+                On Mars you can go on vacation with a variety of attractions, join research teams at the various reshearch institutes and even join the Mars community as a permanent resident.
+            </p>
+            <h4>Mars's Attractions:</h4>
+            <p>
+                * Hotels<br>
+                * field trips on the red desert of Mars<br>
+                * bar with drinks produced in Mars<br />
+                * A tour of the Iron Mines of Mars
+            </p>
+            <button type="button" class="btn table" onclick="showTable('Tables','Mars')">Show Trips</button>
+        </div>
+
+        <div id="Moon" class="Moon">
+            <video autoplay loop muted id="video-container">
+                <source src="Moon.mp4">
+            </video>
+        </div>
+
+        <div class="Moon-description">
+            <h2>The Moon</h2>
+            <p>
+                Seeing the earth from a different perspective.<br />
+                Our moon has the largest extraterrestrial research institute with 20,000 employees, with factories for mining resources and producing fuel for space shuttles.
+                On the moon you can go on vacation and join research teams at the reshearch institute.
+            </p>
+            <h4>Attractions:</h4>
+            <p>
+                * Hotels<br>
+                * field trips<br />
+                * A tour of the Moons factories, mines and research facilities
+            </p>
+
+            <button type="button" class="btn table" onclick="showTable('Tables','Moon')">Show Trips</button>
+        </div>
+
+
+        <div id="Jupiter Moons" class="Jupiter Moons">
+            <img src="JupiterMoons.gif" style="width: 100%; height:100%">
+        </div>
+
+        <div class="Jupiter-description">
+            <h2>Jupiter Moons Exploration</h2>
+            
+            <p>
+                In the moons of Jupiter, many geological studies are currently underway into the sustainability of the stars and the potential for permanent settlement of the human race.
+                Out of 79 moons of Jupiter, studies are conducted on 4 of them: Europa, IO, Ganymede and Callisto.
+                Each of the four moons has a research lab that invites you scientists to join it for future exploration.
+                our shuttles go to Jupiter's moons all together and make 4 stops.
+            </p>
+            <h4>research labs</h4>
+            <p>
+                * Europa<br>
+                * IO<br />
+                * Ganymede<br />
+                * Callisto
+            </p>
+
+            <button type="button" class="btn table" onclick="showTable('Tables','Jupiter Moons')">Show Trips</button>
+        </div>
+
+        <div id="ISS" class="ISS">
+            <video autoplay loop muted id="video-container">
+                <source src="ISS.mp4">
+            </video>
+        </div>
+
+        <div class="ISS-description">
+            <h2>The International Space Station Luxry hotel</h2>
+            <p>
+                After its firts launched in 1998, the station was serves as a microgravity and space environment research.
+                Today the space station serves as a luxury hotel that allows all citizens to fully experience the space experience and become astronauts.<br />
+                With a variety of attractions and research for the whole family to experience.
+            </p>
+            
+
+            <button type="button" class="btn table" onclick="showTable('Tables','ISS')">Show Trips</button>
+        </div>
+
+        <div id="Venus" class="Venus">
+            <img src="VenusFlyingColony.jpg" style="width: 100%; height:100%">
+        </div>
+        <div class="Venus-description">
+            <h2>Venus Flying Colony</h2>
+            <h3>Attractions :</h3>
+            <p>
+                with the discovery of Venus's extremely hostile surface environment,
+                Venus built a habitats floating in the upper-middle atmosphere.<br />
+                The flying colony of Venus is a technological marvel which looks like a lot of balloons connected together and hovering between the clouds of Venus.<br />
+                Venus invites you for a romantic vacation between the clouds in a Luxry hotel and to join Venus colony for a permanent resident.
+            </p>
+           
+            
+
+            <button type="button" class="btn table" onclick="showTable('Tables','Venus')">Show Trips</button>
+        </div>
+
+    </div>
+
+    <br /><br>
+
+
+
+     <!--the purchase form will request the info for all the tickets, person1 person2....person5-->
+     <form id="purchesForm" class="form-container" action="/TODO" method="post">
+        <div class="tab purchesForm">
+            <div id="Person">
+                <h3>Person 1:</h3>
+                <label for="Fname"><b>First name</b></label>
+                <input type="text" placeholder="First name..." oninput="this.Fname" required>
+                <label for="Lname"><b>Last name</b></label>
+                <input type="text" placeholder="Last name..." oninput="this.Lname" required>
+            </div>
+        </div>
+
+
+        <div class="tab purchesForm">
+            <label for="cname">Name on Card</label>
+            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+            <label for="ccnum">Credit card number</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <label for="expmonth">Exp Month</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+            <label for="expyear">Exp Year</label>
+            <input type="text" id="expyear" name="expyear" placeholder="2018">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv" placeholder="352">
+        </div>
+        <div class="tab purchesForm">
+            <label for="email"><i class="fa fa-envelope"></i> Send the bill to Email</label>
+            <input type="text" id="email" name="email" placeholder="john@example.com" required>
+
+            <h2>total price:</h2>
+            <h2>press submit to complete the purches</h2>
+        </div>
+
+        <div style="overflow:auto;">
+            <div style="float:right;">
+                <button type="button" id="prevBtn2" class="btn" onclick="nextPrev(-1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')">Previous</button>
+                <button type="submit" id="nextBtn2" class="btn" onclick="nextPrev(1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')">Next</button>
+            </div>
+        </div>
+
+        <button type="submit" class="btn cancel" onclick="hide('purchesForm')">Close</button>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+        </div>
+    </form>
+
+    <form id="Tables" class="Tables" method="post">
+        <h1 id="Next flights to">Next flights</h1>
+        <div id="marsFlights" class="flight-table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Flight ID</th>
+                        <th scope="col">Departure date</th>
+                        <th scope="col">Comeback date</th>
+                        <th scope="col">Current location</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Flight time</th>
+                        <th scope="col">Tickets quantity</th>
+                        <th scope="col">Total Price</th>
+                        <th scope="col">Purchase</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">TR-7</th>
+                        <td>7.6.2021</td>
+                        <td>7.6.2022</td>
+                        <td>Earth</td>
+                        <td>Mars</td>
+                        <td>15 months</td>
+                        <td>2</td>
+                        <td>15000000</td>
+                        <td>
+                            <button type="button" class="btn" value="Purches" onclick="show('purchesForm')">Purchase</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="btn cancel" onclick="hide('Tables')">Close</button>
+
+    </form>
+    <form id="LogInForm" class="form-container" action="/TODO" method="get">
+        <h1>Login</h1>
+
+        <label for="username"><b>Use Name</b></label>
+        <input type="text" placeholder="Enter Use Name" oninput="username" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" oninput="psw" required>
+
+        <button type="submit" class="btn">Login</button>
+        <button type="submit" class="btn cancel" onclick="hide('LogInForm')">Close</button>
+
+    </form>
+
+   
+    <form id="regForm" action="" class="form-container" actions="/TODO" method="get">
+
+        <h1>Register:</h1>
+        <p id="error"></p>
+        <div class="tab register">
+
+            <label for="Fname"><b>First name</b></label>
+            <input name="fname" type="text" placeholder="First name..." oninput="this.Fname" required>
+
+            <label for="Lname"><b>Last name</b></label>
+            <input name="lname" type="text" placeholder="Last name..." oninput="this.Lname" required>
+
+            <div class="nativeDatePicker">
+                <label for="Birthdate">Birthdate:</label>
+                <input name="Birthdate" type="date" id="Birthdate" required>
+                <span class="validity"></span>
+            </div>
+
+        </div>
+
+        <div class="tab register">
+            <div class="email">
+            <label for="email"><b>Email</b></label>
+            <input name="email" type="text" placeholder="Email..." oninput="email" required>
+            </div>
+
+            <label for="userName"><b>User Name</b></label>
+            <input name="username" type="text" placeholder="User name..." oninput="username" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input name="password" type="password" placeholder="Password..." oninput="psw" required>
+        </div>
+
+
+        <div style="overflow:auto;">
+            <div >
+                <button type="button" class="btn" id="prevBtn" style="float:left;" onclick="nextPrev(-1,'tab register','regForm', 'prevBtn', 'nextBtn')">Previous</button>
+                <button type="submit" class="btn" id="nextBtn" style="float:right;" onclick="nextPrev(1,'tab register','regForm', 'prevBtn', 'nextBtn')">Next</button>
+            </div>
+        </div>
+
+        <button type="submit" class="btn cancel" onclick="hide('regForm')">Close</button>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+
+        </div>
+
+    </form>
+
+
+    <form id="contact" class="form-container" action="/TODO" method="post">
+        <h1>Contact Us</h1>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" oninput="email" required>
+
+        <label for="subject"><b>Massege Us</b></label>
+        <br />
+        <textarea id="subject" name="subject" placeholder="How can we help you.." style="height:100px"></textarea>
+
+        <button type="submit" class="btn">Send</button>
+        <button type="submit" class="btn cancel" onclick="hide('contact')">Close</button>
+    </form>
+
+    <form id="FQA" class="form-container">
+        <h1>Q&A</h1>
+        <button type="button" class="accordion" onclick="accordion()">Question 1</button>
+        <div class="panel">
+            <p>Lorem ipsum...</p>
+        </div>
+
+        <button type="button" class="accordion" onclick="accordion()">Question 2</button>
+        <div class="panel">
+            <p>Lorem ipsum...</p>
+        </div>
+
+        <button type="button" class="accordion" onclick="accordion()">Question 3</button>
+        <div class="panel">
+            <p>Lorem ipsum...</p>
+        </div>
+        <button type="submit" class="btn cancel" onclick="hide('Q&A')">Close</button>
+    </form>
+
+    <form id="Privacy" class="form-container">
+        <h1>Privacy Policy</h1>
+        <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum."
+        </p>
+        <button type="submit" class="btn cancel" onclick="hide('Privacy')">Close</button>
+
+    </form>
+
+
+    <form id="Terms" class="form-container">
+        <h1>Terms of Use</h1>
+        <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum."
+        </p>
+        <button type="submit" class="btn cancel" onclick="hide('Terms')">Close</button>
+
+    </form>
+    <!-------------------Footer --------------------->
+    <div class="footer">
+        <a class="b" onclick="show('contact')">Contact Us</a>
+        <a class="b" onclick="show('Privacy')">Privacy Policy</a>
+        <a class="b" onclick="show('Terms')">Terms</a>
+        <a class="b" onclick="show('FQA')">Q&A</a>
+    </div>
+    <!------------------------------------------------>
+</body>
+</html>

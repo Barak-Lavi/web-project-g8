@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Main.css" />
+    <link rel="stylesheet" href="Tables.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Humburger menu lib-->
+    <script src="Main.js"></script>
+    <title>Space Trip- About Us</title>
+
+
+
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="gfp-astro-timelapse.mp4" type="video/mp4">
+    </video>
+    <nav class="topnav" id="myTopnav">
+        <a href="http://localhost:3000/homepage">Home Page</a>
+        <a href="http://localhost:3000/OurTrips">Our Trips</a>
+        <a href="http://localhost:3000/MyOrders">My Orders</a>
+        <a href="http://localhost:3000/Wanted">Wanted</a>
+        <a class="active" href="http://localhost:3000/AboutUs">About Us</a>
+        <a href="javascript:void(0);" class="icon" onclick="responsiveTopnav()">
+            <i class="fa fa-bars"></i>
+        </a>
+        <a class="b" onclick="show('LogInForm')">Log In</a>
+        <a class="b" onclick="show('regForm')">Sign Up</a>
+    </nav>
+    <br />
+    <br />
+    <br />
+    <div class="Search-form AboutUs">
+        <p>
+            Space Trip is a futuristic planetary travel agency that provides booking and registration processes for shuttles between the Earth and other planets and moons in uor solar system.<br />
+            We provide our customers with information about what attractions and occupations are in each destination, <a href="OurTrips.html" style="color:var(--green)">Our Trips</a> , whether a flight for vacation or the possibility of permanent settlement.<br />
+            Our company also provides transportation for scientists and researchers who fly to planets and moons that do not provide tourist attractions. <br />
+            Furthermore, Space Trip maintains a <a href="Wanted.html" style="color:var(--green)">Wanted</a> page for its employees as an intermediary between the various companies that need employees to maintain and operate destinations in our solar system.
+        </p>
+    </div>
+    <!-------------------Pop Up Forms --------------------->
+    <form id="LogInForm" class="form-container" action="/TODO" method="get">
+        <h1>Login</h1>
+
+        <label for="username"><b>Use Name</b></label>
+        <input type="text" placeholder="Enter Use Name" oninput="username" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" oninput="psw" required>
+
+        <button type="submit" class="btn">Login</button>
+        <button type="submit" class="btn cancel" onclick="hide('LogInForm')">Close</button>
+
+    </form>
+
+    <form id="regForm" action="" class="form-container" actions="/TODO" method="get">
+
+        <h1>Register:</h1>
+        <div class="tab register">
+
+            <label for="Fname"><b>First name</b></label>
+            <input type="text" placeholder="First name..." oninput="this.Fname" required>
+
+            <label for="Lname"><b>Last name</b></label>
+            <input type="text" placeholder="Last name..." oninput="this.Lname" required>
+
+            <div class="nativeDatePicker">
+                <label for="Birthdate">Birthdate:</label>
+                <input type="date" id="Birthdate" name="Birthdate" required>
+                <span class="validity"></span>
+            </div>
+
+        </div>
+
+        <div class="tab register">
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Email..." oninput="email" required>
+
+            <label for="userName"><b>User Name</b></label>
+            <input type="text" placeholder="User name..." oninput="username" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Password..." oninput="psw" required>
+        </div>
+
+
+        <div style="overflow:auto;">
+            <div>
+                <button type="button" class="btn" id="prevBtn" style="float:left;" onclick="nextPrev(-1,'tab register','regForm', 'prevBtn', 'nextBtn')">Previous</button>
+                <button type="submit" class="btn" id="nextBtn" style="float:right;" onclick="nextPrev(1,'tab register','regForm', 'prevBtn', 'nextBtn')">Next</button>
+            </div>
+        </div>
+
+        <button type="submit" class="btn cancel" onclick="hide('regForm')">Close</button>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+
+        </div>
+
+    </form>
+
+
+    <form id="contact" class="form-container" action="/TODO" method="post">
+        <h1>Contact Us</h1>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" oninput="email" required>
+
+        <label for="subject"><b>Massege Us</b></label>
+        <br />
+        <textarea id="subject" name="subject" placeholder="How can we help you.." style="height:100px"></textarea>
+
+        <button type="submit" class="btn">Send</button>
+        <button type="submit" class="btn cancel" onclick="hide('contact')">Close</button>
+    </form>
+
+    <form id="FQA" class="form-container">
+        <h1>Q&A</h1>
+        <button type="button" class="accordion" onclick="accordion()">Question 1</button>
+        <div class="panel">
+            <p>Lorem ipsum...</p>
+        </div>
+
+        <button type="button" class="accordion" onclick="accordion()">Question 2</button>
+        <div class="panel">
+            <p>Lorem ipsum...</p>
+        </div>
+
+        <button type="button" class="accordion" onclick="accordion()">Question 3</button>
+        <div class="panel">
+            <p>Lorem ipsum...</p>
+        </div>
+        <button type="submit" class="btn cancel" onclick="hide('Q&A')">Close</button>
+    </form>
+
+    <form id="Privacy" class="form-container">
+        <h1>Privacy Policy</h1>
+        <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum."
+        </p>
+        <button type="submit" class="btn cancel" onclick="hide('Privacy')">Close</button>
+
+    </form>
+
+
+    <form id="Terms" class="form-container">
+        <h1>Terms of Use</h1>
+        <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum."
+        </p>
+        <button type="submit" class="btn cancel" onclick="hide('Terms')">Close</button>
+
+    </form>
+    <!-------------------Footer --------------------->
+    <div class="footer">
+        <a class="b" onclick="show('contact')">Contact Us</a>
+        <a class="b" onclick="show('Privacy')">Privacy Policy</a>
+        <a class="b" onclick="show('Terms')">Terms</a>
+        <a class="b" onclick="show('FQA')">Q&A</a>
+    </div>
+
+
+</body>
+</html>
