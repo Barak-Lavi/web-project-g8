@@ -6,6 +6,7 @@ const path = require('path');
 
 
 const CRUD_operations = require("./queries_functions/CRUD_functions.js");
+//const futureShuttles = require("./queries_functions/futureShuttles.js");
 
 
 app.use(bodyParser.json());
@@ -47,4 +48,4 @@ app.get('/AboutUs', function (req, res) {
 });
 // Create a new Client
 app.post("/newClient", CRUD_operations.createNewClient);
-
+//app.get('/futureShuttles', futureShuttles.getRecommanded);
