@@ -4,6 +4,9 @@ const app = express();
 const port = 3000;
 const path = require('path');
 
+//using session secret to mennage login
+var session = require('express-session');
+app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
 
 const CRUD_operations = require("./queries_functions/CRUD_functions.js");
 //const futureShuttles = require("./queries_functions/futureShuttles.js");
@@ -33,6 +36,11 @@ app.listen(port, () => {
 // home route
 app.get('/HomePage', function (req, res) {
     res.sendFile(path.join(__dirname, '/views/HomePage.html'));
+    if (req.session.loggedin) {
+        console.log( req.session.username + ' has Loged in');
+    } else {
+        console.log('no user has loged in yet');
+    }
 });
 app.get('/OurTrips', function (req, res) {
     res.sendFile(path.join(__dirname, '/views/OurTrips.html'));
@@ -48,4 +56,12 @@ app.get('/AboutUs', function (req, res) {
 });
 // Create a new Client
 app.post("/newClient", CRUD_operations.createNewClient);
+
+//log in
+app.post('/auth', CRUD_operations.LogIn);
+
+
+
+
 //app.get('/futureShuttles', futureShuttles.getRecommanded);
+

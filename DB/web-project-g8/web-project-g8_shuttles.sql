@@ -41,7 +41,7 @@ CREATE TABLE `shuttles` (
 
 LOCK TABLES `shuttles` WRITE;
 /*!40000 ALTER TABLE `shuttles` DISABLE KEYS */;
-INSERT INTO `shuttles` VALUES ('AA-1','Earth','Mars','2021-11-01',20000,200);
+INSERT INTO `shuttles` VALUES ('AA-1','Earth','Mars','2021-11-01',20000,200),('AA-2','Earth','Mars','2021-11-02',20000,200),('AA-3','Earth','Mars','2021-11-04',20000,200),('AB-16','Mars','Earth','2023-11-01',20000,200),('BC-77','Mars','Earth','2023-11-03',20000,200),('FB-5','Mars','Earth','2023-11-05',20000,200);
 /*!40000 ALTER TABLE `shuttles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-20 12:59:36
+-- Dump completed on 2021-09-20 16:35:02

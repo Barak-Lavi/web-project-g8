@@ -1,4 +1,12 @@
 const sql = require("../DB/db.js");
+const express = require("express");
+const bodyParser = require("body-parser");
+const app = express();
+
+//using session secret to mennage login
+var session = require('express-session');
+app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
+
 
 const createNewClient = function (req, res) {
     // Validate request
@@ -15,8 +23,9 @@ const createNewClient = function (req, res) {
         "first_name": req.body.fname,
         "last_name": req.body.lname,
         "birthdate": req.body.Birthdate,
-        "credit_number": req.body = null,
+        
     };
+    
     sql.query("INSERT INTO clients SET ?", newClient, (err, mysqlres) => {
         if (err) {
             console.log("error: ", err);
@@ -28,6 +37,33 @@ const createNewClient = function (req, res) {
         return;
     });
 };
+//read for log in 
+const LogIn = function (request, response) {
+    const loginClient = {
+        "username": request.body.username,
+        "password": request.body.psw,
+    };
+    var username = request.body.username;
+    var password = request.body.psw;
+    if (username && password) {
+        sql.query('SELECT * FROM clients WHERE username = ? AND password = ?', loginClient, function (error, results, fields) {
+            if (loginClient) {
+                request.session.loggedin = true;
+                request.session.username = username;
+                response.redirect('/homepage');
+            } else {
+                response.send('Incorrect Username and/or Password!');
+            }
+            response.end();
+        });
+    } else {
+        console.log("Please enter Username and Password!");
+        
+    }
+}
 
-module.exports = { createNewClient };
+
+
+
+module.exports = { createNewClient, LogIn };
 

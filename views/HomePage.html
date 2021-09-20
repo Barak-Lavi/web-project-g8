@@ -37,14 +37,14 @@
     </nav>
     <br /><br />
      <!-------------------Pop Up Forms --------------------->
-     <form id="LogInForm" class="form-container" action="/TODO"  method="get">
+     <form id="LogInForm" class="form-container" action="http://localhost:3000/auth"  method="post">
         <h1>Login</h1>
 
         <label for="username"><b>Use Name</b></label>
-        <input type="text" placeholder="Enter Use Name" oninput="username" required>
+        <input name="username" type="text" placeholder="Enter Use Name" oninput="username" required>
 
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" oninput="psw" required>
+        <input name="psw" type="password" placeholder="Enter Password" oninput="psw" required>
 
         <button type="submit" class="btn" onclick="">Login</button>
         <button type="submit" class="btn cancel" onclick="hide('LogInForm')">Close</button>
@@ -191,7 +191,7 @@
         <input name="numberOnly" type="text" id="cvv"  placeholder="352">
     </div>
     <div class="tab purchesForm">
-        <label for="email"><i class="fa fa-envelope"></i> Send the bill to Email</label>
+        <label for="email"><i class="fa fa-envelope"></i> Send the receipt to </label>
         <input type="text" id="email" name="email" placeholder="john@example.com" required>
 
         <h2>total price:</h2>
@@ -222,11 +222,10 @@
         <div class="grid-container">
             <div class="item 1">
                 <label for="Planets">Current location:</label><br />
-                <select name="Planets" id="Planets" required>
+                <select name="CurrentL" id="Planets" required>
                     <option value="Earth">Earth</option>
                     <option value="Jupiter">Jupiter</option>
                     <option value="Mars">Mars</option>
-                    <option value="Earth">Earth</option>
                     <option value="ISS">ISS</option>
                     <option value="Venus">Venus</option>
                 </select>
@@ -234,11 +233,11 @@
             <div class="item 2">
 
                 <label for="Planets">Destination:</label><br />
-                <select name="Planets" id="Planets">
-                    <option value="Earth">Earth</option>
-                    <option value="Jupiter">Jupiter</option>
+                <select name="DestinationL" id="Planets" required>
+                    <option value="">None</option>
                     <option value="Mars">Mars</option>
                     <option value="Earth">Earth</option>
+                    <option value="Jupiter">Jupiter</option>
                     <option value="ISS">ISS</option>
                     <option value="Venus">Venus</option>
                 </select>
@@ -248,11 +247,11 @@
 
                 <label for="Tickets">Quantity:</label><br />
                 <select name="Tickets" id="Tickets">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
                 </select>
 
             </div>
@@ -260,7 +259,7 @@
 
                 <div class="nativeDatePicker">
                     <label for="DepartureDate">Departure date:</label>
-                    <input type="date" class="date" id="DepartureDate" name="DepartureDate" required>
+                    <input type="date" class="date" id="DepartureDate" name="DepartureDate" >
                     <span class="validity"></span>
                 </div>
                 <div class="fallbackDatePicker">
@@ -273,7 +272,7 @@
 
                 <div class="nativeDatePicker">
                     <label for="ComebackDate">Comeback date:</label>
-                    <input type="date" class="date" id="ComebackDate" name="ComebackDate" required>
+                    <input type="date" class="date" id="ComebackDate" name="ComebackDate">
                     <span class="validity"></span>
                 </div>
                 <div class="fallbackDatePicker">
@@ -306,12 +305,13 @@
                 </tr>
             </thead>
             <tbody>
+              
                 <tr>
-                    <th scope="row">TR-7</th>
-                    <td>Earth 7.6.2021</td>
-                    <td>Mars 7.6.2022</td>
-                    <td>2</td>
-                    <td>250,000</td>
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td class="FlightInfoCol">
                         <input type="checkbox" id="ChooseFlight" name="ChooseFlight" required>
                         <label for="ChooseFlight"></label><br />

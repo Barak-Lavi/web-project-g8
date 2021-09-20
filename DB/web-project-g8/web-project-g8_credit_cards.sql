@@ -40,7 +40,7 @@ CREATE TABLE `credit_cards` (
 
 LOCK TABLES `credit_cards` WRITE;
 /*!40000 ALTER TABLE `credit_cards` DISABLE KEYS */;
-INSERT INTO `credit_cards` VALUES ('123456789','07','2025','555','baraklavi2009@gmail.com');
+INSERT INTO `credit_cards` VALUES ('12345678','07','2025','555','baraklavi2009@gmail.com'),('123456789','07','2025','555','baraklavi2009@gmail.com'),('1234569','07','2025','555','baraklavi2009@gmail.com');
 /*!40000 ALTER TABLE `credit_cards` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-20 12:59:37
+-- Dump completed on 2021-09-20 16:35:02

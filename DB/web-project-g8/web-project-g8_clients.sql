@@ -41,7 +41,7 @@ CREATE TABLE `clients` (
 
 LOCK TABLES `clients` WRITE;
 /*!40000 ALTER TABLE `clients` DISABLE KEYS */;
-INSERT INTO `clients` VALUES ('baraklavi2009@gmail.com','barak','123456','barak','lavi','1995-05-22');
+INSERT INTO `clients` VALUES ('baraklavi2009@gmail.22','barak','lavi123456','Barak','Lavi','2021-09-01'),('baraklavi2009@gmail.co','lavb','123456','Barak','Lavi','2021-09-04'),('baraklavi2009@gmail.com','barak','123456','barak','lavi','1995-05-22');
 /*!40000 ALTER TABLE `clients` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-20 12:59:36
+-- Dump completed on 2021-09-20 16:35:02
