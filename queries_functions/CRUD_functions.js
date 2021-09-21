@@ -7,6 +7,7 @@ const app = express();
 var session = require('express-session');
 app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
 
+var Loggedin = false;
 
 const createNewClient = function (req, res) {
     // Validate request
@@ -46,9 +47,10 @@ const LogIn = function (request, response) {
     var username = request.body.username;
     var password = request.body.psw;
     if (username && password) {
-        sql.query('SELECT * FROM clients WHERE username = ? AND password = ?', loginClient, function (error, results, fields) {
-            if (loginClient) {
+        sql.query('SELECT * FROM clients WHERE username = ? AND password = ?', loginClient, function (results) {
+            if (results) {
                 request.session.loggedin = true;
+                Loggedin = request.session.loggedin;
                 request.session.username = username;
                 response.redirect('/homepage');
             } else {

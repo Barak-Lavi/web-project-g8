@@ -10,7 +10,7 @@ app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
 
 const CRUD_operations = require("./queries_functions/CRUD_functions.js");
 //const futureShuttles = require("./queries_functions/futureShuttles.js");
-
+const Search_operations = require("./queries_functions/search_operations.js");
 
 app.use(bodyParser.json());
 // parse requests of contenttype: application/x-www-form-urlencoded
@@ -54,13 +54,25 @@ app.get('/Wanted', function (req, res) {
 app.get('/AboutUs', function (req, res) {
     res.sendFile(path.join(__dirname, '/views/AboutUs.html'));
 });
+
+app.get('/purchaseForm', function (req, res) {
+    res.sendFile(path.join(__dirname, '/views/PurchaseForm.html'));
+});
+
+app.get('/searchResult', function (req, res) {
+    res.sendFile(path.join(__dirname, '/views/SearchResult.html'));
+});
+
 // Create a new Client
 app.post("/newClient", CRUD_operations.createNewClient);
 
 //log in
 app.post('/auth', CRUD_operations.LogIn);
 
-
+//Search menu
+app.post('/searchResult', Search_operations.searchmenu);
+app.post('/purchaseForm', Search_operations.Purchaseform);
+app.post('/myorders', Search_operations.MakePurchase);
 
 
 //app.get('/futureShuttles', futureShuttles.getRecommanded);

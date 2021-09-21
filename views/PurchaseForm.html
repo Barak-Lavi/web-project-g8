@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="Main.css" />
+        <link rel="stylesheet" href="Tables.css" />
+
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
+
+        <!--link to the humborger icon for mobile application-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Humburger menu lib-->
+        <script src="Main.js"></script>
+
+        <title>Purchaes</title>
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+            <!--the purchase form will request the info for all the tickets, person1 person2....person5-->
+        <form id="purchesForm"  class="form-container" action="http://localhost:3000/myorders"  method="post">
+   
+         <div class=" purchesForm">
+                <div id="Person">
+                    <h3>Person 1:</h3>
+                    <label for="fname"><b>First name</b></label>
+                    <input name="fname" type="text" placeholder="First name..." oninput="this.Fname" required>
+                    <label for="Lname"><b>Last name</b></label>
+                    <input name="lname" type="text" placeholder="Last name..." oninput="this.Lname" required>
+                </div>
+         </div>
+
+            <br>
+            <br>
+            <div class=" purchesForm">
+                <h2>Enter Credit Card Information</h2>
+                <label for="ccnum">Credit card number</label>
+                <input name="ccnum" type="text" id="ccnum"  placeholder="1111-2222-3333-4444">
+                <label for="expmonth">Exp Month</label>
+                <input  type="text" id="expmonth" name="expmonth" placeholder="September">
+                <label for="expyear">Exp Year</label>
+                <input name="expyear" type="text" id="expyear"  placeholder="2018">
+                <label for="cvv">CVV</label>
+                <input name="cvv" type="text" id="cvv"  placeholder="352">
+            
+             <br> <br>
+            
+ 
+                <h2>total price:</h2>
+                <h2>press submit to complete the purches</h2>
+            </div>
+
+            
+
+            <button type="submit" class="btn" >Purchase</button>
+            <button type="button" class="btn cancel" onclick="window.location.href='http://localhost:3000/searchResult'">Back</button>
+         
+
+        </form>
+    </body>
+</html>

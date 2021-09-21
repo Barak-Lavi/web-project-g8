@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 
-<html>
+<html >
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
     <title>SpaceTrip-HomePage</title>
     <meta charset="UTF-8">
 
-
+    
 </head>
 <body>
     <video autoplay muted loop id="bg-video">
@@ -165,60 +165,12 @@
 
     </form>
 
-<!--the purchase form will request the info for all the tickets, person1 person2....person5-->
-<form id="purchesForm"  class="form-container" action="/TODO"  method="get">
-    <div class="tab purchesForm">
-        <div id="Person">
-            <h3>Person 1:</h3>
-            <label for="fname"><b>First name</b></label>
-            <input name="fname" type="text" placeholder="First name..." oninput="this.Fname" required>
-            <label for="Lname"><b>Last name</b></label>
-            <input name="lname" type="text" placeholder="Last name..." oninput="this.Lname" required>
-        </div>
-    </div>
 
-
-    <div class="tab purchesForm">
-        <label for="cname">Name on Card</label>
-        <input name="fname" type="text" id="cname"  placeholder="John More Doe">
-        <label for="ccnum">Credit card number</label>
-        <input name="numberOnlyVisa" type="text" id="ccnum"  placeholder="1111-2222-3333-4444">
-        <label for="expmonth">Exp Month</label>
-        <input  type="text" id="expmonth" name="expmonth" placeholder="September">
-        <label for="expyear">Exp Year</label>
-        <input name="numberOnly" type="text" id="expyear"  placeholder="2018">
-        <label for="cvv">CVV</label>
-        <input name="numberOnly" type="text" id="cvv"  placeholder="352">
-    </div>
-    <div class="tab purchesForm">
-        <label for="email"><i class="fa fa-envelope"></i> Send the receipt to </label>
-        <input type="text" id="email" name="email" placeholder="john@example.com" required>
-
-        <h2>total price:</h2>
-        <h2>press submit to complete the purches</h2>
-    </div>
-
-    <div style="overflow:auto;">
-        <div style="float:right;">
-            <button type="button" id="prevBtn2" class="btn" onclick="nextPrev(-1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')">Previous</button>
-            <button type="button" id="nextBtn2" class="btn" onclick="nextPrev(1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')">Next</button>
-        </div>
-    </div>
-
-    <button type="submit" class="btn cancel" onclick="hide('purchesForm')">Close</button>
-    <!-- Circles which indicates the steps of the form: -->
-    <div style="text-align:center;margin-top:40px;">
-        <span class="step"></span>
-        <span class="step"></span>
-
-    </div>
-
-</form>
 
     <!------------------------------------------------>
     <!-------------------Home Page --------------------->
 
-    <form id="searchMenu" class="Search-form" action="/TODO" method="get">
+    <form id="searchMenu" class="Search-form" action="http://localhost:3000/searchResult" method="post">
         <div class="grid-container">
             <div class="item 1">
                 <label for="Planets">Current location:</label><br />
@@ -282,74 +234,13 @@
 
             </div>
             <div class="item-6">
-                <button type="button" class="btn" onclick="show('searchResult')"> Search</button>
+                <input type="submit" class="btn"  value="Submit">
             </div>
 
         </div>
     </form>
-
-    <br />
-    <form id="searchResult" class="Search-form" action="/TODO" method="post">
-
-        <h1>Choose Departure Flight</h1>
-
-        <table class="fl-table">
-            <thead>
-                <tr>
-                    <th scope="col">Flight ID</th>
-                    <th scope="col">From</th><!--add function that returns location and datetime-->
-                    <th scope="col">To</th><!--add function that returns location and datetime-->
-                    <th scope="col">Remaining tickets</th>
-                    <th scope="col">Total Price</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                    <th scope="row"></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="FlightInfoCol">
-                        <input type="checkbox" id="ChooseFlight" name="ChooseFlight" required>
-                        <label for="ChooseFlight"></label><br />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h1>Choose Return Flight</h1>
-        <table class="fl-table">
-            <thead>
-                <tr>
-                    <th scope="col">Flight ID</th>
-                    <th scope="col">From</th><!--add function that returns location and datetime-->
-                    <th scope="col">To</th><!--add function that returns location and datetime-->
-                    <th scope="col">Remaining tickets</th>
-                    <th scope="col">Total Price</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">TR-7</th>
-                    <td>Earth 7.6.2021</td>
-                    <td>Mars 7.6.2022</td>
-                    <td>2</td>
-                    <td>250,000</td>
-                    <td class="FlightInfoCol">
-                        <input type="checkbox" id="ChooseFlight" name="ChooseFlight" required>
-                        <label for="ChooseFlight"></label><br />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <button type="submit" class="btn" value="Purches" onclick="show('purchesForm')">Purchase</button>
-
-    </form>
-
+    <br>
+    
     <!--fiiled with Example!!!-->
     <div class="recommandedShutteles" action="/TODO" method="get">
         <!--the form shows ,ost recommanded trips based on the client shearch history-->

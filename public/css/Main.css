@@ -193,9 +193,7 @@ body {
     box-shadow: -8px 8px 10px 3px rgba(0,0,0,0.2);
 }
 
-#searchResult {
-    display: none;
-}
+
 .grid-container {
     position:relative;
     
@@ -321,14 +319,23 @@ body {
     left: 50%;
     margin-left: -150px;
     top: 10%;
-   
     z-index: 20;
     box-shadow: -8px 8px 10px 3px rgba(0,0,0,0.2);
     color: var(--darkgrey);
 }
-
+#purchesForm, #searchResult {
+    display: block;
+    top: 40%;
+    position: relative;
+    width: 60%;
+    margin: auto;
+    padding: 14px 28px;
+    font-size: 16px;
+    left: auto;
+    cursor: pointer;
+}
     /* The popup form - hidden by default*/
-#LogInForm:after, #regForm:after, #contact:after, #Privacy:after, #Terms:after, #FQA:after, #purchesForm:after {
+#LogInForm:after, #regForm:after, #contact:after, #Privacy:after, #Terms:after, #FQA:after {
     content: "";
     position: fixed;
     background: rgba(0,0,0,0.5);
@@ -339,7 +346,7 @@ body {
     right: 0;
 }
 
-#LogInForm:before, #regForm:before, #contact:before, #Privacy:before, #Terms:before, #FQA:before, #purchesForm:before {
+#LogInForm:before, #regForm:before, #contact:before, #Privacy:before, #Terms:before, #FQA:before {
     position: absolute;
     content: "";
     background: #FFF;
