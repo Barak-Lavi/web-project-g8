@@ -44,17 +44,26 @@ const LogIn = function (request, response) {
         "username": request.body.username,
         "password": request.body.psw,
     };
-    var username = request.body.username;
-    var password = request.body.psw;
-    if (username && password) {
-        sql.query('SELECT * FROM clients WHERE username = ? AND password = ?', loginClient, function (results) {
-            if (results) {
+    /*var username = request.body.username;
+    var password = request.body.psw;*/
+    console.log(loginClient.username, loginClient.password);
+    if (loginClient.username && loginClient.password) {
+        sql.query('SELECT * FROM clients WHERE user_name=? AND password = ?', [loginClient.username, loginClient.password], function (err ,result) {
+            if (err) {
+                console.log("error: ", err);
+                response.status(400).send({ message: "error in finding client: " + err });
+                return;
+            }
+            else if (result.length > 0) {
                 request.session.loggedin = true;
-                Loggedin = request.session.loggedin;
-                request.session.username = username;
+                console.log(request.session.loggedin);
+                console.log(result);
+                //Loggedin = request.session.loggedin;
+                request.session.username = loginClient.username;
                 response.redirect('/homepage');
             } else {
-                response.send('Incorrect Username and/or Password!');
+                console.log("user name or password are incurrect");
+                return;
             }
             response.end();
         });
