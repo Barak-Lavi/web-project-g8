@@ -7,7 +7,10 @@ const path = require('path');
 //using session secret to mennage login
 var session = require('express-session');
 app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
+
 var isLogedIn = require('./CRUD_functions.js');
+var Loggedin = isLogedIn.Loggedin;
+
 const { isNull } = require("util");
 const { ENOTEMPTY } = require("constants");
 
@@ -46,6 +49,7 @@ const searchmenu = function (req, res) {
     } else {
         sql.query('SELECT * FROM shuttles WHERE destination = ? AND capacity >= ? AND departure_date=?', [current_location, Tickets, ComebackDate], function (error, results, fields) {
             console.log("search with return date");
+            console.log(Loggedin);
         });
 
     }
@@ -53,8 +57,11 @@ const searchmenu = function (req, res) {
     return;
 }
 
+
+
 const Purchaseform = function (req, res) {
-  /*   if (!isLogedIn.Loggedin) {
+   /* console.log(Loggedin);
+    if (!Loggedin) {
         console.log("for purchase flight you have to log in your acount or sing in");
         return;
     }*/
@@ -115,6 +122,17 @@ const MakePurchase = function (req, res) {
                 return;
             });
         }
+       /*
+         sql.query("INSERT INTO passengers SET ?", , (err, mysqlres) => {
+            if (err) {
+                console.log("error: ", err);
+                res.status(400).send({ message: "error in creating addCredit: " + err });
+                return;
+            }
+            console.log("created addCredit");
+            // res.send({ message: "new customer created successfully" });
+            return;
+        });*/
        
     });
     res.sendFile(path.join(__dirname, '../views/MyOrders.html'));

@@ -3,6 +3,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 
+
+
 //using session secret to mennage login
 var session = require('express-session');
 app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
@@ -60,21 +62,25 @@ const LogIn = function (request, response) {
                 console.log(result);
                 //Loggedin = request.session.loggedin;
                 request.session.username = loginClient.username;
+                Loggedin = true;
                 response.redirect('/homepage');
             } else {
                 console.log("user name or password are incurrect");
+                response.send(('<script>alert("user name or password are incurrect");window.location.href = "http://localhost:3000/homepage";</script>'));
+                
                 return;
             }
             response.end();
         });
     } else {
         console.log("Please enter Username and Password!");
-        
+        response.send(('<script>alert("Please enter Username and Password!");window.location.href = "http://localhost:3000/homepage";</script>'));
+
     }
 }
 
 
 
+module.exports = { createNewClient, LogIn, Loggedin};
 
-module.exports = { createNewClient, LogIn };
 
