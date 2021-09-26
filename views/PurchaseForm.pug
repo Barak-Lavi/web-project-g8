@@ -1,0 +1,30 @@
+﻿extends layout
+block content
+    form#purchesForm.form-container(action='http://localhost:3000/myorders', method='post')
+      .purchesForm
+        #Person
+          h3 Person 1:
+          label(for='fname')
+            b First name
+          input(name='fname', type='text', placeholder='First name...', oninput='this.Fname', required='')
+          label(for='Lname')
+            b Last name
+          input(name='lname', type='text', placeholder='Last name...', oninput='this.Lname', required='')
+      br
+      br
+      .purchesForm
+        h2 Enter Credit Card Information
+        label(for='ccnum') Credit card number
+        input#ccnum(name='ccnum', type='text', placeholder='1111-2222-3333-4444')
+        label(for='expmonth') Exp Month
+        input#expmonth(type='text', name='expmonth', placeholder='September')
+        label(for='expyear') Exp Year
+        input#expyear(name='expyear', type='text', placeholder='2018')
+        label(for='cvv') CVV
+        input#cvv(name='cvv', type='text', placeholder='352')
+        br
+        br
+        h2 total price:
+        h2 press submit to complete the purches
+      button.btn(type='submit') Purchase
+      button.btn.cancel(type='button', onclick="window.location.href='http://localhost:3000/searchResult'") Back

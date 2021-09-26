@@ -1,0 +1,123 @@
+﻿extends Layout
+block content
+    .Jobs-container
+      .CasualJobs
+        img.picture(src='BarMan.jpg', style='width: 100%; height: 500px;')
+      .CasualJobs-description
+        h1 Casual jobs
+        a Hotels employees, Secretaries, Cleaning employees, Shefs,
+        br
+        a Reception employees, Security, Restaurants servers.
+        br
+        a Bar men: Anywhere you go, if there is no Bars there is no fun.
+        br
+        a   * Speaks English fluently and 2 more lanuages at least.
+        br
+        a   * Experienced and talented, at least 2 years of career.
+        br
+        a   * CLEAR RECORD.
+        br
+        br
+        button.btn(type='button', onclick="show('FillInformation')") Submit application
+      .GraphicDesigner
+        img.picture(src='GraphicDesign.jpg', style='width: 100%; height: 500px;')
+      .GraphicDesigner-description
+        h2 Graphic Designers
+        a It doesn&apos;t matter how good it is, it needs to look good.
+        br
+        a   * 2 years of experience.
+        br
+        a   * Knowledge in recording and photoshop.
+        br
+        a   * Control of graphics software.
+        br
+        a   * Flexible with group and individual work.
+        br
+        a   * Advantage for those who make videos and animations.
+        br
+        a   * CREATIVITY.
+        br
+        br
+        button.btn(type='button', onclick="show('FillInformation')") Submit application
+      .AlgorithmsDeveloper
+        img.picture(src='AlgorithmsDeveloper.jpg', style='width: 100%; height: 500px;')
+      .AlgorithmsDeveloper-description
+        h2 Algorithms Developers
+        br
+        a Short and effecient. Coding is a life style.
+        br
+        a   * Knowledge in Javascript, Java, Python, C++.
+        br
+        a   * Passion and desire to be the best.
+        br
+        a   * The skills to self teach.
+        br
+        a   * 2 Years of experience, 3 Personal projects atleast.
+        br
+        br
+        br
+        br
+        button.btn(type='button', onclick="show('FillInformation')") Submit application
+      .MarketingManager
+        img.picture(src='MarketingManagement.jpg', style='width: 100%; height: 500px;')
+      .MarketingManager-description
+        h2 Marketing managers
+        a Get the attention of absolutely everybody.
+        br
+        a   * The ability to attract people, Charisma.
+        br
+        a   * Excellent marketing understanding.
+        br
+        a   * Relevant academic degree: Communication, Economy, Marketing.
+        br
+        a   * Skills and control of computer applications: Excel, Powerpoint.
+        br
+        a   * High level of formulation and delivering a message.
+        br
+        a   * 3 years of experience and successful career.
+        br
+        br
+        br
+        br
+        button.btn(type='button', onclick="show('FillInformation')") Submit application
+      .DataAnalyst
+        img.picture(src='DataAnalysisEngineering.jpg', style='width: 100%; height: 500px;')
+      .DataAnalyst-description
+        h2 Data analyst and Engineers
+        br
+        a Be a hero and put everything in the firm in the right place.
+        br
+        a
+          | * Relevant academic degree: Computer Science, Software engineer, intelligent systems engineer.
+        br
+        a   * 3 years of experience of Bi and analysing intelligent systems.
+        br
+        a   * Control of SQL and data managing.
+        br
+        a   * High skills in python and ability to program well with it.
+        br
+        button.btn(type='button', onclick="show('FillInformation')") Submit application
+
+    form#FillInformation.form-container(action='/TODO', method='get')
+      h3 Fill your information and sent us your CV
+      label(for='firstname')
+        b First name
+      input(name='fname', type='text', placeholder='Enter firstname')
+      label(for='lastname')
+        b last name
+      input(name='lname', type='text', placeholder='Enter lastname')
+      label(for='PhoneNumber')
+        b Phone number
+      input(name='phone', type='text', placeholder='Enter phone number')
+      label(for='email')
+        b Email
+      input(name='email', type='text', placeholder='Enter Email')
+      label(form='Uploadfiles')
+        b Upload files
+      input#myFile(type='file', name='filename', placeholder='Choose file')
+      br
+      br
+      div(style='overflow:auto;')
+        div
+          button.btn(type='submit', onclick='submitWanted()') submit
+      button.btn.cancel(type='button', onclick="hide('FillInformation')") Close

@@ -1,0 +1,154 @@
+﻿extends layout
+block content   
+    .ourtrips-container
+      #Mars.Mars
+        video#video-container(autoplay='', loop='', muted='')
+          source(src='Mars.mov')
+      .Mars-description
+        h2 Mars
+        p
+          | The colony on Mars is inhabited by a million residents and functions with complete autonomy from Earth.
+          br
+          |                 Its red desert beauty is breathtaking and provides an experience of a lifetime.
+          br
+          |                 On Mars you can go on vacation with a variety of attractions, join research teams at the various reshearch institutes and even join the Mars community as a permanent resident.
+        h4 Mars&apos;s Attractions:
+        p
+          | * Hotels
+          br
+          |                 * field trips on the red desert of Mars
+          br
+          |                 * bar with drinks produced in Mars
+          br
+          |                 * A tour of the Iron Mines of Mars
+        button.btn.table(type='button', onclick="showTable('Tables','Mars')") Show Trips
+      #Moon.Moon
+        video#video-container(autoplay='', loop='', muted='')
+          source(src='Moon.mp4')
+      .Moon-description
+        h2 The Moon
+        p
+          | Seeing the earth from a different perspective.
+          br
+          |                 Our moon has the largest extraterrestrial research institute with 20,000 employees, with factories for mining resources and producing fuel for space shuttles.
+          |                 On the moon you can go on vacation and join research teams at the reshearch institute.
+        h4 Attractions:
+        p
+          | * Hotels
+          br
+          |                 * field trips
+          br
+          |                 * A tour of the Moons factories, mines and research facilities
+        button.btn.table(type='button', onclick="showTable('Tables','Moon')") Show Trips
+      .Jupiter.Moons(id='Jupiter Moons')
+        img(src='JupiterMoons.gif', style='width: 100%; height:100%')
+      .Jupiter-description
+        h2 Jupiter Moons Exploration
+        p
+          | In the moons of Jupiter, many geological studies are currently underway into the sustainability of the stars and the potential for permanent settlement of the human race.
+          | Out of 79 moons of Jupiter, studies are conducted on 4 of them: Europa, IO, Ganymede and Callisto.
+          | Each of the four moons has a research lab that invites you scientists to join it for future exploration.
+          | our shuttles go to Jupiter&apos;s moons all together and make 4 stops.
+        h4 research labs
+        p
+          | * Europa
+          br
+          |                 * IO
+          br
+          |                 * Ganymede
+          br
+          |                 * Callisto
+        button.btn.table(type='button', onclick="showTable('Tables','Jupiter Moons')") Show Trips
+      #ISS.ISS
+        video#video-container(autoplay='', loop='', muted='')
+          source(src='ISS.mp4')
+      .ISS-description
+        h2 The International Space Station Luxry hotel
+        p
+          | After its firts launched in 1998, the station was serves as a microgravity and space environment research.
+          | Today the space station serves as a luxury hotel that allows all citizens to fully experience the space experience and become astronauts.
+          br
+          |                 With a variety of attractions and research for the whole family to experience.
+        button.btn.table(type='button', onclick="showTable('Tables','ISS')") Show Trips
+      #Venus.Venus
+        img(src='VenusFlyingColony.jpg', style='width: 100%; height:100%')
+      .Venus-description
+        h2 Venus Flying Colony
+        h3 Attractions :
+        p
+          | with the discovery of Venus&apos;s extremely hostile surface environment,
+          | Venus built a habitats floating in the upper-middle atmosphere.
+          br
+          |                 The flying colony of Venus is a technological marvel which looks like a lot of balloons connected together and hovering between the clouds of Venus.
+          br
+          |                 Venus invites you for a romantic vacation between the clouds in a Luxry hotel and to join Venus colony for a permanent resident.
+        button.btn.table(type='button', onclick="showTable('Tables','Venus')") Show Trips
+    br
+    br
+    // the purchase form will request the info for all the tickets, person1 person2....person5
+    form#purchesForm.form-container(action='/TODO', method='post')
+      .tab.purchesForm
+        #Person
+          h3 Person 1:
+          label(for='Fname')
+            b First name
+          input(type='text', placeholder='First name...', oninput='this.Fname', required='')
+          label(for='Lname')
+            b Last name
+          input(type='text', placeholder='Last name...', oninput='this.Lname', required='')
+      .tab.purchesForm
+        label(for='cname') Name on Card
+        input#cname(type='text', name='cardname', placeholder='John More Doe')
+        label(for='ccnum') Credit card number
+        input#ccnum(type='text', name='cardnumber', placeholder='1111-2222-3333-4444')
+        label(for='expmonth') Exp Month
+        input#expmonth(type='text', name='expmonth', placeholder='September')
+        label(for='expyear') Exp Year
+        input#expyear(type='text', name='expyear', placeholder='2018')
+        label(for='cvv') CVV
+        input#cvv(type='text', name='cvv', placeholder='352')
+      .tab.purchesForm
+        label(for='email')
+          i.fa.fa-envelope
+          |  Send the bill to Email
+        input#email(type='text', name='email', placeholder='john@example.com', required='')
+        h2 total price:
+        h2 press submit to complete the purches
+      div(style='overflow:auto;')
+        div(style='float:right;')
+          button#prevBtn2.btn(type='button', onclick="nextPrev(-1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')") Previous
+          button#nextBtn2.btn(type='submit', onclick="nextPrev(1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')") Next
+      button.btn.cancel(type='submit', onclick="hide('purchesForm')") Close
+      // Circles which indicates the steps of the form:
+      div(style='text-align:center;margin-top:40px;')
+        span.step
+        span.step
+    form#Tables.Tables(method='post')
+      h1(id='Next flights to') Next flights
+      #marsFlights.flight-table-wrapper
+        table.fl-table
+          thead
+            tr
+              th(scope='col') Flight ID
+              th(scope='col') Departure date
+              th(scope='col') Comeback date
+              th(scope='col') Current location
+              th(scope='col') Destination
+              th(scope='col') Flight time
+              th(scope='col') Tickets quantity
+              th(scope='col') Total Price
+              th(scope='col') Purchase
+          tbody
+            tr
+              th(scope='row') TR-7
+              td 7.6.2021
+              td 7.6.2022
+              td Earth
+              td Mars
+              td 15 months
+              td 2
+              td 15000000
+              td
+                button.btn(type='button', value='Purches', onclick="show('purchesForm')") Purchase
+      button.btn.cancel(type='button', onclick="hide('Tables')") Close
+

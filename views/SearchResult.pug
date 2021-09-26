@@ -1,0 +1,51 @@
+﻿extends layout
+block content
+    form#searchResult.form-container(action='http://localhost:3000/purchaseForm', method='post')
+      h1 Choose Departure Flight
+      table.fl-table
+        thead
+          tr
+            th(scope='col') Flight ID
+            th(scope='col') From
+            // add function that returns location and datetime
+            th(scope='col') To
+            // add function that returns location and datetime
+            th(scope='col') Remaining tickets
+            th(scope='col') Total Price
+            th(scope='col')
+        tbody
+          tr
+            th(scope='row')
+            td
+            td
+            td
+            td
+            td.FlightInfoCol
+              input#ChooseFlight(type='checkbox', name='depurtureFlight', value='shuttleID', required='')
+              label(for='ChooseFlight')
+              br
+      h1 Choose Return Flight
+      table.fl-table
+        thead
+          tr
+            th(scope='col') Flight ID
+            th(scope='col') From
+            // add function that returns location and datetime
+            th(scope='col') To
+            // add function that returns location and datetime
+            th(scope='col') Remaining tickets
+            th(scope='col') Total Price
+            th(scope='col')
+        tbody
+          tr
+            th(scope='row') TR-7
+            td Earth 7.6.2021
+            td Mars 7.6.2022
+            td 2
+            td 250,000
+            td.FlightInfoCol
+              input#ChooseFlight(type='checkbox', name='returnFlight', value='shuttleID', required='')
+              label(for='ChooseFlight')
+              br
+      button.btn(type='submit', value='Purches') Purchase
+      button.btn(type='button', value='Purches', onclick="window.location.href='http://localhost:3000/homepage'") Back

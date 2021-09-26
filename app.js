@@ -31,37 +31,47 @@ app.listen(port, () => {
     console.log("Server is running on port 3000."
     );
 });
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
 //--------------------------------Routes--------------------------------------
 
 // home route
 app.get('/HomePage', function (req, res) {
-    res.sendFile(path.join(__dirname, '/views/HomePage.html'));
-    if (req.session.loggedin) {
-        console.log( req.session.username + ' has Loged in');
-    } else {
-        console.log('no user has loged in yet');
-    }
+    res.render('HomePage');
+   
 });
 app.get('/OurTrips', function (req, res) {
-    res.sendFile(path.join(__dirname, '/views/OurTrips.html'));
+    res.render('OurTrips');
+
 });
 app.get('/MyOrders', function (req, res) {
-    res.sendFile(path.join(__dirname, '/views/MyOrders.html'));
+    res.render('MyOrders');
+
 });
 app.get('/Wanted', function (req, res) {
-    res.sendFile(path.join(__dirname, '/views/Wanted.html'));
+    res.render('Wanted');
+
 });
 app.get('/AboutUs', function (req, res) {
-    res.sendFile(path.join(__dirname, '/views/AboutUs.html'));
-});
+    res.render('AboutUs');
 
+});
 app.get('/purchaseForm', function (req, res) {
-    res.sendFile(path.join(__dirname, '/views/PurchaseForm.html'));
+    res.render('purchaseForm');
+
+});
+app.get('/searchResult', function (req, res) {
+    res.render('searchResult');
+
+});
+app.get('/Layout', function (req, res) {
+    res.render('Layout');
+
 });
 
-app.get('/searchResult', function (req, res) {
-    res.sendFile(path.join(__dirname, '/views/SearchResult.html'));
-});
+
 
 // Create a new Client
 app.post("/newClient", CRUD_operations.createNewClient);
@@ -70,10 +80,10 @@ app.post("/newClient", CRUD_operations.createNewClient);
 app.post('/auth', CRUD_operations.LogIn);
 
 //Search menu
-app.post('/searchResult', Search_operations.searchmenu);
+
 app.post('/purchaseForm', Search_operations.Purchaseform);
 app.post('/myorders', Search_operations.MakePurchase);
 
 
-//app.get('/futureShuttles', futureShuttles.getRecommanded);
 
+app.post('/searchResult', Search_operations.searchmenu);

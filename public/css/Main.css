@@ -203,30 +203,32 @@ body {
         'header4 header5 header6';
 }
 
-.item {
-    margin: 10px auto;
-    
-}
+
 
 .item1 {
     grid-area: header1;
+    margin: 10px auto;
 }
 
 .item2 {
     grid-area: header2;
+    margin: 10px auto;
 }
 
 .item3 {
     grid-area: header3;
+    margin: 10px auto;
 }
 
 
 .item4 {
     grid-area: header4;
+    margin: 10px auto;
 }
 
 .item5 {
     grid-area: header5;
+    margin: 10px auto;
 }
 
 .item-6 {

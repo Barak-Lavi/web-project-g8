@@ -53,7 +53,7 @@ const searchmenu = function (req, res) {
         });
 
     }
-    res.sendFile(path.join(__dirname, '../views/SearchResult.html'));
+    res.render('SearchResult');
     return;
 }
 
@@ -82,7 +82,7 @@ const Purchaseform = function (req, res) {
         console.log("did not choose depurtue and return flights");
 
     }
-    res.sendFile(path.join(__dirname, '../views/PurchaseForm.html'));
+    res.render('PurchaseForm');
     return;
 };
 
@@ -135,7 +135,7 @@ const MakePurchase = function (req, res) {
         });*/
        
     });
-    res.sendFile(path.join(__dirname, '../views/MyOrders.html'));
+    res.render('MyOrders');
     return;
 }
 

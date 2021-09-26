@@ -1,0 +1,123 @@
+﻿head
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet', href='Wanted.css')
+  link(rel='stylesheet', href='Main.css')
+  link(rel='stylesheet', href='OurTrips.css')
+  link(rel='stylesheet', href='Tables.css')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  // Humburger menu lib
+  script(src='Wanted.js')
+  script(src='Main.js')
+  title Space Trip- Wanted
+// ---------------------Header-----------------------
+video#bg-video(autoplay='', muted='', loop='')
+  source(src='gfp-astro-timelapse.mp4', type='video/mp4')
+nav#myTopnav.topnav
+  a(href='http://localhost:3000/homepage') Home Page
+  a(href='http://localhost:3000/OurTrips') Our Trips
+  a(href='http://localhost:3000/MyOrders') My Orders
+  a(href='http://localhost:3000/Wanted') Wanted
+  a(href='http://localhost:3000/AboutUs') About Us
+  a.icon(href='javascript:void(0);', onclick='responsiveTopnav()')
+    i.fa.fa-bars
+  a.b(onclick="show('LogInForm')") Log In
+  a.b(onclick="show('regForm')") Sign Up
+br
+// --------------------------------------------
+body
+  block content
+// -----------------Pop Up Forms -------------------
+form#LogInForm.form-container(action='http://localhost:3000/auth', method='post')
+  h1 Login
+  label(for='username')
+    b Use Name
+  input(type='text', placeholder='Enter Use Name', oninput='username', required='')
+  label(for='psw')
+    b Password
+  input(type='password', placeholder='Enter Password', oninput='psw', required='')
+  button.btn(type='submit') Login
+  button.btn.cancel(type='button', onclick="hide('LogInForm')") Close
+form#regForm.form-container(action='', actions='/TODO', method='get')
+  h1 Register:
+  p#error
+  .tab.register
+    label(for='Fname')
+      b First name
+    input(name='fname', type='text', placeholder='First name...', oninput='this.Fname', required='')
+    label(for='Lname')
+      b Last name
+    input(name='lname', type='text', placeholder='Last name...', oninput='this.Lname', required='')
+    .nativeDatePicker
+      label(for='Birthdate') Birthdate:
+      input#Birthdate(name='Birthdate', type='date', required='')
+      span.validity
+  .tab.register
+    .email
+      label(for='email')
+        b Email
+      input(name='email', type='text', placeholder='Email...', oninput='email', required='')
+    label(for='userName')
+      b User Name
+    input(name='username', type='text', placeholder='User name...', oninput='username', required='')
+    label(for='psw')
+      b Password
+    input(name='password', type='password', placeholder='Password...', oninput='psw', required='')
+  div(style='overflow:auto;')
+    div
+      button#prevBtn.btn(type='button', style='float:left;', onclick="nextPrev(-1,'tab register','regForm', 'prevBtn', 'nextBtn')") Previous
+      button#nextBtn.btn(type='button', style='float:right;', onclick="nextPrev(1,'tab register','regForm', 'prevBtn', 'nextBtn')") Next
+  button.btn.cancel(type='submit', onclick="hide('regForm')") Close
+  // Circles which indicates the steps of the form:
+  div(style='text-align:center;margin-top:40px;')
+    span.step
+    span.step
+form#contact.form-container(action='/TODO', method='post')
+  h1 Contact Us
+  label(for='email')
+    b Email
+  input(type='text', placeholder='Enter Email', oninput='email', required='')
+  label(for='subject')
+    b Massege Us
+  br
+  textarea#subject(name='subject', placeholder='How can we help you..', style='height:100px')
+  button.btn(type='submit') Send
+  button.btn.cancel(type='submit', onclick="hide('contact')") Close
+form#FQA.form-container
+  h1 Q&amp;A
+  button.accordion(type='button', onclick='accordion()') Question 1
+  .panel
+    p Lorem ipsum...
+  button.accordion(type='button', onclick='accordion()') Question 2
+  .panel
+    p Lorem ipsum...
+  button.accordion(type='button', onclick='accordion()') Question 3
+  .panel
+    p Lorem ipsum...
+  button.btn.cancel(type='submit', onclick="hide('Q&A')") Close
+form#Privacy.form-container
+  h1 Privacy Policy
+  p
+    | &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+    | dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+    | ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+    | fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+    | mollit anim id est laborum.&quot;
+  button.btn.cancel(type='submit', onclick="hide('Privacy')") Close
+form#Terms.form-container
+  h1 Terms of Use
+  p
+    | &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+    | dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+    | ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+    | fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+    | mollit anim id est laborum.&quot;
+  button.btn.cancel(type='submit', onclick="hide('Terms')") Close
+// -----------------Pop Up Forms -------------------
+// -----------------Footer -------------------
+.footer
+  a.b(onclick="show('contact')") Contact Us
+  a.b(onclick="show('Privacy')") Privacy Policy
+  a.b(onclick="show('Terms')") Terms
+  a.b(onclick="show('FQA')") Q&amp;A
+// --------------------------------------------
