@@ -1,212 +1,84 @@
-﻿doctype html
-head
-  meta(charset='utf-8')
-  meta(name='viewport', content='width=device-width, initial-scale=1.0')
-  link(rel='stylesheet', href='Main.css')
-  link(rel='stylesheet', href='Tables.css')
-
-  // link to the humborger icon for mobile application
-  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
-  // Humburger menu lib
-  script(src='Main.js')
-  title SpaceTrip-HomePage
-  meta(charset='UTF-8')
-video#bg-video(autoplay='', muted='', loop='')
-  source(src='gfp-astro-timelapse.mp4', type='video/mp4')
-// Top Navigation
-nav#myTopnav.topnav
-  a.active(href='http://localhost:3000/homepage') Home Page
-  a(href='http://localhost:3000/OurTrips') Our Trips
-  a(href='http://localhost:3000/MyOrders') My Orders
-  a(href='http://localhost:3000/Wanted') Wanted
-  a(href='http://localhost:3000/AboutUs') About Us
-  a.icon(href='javascript:void(0);', onclick='responsiveTopnav()')
-    i.fa.fa-bars
-  a.b(onclick="show('LogInForm')") Log In
-  a.b(onclick="show('regForm')") Sign Up
-br
-br
-// Pop Up Forms
-form#LogInForm.form-container(action='http://localhost:3000/auth', method='post')
-  h1 Login
-  label(for='username')
-    b Use Name
-  input(name='username', type='text', placeholder='Enter Use Name', oninput='username', required='')
-  label(for='psw')
-    b Password
-  input(name='psw', type='password', placeholder='Enter Password', oninput='psw', required='')
-  button.btn(type='submit', onclick='') Login
-  button.btn.cancel(type='button', onclick="hide('LogInForm')") Close
-form#regForm.form-container(action='http://localhost:3000/newClient', method='post')
-  h1 Register:
-  p#error
-  .tab.register
-    label(for='Fname')
-      b First name
-    input(name='fname', type='text', placeholder='First name...', oninput='this.Fname', required='')
-    label(for='Lname')
-      b Last name
-    input(name='lname', type='text', placeholder='Last name...', oninput='this.Lname', required='')
-    .nativeDatePicker
-      label(for='Birthdate') Birthdate:
-      input#Birthdate(name='Birthdate', type='date', required='')
-      span.validity
-  .tab.register
-    .email
-      label(for='email')
-        b Email
-      input(name='email', type='text', placeholder='Email...', oninput='email', required='')
-    label(for='userName')
-      b User Name
-    input(name='username', type='text', placeholder='User name...', oninput='username', required='')
-    label(for='psw')
-      b Password
-    input(name='psw', type='password', placeholder='Password...', oninput='psw', required='')
-  div(style='overflow:auto;')
-    div
-      button#prevBtn.btn(type='button', style='float:left;', onclick="nextPrev(-1,'tab register','regForm', 'prevBtn', 'nextBtn')") Previous
-      button#nextBtn.btn(type='button', style='float:right;', onclick="nextPrev(n,'tab register','regForm', 'prevBtn', 'nextBtn')") Next
-  button.btn.cancel(type='button', onclick="hide('regForm')") Close
-  // Circles which indicates the steps of the form:
-  div(style='text-align:center;margin-top:40px;')
-    span.step
-    span.step
-form#contact.form-container(action='/TODO', method='post')
-  h1 Contact Us
-  .email
-    label(for='email')
-      b Email
-    input(name='email', type='text', placeholder='Email...', oninput='email', required='')
-  label(for='subject')
-    b Massege Us
-  br
-  textarea#subject(name='subject', placeholder='How can we help you..', style='height:100px')
-  button.btn(type='submit') Send
-  button.btn.cancel(type='submit', onclick="hide('contact')") Close
-form#FQA.form-container
-  h1 FQA
-  button.accordion(type='button', onclick='accordion()') Question 1
-  .panel
-    p Lorem ipsum...
-  button.accordion(type='button', onclick='accordion()') Question 2
-  .panel
-    p Lorem ipsum...
-  button.accordion(type='button', onclick='accordion()') Question 3
-  .panel
-    p Lorem ipsum...
-  button.btn.cancel(type='submit', onclick="hide('FQA')") Close
-form#Privacy.form-container
-  h1 Privacy Policy
-  p
-    | &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-    | dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-    | ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-    | fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-    | mollit anim id est laborum.&quot;
-  button.btn.cancel(type='submit', onclick="hide('Privacy')") Close
-form#Terms.form-container
-  h1 Terms of Use
-  p
-    | &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-    | dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-    | ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-    | fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-    | mollit anim id est laborum.&quot;
-  button.btn.cancel(type='submit', onclick="hide('Terms')") Close
-// Home Page
-form#searchMenu.Search-form(action='http://localhost:3000/searchResult', method='post')
-  .grid-container
-    .item1
-      label(for='Planets') Current location:
-      br
-      select#Planets(name='CurrentL', required='')
-        option(value='Earth') Earth
-        option(value='Jupiter') Jupiter
-        option(value='Mars') Mars
-        option(value='ISS') ISS
-        option(value='Venus') Venus
-    .item2
-      label(for='Planets') Destination:
-      br
-      select#Planets(name='DestinationL', required='')
-        option(value='') None
-        option(value='Mars') Mars
-        option(value='Earth') Earth
-        option(value='Jupiter') Jupiter
-        option(value='ISS') ISS
-        option(value='Venus') Venus
-    .item3
-      label(for='Tickets') Quantity:
-      br
-      select#Tickets(name='Tickets')
-        option(value='1') 1
-        option(value='2') 2
-        option(value='3') 3
-        option(value='4') 4
-        option(value='5') 5
-    .item4
-      .nativeDatePicker
-        label(for='DepartureDate') Departure date:
-        input#DepartureDate.date(type='date', name='DepartureDate')
-        span.validity
-      .fallbackDatePicker
+﻿extends layout
+block content
+    form#searchMenu.Search-form(action='http://localhost:3000/searchResult', method='post')
+      .grid-container
+        .item1
+          label(for='Planets') Current location:
+          br
+          select#Planets(name='CurrentL', required='')
+            option(value='Earth') Earth
+            option(value='Jupiter') Jupiter
+            option(value='Mars') Mars
+            option(value='ISS') ISS
+            option(value='Venus') Venus
+        .item2
+          label(for='Planets') Destination:
+          br
+          select#Planets(name='DestinationL', required='')
+            option(value='') None
+            option(value='Mars') Mars
+            option(value='Earth') Earth
+            option(value='Jupiter') Jupiter
+            option(value='ISS') ISS
+            option(value='Venus') Venus
+        
+        .item4
+          .nativeDatePicker
+            label(for='DepartureDate') Departure date:
+            input#DepartureDate.date(type='date', name='DepartureDate')
+            span.validity
+          .fallbackDatePicker
     
-    .item5
-      .nativeDatePicker
-        label(for='ComebackDate') Comeback date:
-        input#ComebackDate.date(type='date', name='ComebackDate')
-        span.validity
-      .fallbackDatePicker
+        .item5
+          .nativeDatePicker
+            label(for='ComebackDate') Comeback date:
+            input#ComebackDate.date(type='date', name='ComebackDate')
+            span.validity
+          .fallbackDatePicker
   
-    .item-6
-      input.btn(type='submit', value='Search')
-br
-// fiiled with Example!!!
-.recommandedShutteles(action='/TODO', method='get')
-  // the form shows ,ost recommanded trips based on the client shearch history
-  h1 Future Shutteles
-  h2 Recommanded for you
-  form.recommanded(action='/TODO', method='get')
-    a.bolty Mars
+        .item-6
+          input.btn(type='submit', value='Search Flights')
     br
-    a Departure date: 09/09/2021
+    // fiiled with Example!!!
+    .recommandedShutteles(action='/TODO', method='get')
+      // the form shows ,ost recommanded trips based on the client shearch history
+      h1 Future Shutteles
+      h2 Recommanded for you
+      form.recommanded(action='/TODO', method='get')
+        a.bolty Mars
+        br
+        a Departure date: 09/09/2021
+        br
+        a Remaining tickets: 30
+        br
+        a For total of:
+        br
+        a 20,000$
+        br
+        button.btn(type='button') Go to shuttle
+      form.recommanded(action='/TODO', method='get')
+        a.bolty Venus
+        br
+        a Departure date:10/10/2021
+        br
+        a Remaining tickets: 2!!
+        br
+        a For total of:
+        br
+        a 15,000$
+        br
+        button.btn(type='button') Go to shuttle
+      form.recommanded(action='/TODO', method='get')
+        a.bolty Mars
+        br
+        a Departure date:11/11/2021
+        br
+        a Remaining tickets:45
+        br
+        a For total of:
+        br
+        a 45,000$
+        br
+        button.btn(type='button') Go to shuttle
     br
-    a Remaining tickets: 30
     br
-    a For total of:
-    br
-    a 20,000$
-    br
-    button.btn(type='button') Go to shuttle
-  form.recommanded(action='/TODO', method='get')
-    a.bolty Venus
-    br
-    a Departure date:10/10/2021
-    br
-    a Remaining tickets: 2!!
-    br
-    a For total of:
-    br
-    a 15,000$
-    br
-    button.btn(type='button') Go to shuttle
-  form.recommanded(action='/TODO', method='get')
-    a.bolty Mars
-    br
-    a Departure date:11/11/2021
-    br
-    a Remaining tickets:45
-    br
-    a For total of:
-    br
-    a 45,000$
-    br
-    button.btn(type='button') Go to shuttle
-br
-br
-// Footer
-.footer
-  a.b(onclick="show('contact')") Contact Us
-  a.b(onclick="show('Privacy')") Privacy Policy
-  a.b(onclick="show('Terms')") Terms
-  a.b(onclick="show('FQA')") FQA

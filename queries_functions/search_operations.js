@@ -21,28 +21,56 @@ const searchmenu = function (req, res) {
         });
         return;
     };
-    var current_location = req.body.CurrentL;
-    var destination = req.body.DestinationL;
-    var Tickets = req.body.Tickets;
-    var departure_date = req.body.DepartureDate;
-    var ComebackDate = req.body.ComebackDate;
+
+ 
+    var FlightsSearch = {
+    
+        'current_location': req.body.CurrentL,
+        'destination': req.body.DestinationL,
+        'departure_date': req.body.DepartureDate,
+        'ComebackDate': req.body.ComebackDate,
+    }
+    var ReturnShuttel = {
+
+    }
+    var DepurtureShuttelList = [];
     //validation function that will show the search result form
     
     //enter into checkbox the shuttle ID
     //depurture
-    if (!departure_date) {
-        sql.query('SELECT * FROM shuttles WHERE current_location = ? AND capacity >= ?', [current_location, Tickets], function (error, results, fields) {
-            console.log("search without depurture date");
+    if (!FlightsSearch.departure_date) {
+        sql.query('SELECT * FROM shuttles WHERE current_location = ? AND destination= ?', [FlightsSearch.current_location, FlightsSearch.destination], function (error, results) {
+            if (error) {
+                console.log("error: ", err);
+                response.status(400).send({ message: "error in finding shuttles: " + err });
+                return;
+            }
+            console.log('results.length= '+ results.length);
+            if (results.length > 0) {
+                for (var i = 0; i < results.length; i++) {
+                    var DepurtureShuttel = {
+                        'ID': results[i].ID,
+                        'from': results[i].current_location,
+                        'to': results[i].destination,
+                        'depurtuedate': results[i].departure_date,
+                        'capacity': results[i].capacity, // todo culc function
+                        'price': results[i].ticket_price,
+                    }
+                    DepurtureShuttelList.push(DepurtureShuttel);
+                    console.log(DepurtureShuttel);
+                }
+                res.render('SearchResult', { "DepurtureShuttelList": DepurtureShuttelList });
+            }
         });
-    } else {
+    } /*else {
         sql.query('SELECT * FROM shuttles WHERE current_location = ? AND capacity >= ? AND departure_date=?', [current_location, Tickets, departure_date], function (error, results, fields) {
             console.log("search with depurture date");
-        });
+        });*/
         
 
-    }
-    //return flight
-    if (!ComebackDate) {
+    /* }
+   //return flight
+    if (!FlightsSearch.ComebackDate) {
         sql.query('SELECT * FROM shuttles WHERE destination = ? AND capacity >= ?', [current_location, Tickets], function (error, results, fields) {
             console.log("search without return date");
         });
@@ -52,9 +80,9 @@ const searchmenu = function (req, res) {
             console.log(Loggedin);
         });
 
-    }
-    res.render('SearchResult');
-    return;
+    }*/
+    
+  
 }
 
 

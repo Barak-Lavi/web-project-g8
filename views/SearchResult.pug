@@ -7,23 +7,24 @@ block content
           tr
             th(scope='col') Flight ID
             th(scope='col') From
-            // add function that returns location and datetime
             th(scope='col') To
-            // add function that returns location and datetime
+            th(scope='col') Depurture Date
             th(scope='col') Remaining tickets
             th(scope='col') Total Price
             th(scope='col')
         tbody
-          tr
-            th(scope='row')
-            td
-            td
-            td
-            td
-            td.FlightInfoCol
-              input#ChooseFlight(type='checkbox', name='depurtureFlight', value='shuttleID', required='')
-              label(for='ChooseFlight')
-              br
+          for DepurtureShuttel in DepurtureShuttelList
+            tr
+              th(scope='row')= DepurtureShuttel.ID
+              td= DepurtureShuttel.from
+              td= DepurtureShuttel.to
+              td= DepurtureShuttel.depurtuedate
+              td= DepurtureShuttel.capacity
+              td= DepurtureShuttel.price
+              td.FlightInfoCol
+                input#ChooseFlight(type='checkbox', name='depurtureFlight', value='DepurtureShuttel', required='')
+                label(for='ChooseFlight')
+                br
       h1 Choose Return Flight
       table.fl-table
         thead
