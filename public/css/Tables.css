@@ -20,6 +20,7 @@
     .fl-table td, .fl-table th {
         text-align: center;
         padding: 8px;
+        
     }
 
     .fl-table td {
@@ -30,12 +31,14 @@
     .fl-table thead th {
         color: white;
         background: rgba(0,0,0,0.3);
+        
     }
 
 
         .fl-table thead th:nth-child(odd) {
             color: white;
             background: rgba(0,0,0,0.7);
+            
         }
 
     .fl-table tr:nth-child(even) {
@@ -44,6 +47,7 @@
 
 th[scope="row"] {
     background-color: var(--green);
+    border: 1px solid black;
 }
 /* Responsive */
 

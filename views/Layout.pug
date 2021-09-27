@@ -31,11 +31,11 @@ body
 form#LogInForm.form-container(action='http://localhost:3000/auth', method='post')
   h1 Login
   label(for='username')
-    b Use Name
-  input(type='text', placeholder='Enter Use Name', oninput='username', required='')
+    b User Name
+  input(type='text', placeholder='Enter User Name', oninput='username',name='username', required='')
   label(for='psw')
     b Password
-  input(type='password', placeholder='Enter Password', oninput='psw', required='')
+  input(type='password', placeholder='Enter Password', oninput='psw',name='psw', required='')
   button.btn(type='submit') Login
   button.btn.cancel(type='button', onclick="hide('LogInForm')") Close
 form#regForm.form-container(action='', actions='/TODO', method='get')

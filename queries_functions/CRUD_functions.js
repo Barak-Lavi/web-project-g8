@@ -42,12 +42,11 @@ const createNewClient = function (req, res) {
 };
 //read for log in 
 const LogIn = function (request, response) {
-    const loginClient = {
+    var loginClient = {
         "username": request.body.username,
         "password": request.body.psw,
     };
-    /*var username = request.body.username;
-    var password = request.body.psw;*/
+
     console.log(loginClient.username, loginClient.password);
     if (loginClient.username && loginClient.password) {
         sql.query('SELECT * FROM clients WHERE user_name=? AND password = ?', [loginClient.username, loginClient.password], function (err ,result) {
@@ -57,13 +56,12 @@ const LogIn = function (request, response) {
                 return;
             }
             else if (result.length > 0) {
-                request.session.loggedin = true;
-                console.log(request.session.loggedin);
+               
                 console.log(result);
                 //Loggedin = request.session.loggedin;
-                request.session.username = loginClient.username;
+        
                 Loggedin = true;
-                response.redirect('/homepage');
+                response.render('homepage');
             } else {
                 console.log("user name or password are incurrect");
                 response.send(('<script>alert("user name or password are incurrect");window.location.href = "http://localhost:3000/homepage";</script>'));
@@ -74,7 +72,7 @@ const LogIn = function (request, response) {
         });
     } else {
         console.log("Please enter Username and Password!");
-        response.send(('<script>alert("Please enter Username and Password!");window.location.href = "http://localhost:3000/homepage";</script>'));
+        //response.send(('<script>alert("Please enter Username and Password!");window.location.href = "http://localhost:3000/homepage";</script>'));
 
     }
 }
