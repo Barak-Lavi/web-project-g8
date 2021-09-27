@@ -2,14 +2,11 @@
 block content
     form#purchesForm.form-container(action='http://localhost:3000/myorders', method='post')
       .purchesForm
-        #Person
-          h3 Person 1:
-          label(for='fname')
-            b First name
-          input(name='fname', type='text', placeholder='First name...', oninput='this.Fname', required='')
-          label(for='Lname')
-            b Last name
-          input(name='lname', type='text', placeholder='Last name...', oninput='this.Lname', required='')
+        h3 Your tickets:
+        p #{DepurtureShuttel}
+        p #{ReturnShuttel}
+        h2 total price: 
+        //h2 #{total_price}
       br
       br
       .purchesForm
@@ -24,7 +21,7 @@ block content
         input#cvv(name='cvv', type='text', placeholder='352')
         br
         br
-        h2 total price:
+        
         h2 press submit to complete the purches
       button.btn(type='submit') Purchase
-      button.btn.cancel(type='button', onclick="window.location.href='http://localhost:3000/searchResult'") Back
+      button.btn.cancel(type='button', onclick="window.history.back()") Back

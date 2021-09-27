@@ -5,12 +5,6 @@ const app = express();
 
 
 
-//using session secret to mennage login
-var session = require('express-session');
-app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
-
-var Loggedin = false;
-
 const createNewClient = function (req, res) {
     // Validate request
     if (!req.body) {
@@ -36,7 +30,7 @@ const createNewClient = function (req, res) {
             return;
         }
         console.log("created client");
-        // res.send({ message: "new customer created successfully" });
+        
         return;
     });
 };
@@ -45,9 +39,9 @@ const LogIn = function (request, response) {
     var loginClient = {
         "username": request.body.username,
         "password": request.body.psw,
-    };
 
-    console.log(loginClient.username, loginClient.password);
+    };
+    
     if (loginClient.username && loginClient.password) {
         sql.query('SELECT * FROM clients WHERE user_name=? AND password = ?', [loginClient.username, loginClient.password], function (err ,result) {
             if (err) {
@@ -55,13 +49,14 @@ const LogIn = function (request, response) {
                 response.status(400).send({ message: "error in finding client: " + err });
                 return;
             }
+            
             else if (result.length > 0) {
-               
-                console.log(result);
-                //Loggedin = request.session.loggedin;
-        
-                Loggedin = true;
-                response.render('homepage');
+                var UserObj = {};
+                
+                LoggedInUser = JSON.parse(JSON.stringify(result));
+                
+                console.log(LoggedInUser[0].email + ' has loggedIn');
+                response.render('homepage', { 'LoggedInUser': LoggedInUser[0].email});
             } else {
                 console.log("user name or password are incurrect");
                 response.send(('<script>alert("user name or password are incurrect");window.location.href = "http://localhost:3000/homepage";</script>'));
@@ -72,13 +67,13 @@ const LogIn = function (request, response) {
         });
     } else {
         console.log("Please enter Username and Password!");
-        //response.send(('<script>alert("Please enter Username and Password!");window.location.href = "http://localhost:3000/homepage";</script>'));
+        response.send(('<script>alert("Please enter Username and Password!");window.location.href = "http://localhost:3000/homepage";</script>'));
 
     }
 }
 
 
 
-module.exports = { createNewClient, LogIn, Loggedin};
+module.exports = { createNewClient, LogIn};
 
 

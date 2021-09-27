@@ -4,15 +4,11 @@ const bodyParser = require("body-parser");
 const app = express();
 const path = require('path');
 
-//using session secret to mennage login
-var session = require('express-session');
-app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
 
 var isLogedIn = require('./CRUD_functions.js');
 var Loggedin = isLogedIn.Loggedin;
 
-const { isNull } = require("util");
-const { ENOTEMPTY } = require("constants");
+
 
 const searchmenu = function (req, res) {
     if (!req.body) {
@@ -22,22 +18,25 @@ const searchmenu = function (req, res) {
         return;
     };
 
- 
+
     var FlightsSearch = {
-    
+
         'current_location': req.body.CurrentL,
         'destination': req.body.DestinationL,
         'departure_date': req.body.DepartureDate,
         'ComebackDate': req.body.ComebackDate,
     }
-    var ReturnShuttel = {
-
-    }
-    var DepurtureShuttelList = [];
-    //validation function that will show the search result form
+    var LoggedInUser = req.body.LoggedInUser;
     
+    console.log(LoggedInUser);
+    
+    var DepurtureShuttelList = [];
+    var ReturnShuttelList = [];
+    //var DepurtureShuttel = { 'ID': String, 'from': String, 'to': String, 'depurtuedate': Date, 'capacity': Int16Array, 'price': Int16Array };
+
     //enter into checkbox the shuttle ID
     //depurture
+   
     if (!FlightsSearch.departure_date) {
         sql.query('SELECT * FROM shuttles WHERE current_location = ? AND destination= ?', [FlightsSearch.current_location, FlightsSearch.destination], function (error, results) {
             if (error) {
@@ -45,7 +44,7 @@ const searchmenu = function (req, res) {
                 response.status(400).send({ message: "error in finding shuttles: " + err });
                 return;
             }
-            console.log('results.length= '+ results.length);
+            console.log('results.length= ' + results.length);
             if (results.length > 0) {
                 for (var i = 0; i < results.length; i++) {
                     var DepurtureShuttel = {
@@ -57,60 +56,117 @@ const searchmenu = function (req, res) {
                         'price': results[i].ticket_price,
                     }
                     DepurtureShuttelList.push(DepurtureShuttel);
-                    console.log(DepurtureShuttel);
                 }
-                res.render('SearchResult', { "DepurtureShuttelList": DepurtureShuttelList });
             }
-        });
-    } /*else {
-        sql.query('SELECT * FROM shuttles WHERE current_location = ? AND capacity >= ? AND departure_date=?', [current_location, Tickets, departure_date], function (error, results, fields) {
-            console.log("search with depurture date");
-        });*/
-        
-
-    /* }
-   //return flight
-    if (!FlightsSearch.ComebackDate) {
-        sql.query('SELECT * FROM shuttles WHERE destination = ? AND capacity >= ?', [current_location, Tickets], function (error, results, fields) {
-            console.log("search without return date");
+            
         });
     } else {
-        sql.query('SELECT * FROM shuttles WHERE destination = ? AND capacity >= ? AND departure_date=?', [current_location, Tickets, ComebackDate], function (error, results, fields) {
-            console.log("search with return date");
-            console.log(Loggedin);
+        sql.query('SELECT * FROM shuttles WHERE current_location = ? AND destination = ? AND departure_date=?', [FlightsSearch.current_location, FlightsSearch.destination, FlightsSearch.departure_date], function (error, results, fields) {
+            console.log("search with depurture date");
+            if (error) {
+                console.log("error: ", err);
+                response.status(400).send({ message: "error in finding shuttles: " + err });
+                return;
+            }
+            console.log('results.length= ' + results.length);
+            if (results.length > 0) {
+                for (var i = 0; i < results.length; i++) {
+                    var DepurtureShuttel = {
+                        'ID': results[i].ID,
+                        'from': results[i].current_location,
+                        'to': results[i].destination,
+                        'depurtuedate': results[i].departure_date,
+                        'capacity': results[i].capacity, // todo culc function
+                        'price': results[i].ticket_price,
+                    }
+                    DepurtureShuttelList.push(DepurtureShuttel);
+                }               
+            }
         });
-
-    }*/
+    }
     
-  
+    if (!FlightsSearch.ComebackDate) {
+        sql.query('SELECT * FROM shuttles WHERE current_location = ? AND destination= ?', [FlightsSearch.destination, FlightsSearch.current_location], function (error, results) {
+            if (error) {
+                console.log("error: ", err);
+                response.status(400).send({ message: "error in finding shuttles: " + err });
+                return;
+            }
+            console.log('results.length= ' + results.length);
+            if (results.length > 0) {
+                for (var i = 0; i < results.length; i++) {
+                    var ReturnShuttel = {
+                        'ID': results[i].ID,
+                        'from': results[i].current_location,
+                        'to': results[i].destination,
+                        'depurtuedate': results[i].departure_date,
+                        'capacity': results[i].capacity, // todo culc function
+                        'price': results[i].ticket_price,
+                    }
+                    ReturnShuttelList.push(ReturnShuttel);
+                }
+                res.render('SearchResult', { "DepurtureShuttelList": DepurtureShuttelList, "ReturnShuttelList": ReturnShuttelList, 'LoggedInUser': LoggedInUser});
+            }
+        });
+    } else {
+        sql.query('SELECT * FROM shuttles WHERE current_location = ? AND destination = ? AND departure_date=?', [FlightsSearch.destination, FlightsSearch.current_location, FlightsSearch.ComebackDate], function (error, results, fields) {
+            console.log("search with depurture date");
+            if (error) {
+                console.log("error: ", err);
+                response.status(400).send({ message: "error in finding shuttles: " + err });
+                return;
+            }
+            console.log('results.length= ' + results.length);
+            if (results.length > 0) {
+                for (var i = 0; i < results.length; i++) {
+                    var ReturnShuttel = {
+                        'ID': results[i].ID,
+                        'from': results[i].destination,
+                        'to': results[i].current_location,
+                        'depurtuedate': results[i].departure_date,
+                        'capacity': results[i].capacity, // todo culc function
+                        'price': results[i].ticket_price,
+                    }
+                    ReturnShuttelList.push(ReturnShuttel);
+                }
+                res.render('SearchResult', { "DepurtureShuttelList": DepurtureShuttelList, "ReturnShuttelList": ReturnShuttelList });
+            }
+        });
+    }
 }
 
 
 
 const Purchaseform = function (req, res) {
-   /* console.log(Loggedin);
-    if (!Loggedin) {
+    var LoggedInUser = req.body.LoggedInUser;
+
+    console.log(LoggedInUser);
+
+    if (!LoggedInUser) {
         console.log("for purchase flight you have to log in your acount or sing in");
         return;
-    }*/
+    }
     if (!req.body) {
-        res.status(400).send({
-            
+        res.status(400).send({           
             alert: "did not find flights"
         });
         return;
     };
-    var depurtueFlight = req.app.depurtureFlight;
-    var returnFlight = req.app.returnFlight;
+    var DepurtureShuttel = req.body.DepurtureShuttel;
+    var ReturnShuttel = req.body.ReturnShuttel;
     
-    if (depurtueFlight && returnFlight) {
 
+    console.log(DepurtureShuttel);
+    
+
+    if (DepurtureShuttel || ReturnShuttel) {
+
+        res.render('PurchaseForm', { 'DepurtureShuttel': DepurtureShuttel, 'ReturnShuttel': ReturnShuttel });
 
     } else {
         console.log("did not choose depurtue and return flights");
 
     }
-    res.render('PurchaseForm');
     return;
 };
 
@@ -123,17 +179,31 @@ const MakePurchase = function (req, res) {
         return;
     };
     //query to check if the client already hade a credit card saved
-
+    var depurtueFlight = req.body.depurtueFlight;
+    var returnFlight = req.body.returnFlight;
     const addCredit = {
         "credit_number": req.body.ccnum,
         "exp_month": req.body.expmonth,
         "exp_year": req.body.expyear,
         "cvv": req.body.cvv,
-        //"email": req.body.lname///TODO
+        "email": null
         
     };
-    var credit_number = req.body.ccnum;
-    sql.query('SELECT * FROM credit_cards WHERE credit_number = ? ', credit_number, function (error, results, fields) {
+    sql.query("INSERT INTO credit_cards SET ?", addCredit, (err, mysqlres) => {
+        if (err) {
+            console.log("error: ", err);
+            res.status(400).send({ message: "error in creating client: " + err });
+            return;
+        }
+        console.log("created client");
+
+        return;
+    });
+
+
+    res.render('MyOrders');
+    return;
+    /*sql.query('SELECT * FROM credit_cards WHERE credit_number = ? ', credit_number, function (error, results, fields) {
         if (results) {
             console.log("credit card already in use with client" + results + "dddd");
             //TODO ADD tickets to client
@@ -149,7 +219,7 @@ const MakePurchase = function (req, res) {
                 // res.send({ message: "new customer created successfully" });
                 return;
             });
-        }
+        }*/
        /*
          sql.query("INSERT INTO passengers SET ?", , (err, mysqlres) => {
             if (err) {
@@ -162,12 +232,9 @@ const MakePurchase = function (req, res) {
             return;
         });*/
        
-    });
-    res.render('MyOrders');
-    return;
+    
 }
 
 
 
-
-module.exports = { searchmenu, Purchaseform, MakePurchase};
+module.exports = { searchmenu, Purchaseform, MakePurchase };

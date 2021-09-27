@@ -1,6 +1,7 @@
 ﻿extends layout
 block content
     form#searchResult.form-container(action='http://localhost:3000/purchaseForm', method='post')
+      input(type='hidden' , name='LoggedInUser' , value= LoggedInUser)
       h1 Choose Departure Flight
       table.fl-table
         thead
@@ -22,7 +23,7 @@ block content
               td= DepurtureShuttel.capacity
               td= DepurtureShuttel.price
               td.FlightInfoCol
-                input#ChooseFlight(type='checkbox', name='depurtureFlight', value='DepurtureShuttel', required='')
+                input#ChooseFlight(type='checkbox', name='DepurtureShuttel', value=DepurtureShuttel)
                 label(for='ChooseFlight')
                 br
       h1 Choose Return Flight
@@ -31,22 +32,24 @@ block content
           tr
             th(scope='col') Flight ID
             th(scope='col') From
-            // add function that returns location and datetime
             th(scope='col') To
-            // add function that returns location and datetime
+            th(scope='col') Return Date
             th(scope='col') Remaining tickets
             th(scope='col') Total Price
             th(scope='col')
         tbody
-          tr
-            th(scope='row') TR-7
-            td Earth 7.6.2021
-            td Mars 7.6.2022
-            td 2
-            td 250,000
-            td.FlightInfoCol
-              input#ChooseFlight(type='checkbox', name='returnFlight', value='shuttleID', required='')
-              label(for='ChooseFlight')
-              br
+          for ReturnShuttel in ReturnShuttelList
+            tr
+              th(scope='row')= ReturnShuttel.ID
+              td= ReturnShuttel.from
+              td= ReturnShuttel.to
+              td= ReturnShuttel.depurtuedate
+              td= ReturnShuttel.capacity
+              td= ReturnShuttel.price
+              td.FlightInfoCol
+                input#ChooseFlight(type='checkbox', name='ReturnShuttel', value= ReturnShuttel)
+                label(for='ChooseFlight')
+                br
+                
       button.btn(type='submit', value='Purches') Purchase
-      button.btn(type='button', value='Purches', onclick="window.location.href='http://localhost:3000/homepage'") Back
+      button.btn(type='button', value='Purches', onclick="window.history.back()") Back
