@@ -51,7 +51,7 @@ const LogIn = function (request, response) {
             }
             
             else if (result.length > 0) {
-                var UserObj = {};
+                
                 
                 LoggedInUser = JSON.parse(JSON.stringify(result));
                 

@@ -4,9 +4,7 @@ const app = express();
 const port = 3000;
 const path = require('path');
 
-//using session secret to mennage login
-var session = require('express-session');
-app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
+
 
 const CRUD_operations = require("./queries_functions/CRUD_functions.js");
 //const futureShuttles = require("./queries_functions/futureShuttles.js");

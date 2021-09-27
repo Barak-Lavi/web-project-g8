@@ -5,10 +5,6 @@ const app = express();
 const path = require('path');
 
 
-var isLogedIn = require('./CRUD_functions.js');
-var Loggedin = isLogedIn.Loggedin;
-
-
 
 const searchmenu = function (req, res) {
     if (!req.body) {
@@ -55,6 +51,7 @@ const searchmenu = function (req, res) {
                         'capacity': results[i].capacity, // todo culc function
                         'price': results[i].ticket_price,
                     }
+                    
                     DepurtureShuttelList.push(DepurtureShuttel);
                 }
             }
@@ -129,7 +126,7 @@ const searchmenu = function (req, res) {
                     }
                     ReturnShuttelList.push(ReturnShuttel);
                 }
-                res.render('SearchResult', { "DepurtureShuttelList": DepurtureShuttelList, "ReturnShuttelList": ReturnShuttelList });
+                res.render('SearchResult', { "DepurtureShuttelList": DepurtureShuttelList, "ReturnShuttelList": ReturnShuttelList, 'LoggedInUser': LoggedInUser});
             }
         });
     }
@@ -152,11 +149,14 @@ const Purchaseform = function (req, res) {
         });
         return;
     };
-    var DepurtureShuttel = req.body.DepurtureShuttel;
+    
+    var DepurtureShuttel= req.body.DepurtureShuttel;
+    DepurtureShuttel= JSON.parse(JSON.stringify(req.body.DepurtureShuttel));
     var ReturnShuttel = req.body.ReturnShuttel;
     
 
     console.log(DepurtureShuttel);
+    console.log(DepurtureShuttel[0].price);
     
 
     if (DepurtureShuttel || ReturnShuttel) {
@@ -189,20 +189,29 @@ const MakePurchase = function (req, res) {
         "email": null
         
     };
-    sql.query("INSERT INTO credit_cards SET ?", addCredit, (err, mysqlres) => {
-        if (err) {
-            console.log("error: ", err);
-            res.status(400).send({ message: "error in creating client: " + err });
-            return;
-        }
-        console.log("created client");
+    sql.query('SELECT * FROM credit_cards WHERE credit_number = ? ', addCredit.credit_number, function (error, results, fields) {
+        if (results) {
+            console.log("credit card already in use with client" + results + "dddd");
 
+            return;
+        } else {
+            sql.query("INSERT INTO credit_cards SET ?", addCredit, (err, mysqlres) => {
+                if (err) {
+                    console.log("error: ", err);
+                    res.status(400).send({ message: "error in creating addCredit: " + err });
+                    return;
+                }
+                console.log("created addCredit");
+                return;
+            });
+
+        }
+         //TODO ADD tickets to client
+        res.render('MyOrders');
         return;
     });
 
-
-    res.render('MyOrders');
-    return;
+}
     /*sql.query('SELECT * FROM credit_cards WHERE credit_number = ? ', credit_number, function (error, results, fields) {
         if (results) {
             console.log("credit card already in use with client" + results + "dddd");
@@ -233,7 +242,7 @@ const MakePurchase = function (req, res) {
         });*/
        
     
-}
+
 
 
 
