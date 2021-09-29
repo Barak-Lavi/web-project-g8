@@ -85,70 +85,33 @@ block content
         button.btn.table(type='button', onclick="showTable('Tables','Venus')") Show Trips
     br
     br
-    // the purchase form will request the info for all the tickets, person1 person2....person5
-    form#purchesForm.form-container(action='/TODO', method='post')
-      .tab.purchesForm
-        #Person
-          h3 Person 1:
-          label(for='Fname')
-            b First name
-          input(type='text', placeholder='First name...', oninput='this.Fname', required='')
-          label(for='Lname')
-            b Last name
-          input(type='text', placeholder='Last name...', oninput='this.Lname', required='')
-      .tab.purchesForm
-        label(for='cname') Name on Card
-        input#cname(type='text', name='cardname', placeholder='John More Doe')
-        label(for='ccnum') Credit card number
-        input#ccnum(type='text', name='cardnumber', placeholder='1111-2222-3333-4444')
-        label(for='expmonth') Exp Month
-        input#expmonth(type='text', name='expmonth', placeholder='September')
-        label(for='expyear') Exp Year
-        input#expyear(type='text', name='expyear', placeholder='2018')
-        label(for='cvv') CVV
-        input#cvv(type='text', name='cvv', placeholder='352')
-      .tab.purchesForm
-        label(for='email')
-          i.fa.fa-envelope
-          |  Send the bill to Email
-        input#email(type='text', name='email', placeholder='john@example.com', required='')
-        h2 total price:
-        h2 press submit to complete the purches
-      div(style='overflow:auto;')
-        div(style='float:right;')
-          button#prevBtn2.btn(type='button', onclick="nextPrev(-1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')") Previous
-          button#nextBtn2.btn(type='submit', onclick="nextPrev(1,'tab purchesForm','purchesForm', 'prevBtn2', 'nextBtn2')") Next
-      button.btn.cancel(type='submit', onclick="hide('purchesForm')") Close
-      // Circles which indicates the steps of the form:
-      div(style='text-align:center;margin-top:40px;')
-        span.step
-        span.step
-    form#Tables.Tables(method='post')
-      h1(id='Next flights to') Next flights
-      #marsFlights.flight-table-wrapper
-        table.fl-table
-          thead
-            tr
-              th(scope='col') Flight ID
-              th(scope='col') Departure date
-              th(scope='col') Comeback date
-              th(scope='col') Current location
-              th(scope='col') Destination
-              th(scope='col') Flight time
-              th(scope='col') Tickets quantity
-              th(scope='col') Total Price
-              th(scope='col') Purchase
-          tbody
-            tr
-              th(scope='row') TR-7
-              td 7.6.2021
-              td 7.6.2022
-              td Earth
-              td Mars
-              td 15 months
-              td 2
-              td 15000000
-              td
-                button.btn(type='button', value='Purches', onclick="show('purchesForm')") Purchase
-      button.btn.cancel(type='button', onclick="hide('Tables')") Close
+    
+    
+    each location in locations
+      form.Tables(id='table-' + location.location, method='post')
+        h1(id='Next flights to') Next flights
+        #marsFlights.flight-table-wrapper
+          table.fl-table
+            thead
+              tr
+                th(scope='col') Flight ID
+                th(scope='col') Departure date
+                th(scope='col') Current location
+                th(scope='col') Destination
+                th(scope='col') Capacity
+                th(scope='col') Total Price
+                th(scope='col') Purchase
+            tbody
+              each trip in locations_trips[location.location]
+                tr
+                  th(scope='row')=trip['ID']
+                  td=trip['departure_date']
+                  td=trip['current_location']
+                  td=trip['destination']
+                  td=trip['capacity']
+                  td=trip['ticket_price']
+                  td
+                    button.btn(type='button', value='Purches', onclick="show('purchesForm')") Purchase
+        button.btn.cancel(type='button', onclick=`hide('table-${location.location}')`) Close
+
 

@@ -72,16 +72,16 @@ form#regForm.form-container(action='', actions='/TODO', method='get')
   div(style='text-align:center;margin-top:40px;')
     span.step
     span.step
-form#contact.form-container(action='/TODO', method='post')
+form#contact.form-container(action='http://localhost:3000/contactResult', method='post')
   h1 Contact Us
   label(for='email')
     b Email
-  input(type='text', placeholder='Enter Email', oninput='email', required='')
+  input(name='email', type='text', placeholder='Enter Email', oninput='email', required='')
   label(for='subject')
-    b Massege Us
+    b Message Us
   br
   textarea#subject(name='subject', placeholder='How can we help you..', style='height:100px')
-  button.btn(type='submit') Send
+  button.btn(type='button', onclick="submitContact()") Send
   button.btn.cancel(type='submit', onclick="hide('contact')") Close
 form#FQA.form-container
   h1 Q&amp;A

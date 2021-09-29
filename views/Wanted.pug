@@ -18,7 +18,7 @@ block content
         a   * CLEAR RECORD.
         br
         br
-        button.btn(type='button', onclick="show('FillInformation')") Submit application
+        button.btn(type='button', onclick="showJob('FillInformation', 'Casual jobs')") Submit application
       .GraphicDesigner
         img.picture(src='GraphicDesign.jpg', style='width: 100%; height: 500px;')
       .GraphicDesigner-description
@@ -38,7 +38,7 @@ block content
         a   * CREATIVITY.
         br
         br
-        button.btn(type='button', onclick="show('FillInformation')") Submit application
+        button.btn(type='button', onclick="showJob('FillInformation', 'Graphic Designers')") Submit application
       .AlgorithmsDeveloper
         img.picture(src='AlgorithmsDeveloper.jpg', style='width: 100%; height: 500px;')
       .AlgorithmsDeveloper-description
@@ -57,11 +57,11 @@ block content
         br
         br
         br
-        button.btn(type='button', onclick="show('FillInformation')") Submit application
+        button.btn(type='button', onclick="showJob('FillInformation', 'Algorithms Developers')") Submit application
       .MarketingManager
         img.picture(src='MarketingManagement.jpg', style='width: 100%; height: 500px;')
       .MarketingManager-description
-        h2 Marketing managers
+        h2 Marketing Managers
         a Get the attention of absolutely everybody.
         br
         a   * The ability to attract people, Charisma.
@@ -79,7 +79,7 @@ block content
         br
         br
         br
-        button.btn(type='button', onclick="show('FillInformation')") Submit application
+        button.btn(type='button', onclick="showJob('FillInformation', 'Marketing Managers')") Submit application
       .DataAnalyst
         img.picture(src='DataAnalysisEngineering.jpg', style='width: 100%; height: 500px;')
       .DataAnalyst-description
@@ -96,9 +96,9 @@ block content
         br
         a   * High skills in python and ability to program well with it.
         br
-        button.btn(type='button', onclick="show('FillInformation')") Submit application
+        button.btn(type='button', onclick="showJob('FillInformation', 'Data analyst and Engineers')") Submit application
 
-    form#FillInformation.form-container(action='/TODO', method='get')
+    form#FillInformation.form-container(action='http://localhost:3000/wantedResult', method='post')
       h3 Fill your information and sent us your CV
       label(for='firstname')
         b First name
@@ -115,9 +115,10 @@ block content
       label(form='Uploadfiles')
         b Upload files
       input#myFile(type='file', name='filename', placeholder='Choose file')
+      input(id='job', name='job', type='text', hidden)
       br
       br
       div(style='overflow:auto;')
         div
-          button.btn(type='submit', onclick='submitWanted()') submit
+          button.btn(type='button', onclick='submitWanted()') submit
       button.btn.cancel(type='button', onclick="hide('FillInformation')") Close

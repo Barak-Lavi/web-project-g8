@@ -36,37 +36,38 @@ app.set('view engine', 'pug');
 //--------------------------------Routes--------------------------------------
 
 // home route
-app.get('/HomePage', function (req, res) {
-    res.render('HomePage');
-   
+app.get('/HomePage', async function (req, res) {
+    const dests = await Search_operations.getTopShutteles();
+    res.render('HomePage', { dests }); 
 });
-app.get('/OurTrips', function (req, res) {
-    res.render('OurTrips');
 
+app.get('/OurTrips', async function (req, res) {
+    const trips = await Search_operations.getTrips();
+    res.render('OurTrips', trips);
 });
+
 app.get('/MyOrders', function (req, res) {
     res.render('MyOrders');
 
 });
 app.get('/Wanted', function (req, res) {
     res.render('Wanted');
-
 });
+
 app.get('/AboutUs', function (req, res) {
     res.render('AboutUs');
-
 });
+
 app.get('/purchaseForm', function (req, res) {
     res.render('purchaseForm');
-
 });
+
 app.get('/searchResult', function (req, res) {
     res.render('searchResult');
-
 });
+
 app.get('/Layout', function (req, res) {
     res.render('Layout');
-
 });
 
 
@@ -78,10 +79,8 @@ app.post("/newClient", CRUD_operations.createNewClient);
 app.post('/auth', CRUD_operations.LogIn);
 
 //Search menu
-
 app.post('/purchaseForm', Search_operations.Purchaseform);
 app.post('/myorders', Search_operations.MakePurchase);
-
-
-
 app.post('/searchResult', Search_operations.searchmenu);
+app.post('/wantedResult', CRUD_operations.createNewWanted);
+app.post('/contactResult', CRUD_operations.createNewContact);

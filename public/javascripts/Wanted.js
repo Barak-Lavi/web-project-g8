@@ -1,5 +1,8 @@
+let jobDesc = 'Casual jobs';
+
 /*--------------------------------------Pop Ups----------------------------------------- */
-var show = function (id) {
+var showJob = function (id, job) {
+    jobDesc = job;
     $(id).style.display = 'block';
     if (id == 'regForm') {
         showTab(currentTab, "tab", id, 'prevBtn', 'nextBtn');
@@ -89,6 +92,9 @@ function submitWanted() {
     x = document.getElementById("FillInformation");
     y = x.getElementsByTagName("input");
     for (i = 0; i < y.length; i++) {
+        if (y[i].name === "job") {
+            break;
+        }
         // If a field is empty...
         if (y[i].value == "") {
             // add an "invalid" class to the field:
@@ -123,8 +129,9 @@ function submitWanted() {
     }
     // If the valid status is true, mark the step as finished and valid:
     if (valid) {
+        document.getElementById("job").value = jobDesc;
         document.getElementById("FillInformation").submit();
- 
+        hide('FillInformation');
     }
     return false;
 }

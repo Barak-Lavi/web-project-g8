@@ -254,5 +254,9 @@ function validateForm(c) {
     return valid; // return the valid status
 }
 
+function submitContact() {
+    document.getElementById("contact").submit();
+    hide('contact');
+}
 
 /*------------------------------------------------------------------------------- */
