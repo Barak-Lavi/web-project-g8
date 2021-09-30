@@ -58,7 +58,7 @@ block content
           |                 * Ganymede
           br
           |                 * Callisto
-        button.btn.table(type='button', onclick="showTable('Tables','Jupiter Moons')") Show Trips
+        button.btn.table(type='button', onclick="showTable('Tables','Jupiter')") Show Trips
       #ISS.ISS
         video#video-container(autoplay='', loop='', muted='')
           source(src='ISS.mp4')
@@ -86,9 +86,9 @@ block content
     br
     br
     
-    
+
     each location in locations
-      form.Tables(id='table-' + location.location, method='post')
+      div.Tables(id='table-' + location.location)
         h1(id='Next flights to') Next flights
         #marsFlights.flight-table-wrapper
           table.fl-table
@@ -103,15 +103,19 @@ block content
                 th(scope='col') Purchase
             tbody
               each trip in locations_trips[location.location]
-                tr
-                  th(scope='row')=trip['ID']
-                  td=trip['departure_date']
-                  td=trip['current_location']
-                  td=trip['destination']
-                  td=trip['capacity']
-                  td=trip['ticket_price']
-                  td
-                    button.btn(type='button', value='Purches', onclick="show('purchesForm')") Purchase
+                  form.trip(method='post', action='http://localhost:3000/purchaseForm')
+                    input(type='hidden' , name='total_price' , value= trip['ticket_price'])
+                    input(type='hidden' , name='DepurtureShuttel' , value= trip['destination'])
+                    input(type='hidden' , name='ReturnShuttel' , value= trip['current_location'])
+                    tr
+                      th(scope='row')=trip['ID']
+                      td=trip['departure_date']
+                      td=trip['current_location']
+                      td=trip['destination']
+                      td=trip['capacity']
+                      td=trip['ticket_price']
+                      td
+                        button.btn(type='submit', value='Purches') Purchase
         button.btn.cancel(type='button', onclick=`hide('table-${location.location}')`) Close
 
 

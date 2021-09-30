@@ -61,8 +61,13 @@ app.get('/AboutUs', function (req, res) {
     res.render('AboutUs');
 });
 
-app.get('/purchaseForm', function (req, res) {
-    res.render('purchaseForm');
+app.post('/purchaseForm', function (req, res) {
+    res.render('purchaseForm', req.body);
+});
+
+app.post('/searchResult', function (req, res) {
+    const departureShuttleList = [req.body]
+    res.render('searchResult', { departureShuttleList, returnShuttleList: [] });
 });
 
 app.get('/searchResult', function (req, res) {

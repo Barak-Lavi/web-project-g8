@@ -137,7 +137,7 @@ const searchmenu = function (req, res) {
                     }
                     ReturnShuttelList.push(ReturnShuttel);
                 }
-                res.render('SearchResult', { "DepurtureShuttelList": DepurtureShuttelList, "ReturnShuttelList": ReturnShuttelList, 'LoggedInUser': LoggedInUser});
+                res.render('SearchResult', { "departureShuttleList": DepurtureShuttelList, "ReturnShuttelList": returnShuttleList, 'LoggedInUser': LoggedInUser});
             }
         });
     } else {
@@ -344,10 +344,12 @@ const getTopShutteles = async function() {
     if (true) {
         const email = 'as3d@gmail.com';
         const topSearchs = await query('SELECT * FROM search_history WHERE email = ? ORDER BY search_number LIMIT 1', email);
-        const missingTripsNumber = 3 - topSearchs.length;
-        const trips = await query(`SELECT * FROM shuttles ORDER BY departure_date LIMIT ${missingTripsNumber}`);        for (var i = 0; i < topSearchs.length; i++) {
+        const trips = await query(`SELECT * FROM shuttles ORDER BY departure_date LIMIT 3`);        
+        for (var i = 0; i < topSearchs.length; i++) {
             const trip = await query('SELECT * FROM shuttles WHERE destination = ? ORDER BY departure_date LIMIT 1', topSearchs[i].destination);
-            trips.push(trip[0]);
+            if (trip.length > 0) {
+                trips[i] = trip[0];
+            }
         }
         return trips;
     }
