@@ -1,12 +1,14 @@
 ﻿extends layout
 block content
     form#purchesForm.form-container(action='http://localhost:3000/myorders', method='post')
+      input(type='hidden' , name='LoggedInUser' , value= LoggedInUser)
+      input(type='hidden' , name='DepurtureShuttel' , value= DepurtureShuttel)
+      input(type='hidden' , name='ReturnShuttel' , value= ReturnShuttel)
       .purchesForm
         h3 Your tickets:
-        p #{DepurtureShuttel}
+        p #{DepurtureShuttel}  
         p #{ReturnShuttel}
-        h2 total price: 
-        //h2 #{total_price}
+        p Total price:  #{total_price} $
       br
       br
       .purchesForm

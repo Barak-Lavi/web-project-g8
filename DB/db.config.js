@@ -1,7 +1,7 @@
 module.exports = {
     HOST: "localhost",
     USER: "root",
-    PASSWORD: "azmis123A",
+    PASSWORD: "barakLavi0",
     DB: "web-project-g8"
 
 

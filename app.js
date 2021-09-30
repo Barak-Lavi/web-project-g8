@@ -9,6 +9,7 @@ const path = require('path');
 const CRUD_operations = require("./queries_functions/CRUD_functions.js");
 //const futureShuttles = require("./queries_functions/futureShuttles.js");
 const Search_operations = require("./queries_functions/search_operations.js");
+const Myorders_DynamicTables = require("./queries_functions/MyOrdersDynamicTables.js");
 
 app.use(bodyParser.json());
 // parse requests of contenttype: application/x-www-form-urlencoded
@@ -46,7 +47,9 @@ app.get('/OurTrips', async function (req, res) {
     res.render('OurTrips', trips);
 });
 
-app.get('/MyOrders', function (req, res) {
+app.get('/MyOrders',  function (req, res) {
+    //const orders = await Myorders_DynamicTables.TablesOnload();
+
     res.render('MyOrders');
 
 });

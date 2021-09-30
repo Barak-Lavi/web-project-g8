@@ -25,7 +25,9 @@ nav#myTopnav.topnav
   a.b(onclick="show('regForm')") Sign Up
 br
 // --------------------------------------------
+
 body
+  
   block content
 // -----------------Pop Up Forms -------------------
 form#LogInForm.form-container(action='http://localhost:3000/auth', method='post')
@@ -38,7 +40,8 @@ form#LogInForm.form-container(action='http://localhost:3000/auth', method='post'
   input(type='password', placeholder='Enter Password', oninput='psw',name='psw', required='')
   button.btn(type='submit') Login
   button.btn.cancel(type='button', onclick="hide('LogInForm')") Close
-form#regForm.form-container(action='', actions='/TODO', method='get')
+ 
+form#regForm.form-container(action='http://localhost:3000/newClient', method='post')
   h1 Register:
   p#error
   .tab.register

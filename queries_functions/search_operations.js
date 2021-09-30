@@ -24,7 +24,7 @@ const searchmenu = function (req, res) {
         'ComebackDate': req.body.ComebackDate,
     }
     var LoggedInUser = req.body.LoggedInUser;
-    
+
     console.log(LoggedInUser);
     
     var DepurtureShuttelList = [];
@@ -35,7 +35,8 @@ const searchmenu = function (req, res) {
     //depurture
    
     if (!FlightsSearch.departure_date) {
-            if (true) {
+        /*
+         if (true) {
                 const email = 'as3d@gmail.com';
                 sql.query('SELECT * FROM search_history WHERE email = ?', email, function (error, results) {
                     const searchObj = {
@@ -64,7 +65,8 @@ const searchmenu = function (req, res) {
                         });
                     }
                 });
-            }
+            }*/
+            
 
         sql.query('SELECT * FROM shuttles WHERE current_location = ? AND destination= ?', [FlightsSearch.current_location, FlightsSearch.destination], function (error, results) {
             if (error) {
@@ -108,6 +110,7 @@ const searchmenu = function (req, res) {
                         'capacity': results[i].capacity, // todo culc function
                         'price': results[i].ticket_price,
                     }
+                    DepurtureShuttel = JSON.parse(JSON.stringify(DepurtureShuttel));
                     DepurtureShuttelList.push(DepurtureShuttel);
                 }               
             }
@@ -166,6 +169,7 @@ const searchmenu = function (req, res) {
 
 
 
+
 const Purchaseform = function (req, res) {
     var LoggedInUser = req.body.LoggedInUser;
 
@@ -182,18 +186,52 @@ const Purchaseform = function (req, res) {
         return;
     };
     
-    var DepurtureShuttel= req.body.DepurtureShuttel;
-    DepurtureShuttel= JSON.parse(JSON.stringify(req.body.DepurtureShuttel));
-    var ReturnShuttel = req.body.ReturnShuttel;
-    
+    var DepurtureShuttel_ID= req.body.DepurtureShuttel;
+    var ReturnShuttel_ID = req.body.ReturnShuttel;
 
-    console.log(DepurtureShuttel);
-    console.log(DepurtureShuttel[0].price);
-    
+    if (DepurtureShuttel_ID || ReturnShuttel_ID) {
 
-    if (DepurtureShuttel || ReturnShuttel) {
+        var DepurtureShuttel = [];
+        var ReturnShuttel = [];
 
-        res.render('PurchaseForm', { 'DepurtureShuttel': DepurtureShuttel, 'ReturnShuttel': ReturnShuttel });
+        sql.query('SELECT * FROM shuttles WHERE ID = ?', DepurtureShuttel_ID, function (err, results) {
+            if (results.length > 0) {
+                for (var i = 0; i < results.length; i++) {
+                    var cDepurtureShuttel = {
+                        'ID': results[i].ID,
+                        'from': results[i].destination,
+                        'to': results[i].current_location,
+                        'depurtuedate': results[i].departure_date,
+                        'capacity': results[i].capacity, // todo culc function
+                        'price': results[i].ticket_price,
+                    }
+                    DepurtureShuttel.push(cDepurtureShuttel);
+
+
+                }
+
+            }
+        });
+
+        sql.query('SELECT * FROM shuttles WHERE ID = ?', ReturnShuttel_ID, function (err, results) {
+            if (results.length > 0) {
+                for (var i = 0; i < results.length; i++) {
+                    var cReturnShuttel = {
+                        'ID': results[i].ID,
+                        'from': results[i].destination,
+                        'to': results[i].current_location,
+                        'depurtuedate': results[i].departure_date,
+                        'capacity': results[i].capacity, // todo culc function
+                        'price': results[i].ticket_price,
+                    }
+
+                }
+                ReturnShuttel.push(cReturnShuttel);
+                var total_price = DepurtureShuttel[0].price + ReturnShuttel[0].price;
+                res.render('PurchaseForm', { 'DepurtureShuttel': DepurtureShuttel[0].ID, 'ReturnShuttel': ReturnShuttel[0].ID, 'total_price': total_price, 'LoggedInUser': LoggedInUser});
+
+            }
+        });
 
     } else {
         console.log("did not choose depurtue and return flights");
@@ -211,21 +249,22 @@ const MakePurchase = function (req, res) {
         return;
     };
     //query to check if the client already hade a credit card saved
-    var depurtueFlight = req.body.depurtueFlight;
-    var returnFlight = req.body.returnFlight;
+    var LoggedInUser = req.body.LoggedInUser;
+    var DepurtureShuttel_ID = req.body.DepurtureShuttel;
+    var ReturnShuttel_ID = req.body.ReturnShuttel;
     const addCredit = {
         "credit_number": req.body.ccnum,
         "exp_month": req.body.expmonth,
         "exp_year": req.body.expyear,
         "cvv": req.body.cvv,
-        "email": null
+        "email": LoggedInUser
         
     };
-    sql.query('SELECT * FROM credit_cards WHERE credit_number = ? ', addCredit.credit_number, function (error, results, fields) {
-        if (results) {
-            console.log("credit card already in use with client" + results + "dddd");
+    sql.query('SELECT * FROM credit_cards WHERE credit_number = ? AND email =?', [addCredit.credit_number, addCredit.email], function (error, results, fields) {
+        if (results.length>0) {
+            console.log("credit card already in use with client" + results);
 
-            return;
+            
         } else {
             sql.query("INSERT INTO credit_cards SET ?", addCredit, (err, mysqlres) => {
                 if (err) {
@@ -234,47 +273,70 @@ const MakePurchase = function (req, res) {
                     return;
                 }
                 console.log("created addCredit");
-                return;
+                
             });
 
         }
-         //TODO ADD tickets to client
-        res.render('MyOrders');
-        return;
-    });
-
-}
-    /*sql.query('SELECT * FROM credit_cards WHERE credit_number = ? ', credit_number, function (error, results, fields) {
-        if (results) {
-            console.log("credit card already in use with client" + results + "dddd");
-            //TODO ADD tickets to client
-            return;
-        } else {
-            sql.query("INSERT INTO credit_cards SET ?", addCredit, (err, mysqlres) => {
+        //add to passenger table the purchse
+   
+        var passenger1 = { 'email':LoggedInUser, 'ID':DepurtureShuttel_ID };
+        var passenger2 = { 'email': LoggedInUser, 'ID':ReturnShuttel_ID };
+        if (DepurtureShuttel_ID) {
+            sql.query("INSERT INTO passengers SET ? ", passenger1 , (err, mysqlres) => {
                 if (err) {
                     console.log("error: ", err);
                     res.status(400).send({ message: "error in creating addCredit: " + err });
                     return;
                 }
-                console.log("created addCredit");
-                // res.send({ message: "new customer created successfully" });
+                console.log("added to client purchases");
                 return;
             });
-        }*/
-       /*
-         sql.query("INSERT INTO passengers SET ?", , (err, mysqlres) => {
-            if (err) {
-                console.log("error: ", err);
-                res.status(400).send({ message: "error in creating addCredit: " + err });
+        }
+        //add to passenger table the purchse
+        if (ReturnShuttel_ID) {
+            sql.query("INSERT INTO passengers SET ? ", passenger2 , (err, mysqlres) => {
+                if (err) {
+                    console.log("error: ", err);
+                    res.status(400).send({ message: "error in creating addCredit: " + err });
+                    return;
+                }
+                console.log("added to client purchases");
                 return;
-            }
-            console.log("created addCredit");
-            // res.send({ message: "new customer created successfully" });
-            return;
-        });*/
+            });
+        }
        
-    
+       
+    });
+   
+    var ClientSuttlesList = [];
 
+    sql.query('SELECT * FROM passengers WHERE email = ?', LoggedInUser, function (req, result) {
+        if (result.length > 0) {
+            for (var i = 0; i < result.length; i++) {
+                
+                sql.query('SELECT * FROM shuttles WHERE ID = ?', result[i].ID, function (req, results) {
+
+                    for (var j = 0; j < results.length; j++) {
+                        var Shuttel = {
+                            'ID': results[j].ID,
+                            'from': results[j].destination,
+                            'to': results[j].current_location,
+                            'depurtuedate': results[j].departure_date,
+                            'price': results[j].ticket_price,
+                        }
+                        ClientSuttlesList.push(Shuttel);
+                        
+                    }
+                    
+                });
+            }
+            console.log(ClientSuttlesList);
+            res.render('myorders', { 'LoggedInUser': LoggedInUser, 'ClientSuttlesList': ClientSuttlesList });
+        }
+    });
+    return;
+}
+ 
 
 
 

@@ -23,7 +23,7 @@ block content
               td= DepurtureShuttel.capacity
               td= DepurtureShuttel.price
               td.FlightInfoCol
-                input#ChooseFlight(type='checkbox', name='DepurtureShuttel', value=DepurtureShuttel)
+                input#ChooseFlight(type='checkbox', name='DepurtureShuttel', value= DepurtureShuttel.ID)
                 label(for='ChooseFlight')
                 br
       h1 Choose Return Flight
@@ -47,7 +47,7 @@ block content
               td= ReturnShuttel.capacity
               td= ReturnShuttel.price
               td.FlightInfoCol
-                input#ChooseFlight(type='checkbox', name='ReturnShuttel', value= ReturnShuttel)
+                input#ChooseFlight(type='checkbox', name='ReturnShuttel', value= ReturnShuttel.ID)
                 label(for='ChooseFlight')
                 br
                 
