@@ -107,6 +107,7 @@ block content
                     input(type='hidden' , name='total_price' , value= trip['ticket_price'])
                     input(type='hidden' , name='DepurtureShuttel' , value= trip['destination'])
                     input(type='hidden' , name='ReturnShuttel' , value= trip['current_location'])
+                    input(type='hidden' , name='skip' , value= true)
                     tr
                       th(scope='row')=trip['ID']
                       td=trip['departure_date']

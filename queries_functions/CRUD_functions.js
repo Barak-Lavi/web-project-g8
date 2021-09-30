@@ -40,8 +40,8 @@ const createNewClient = function (req, res) {
         return;
     });
 };
-//read for log in 
-const LogIn = function (request, response) {
+//read for log in
+const LogIn = function(request, response) {
     var loginClient = {
         "username": request.body.username,
         "password": request.body.psw,
@@ -60,9 +60,8 @@ const LogIn = function (request, response) {
 
                 
                 LoggedInUser = JSON.parse(JSON.stringify(result));
-                
                 console.log(LoggedInUser[0].email + ' has loggedIn');
-                response.render('homepage',  { 'LoggedInUser': LoggedInUser[0].email } );
+                response.render('homepage',  { 'LoggedInUser': LoggedInUser[0].email, dests: [] } );
             } else {
                 console.log("user name or password are incurrect");
                 response.send(('<script>alert("user name or password are incurrect");window.location.href = "http://localhost:3000/homepage";</script>'));

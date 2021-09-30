@@ -18,10 +18,10 @@ const searchmenu = function (req, res) {
 
     var FlightsSearch = {
 
-        'current_location': req.body.CurrentL,
-        'destination': req.body.DestinationL,
-        'departure_date': req.body.DepartureDate,
-        'ComebackDate': req.body.ComebackDate,
+        'current_location': req.query.CurrentL,
+        'destination': req.query.DestinationL,
+        'departure_date': req.query.DepartureDate,
+        'ComebackDate': req.query.ComebackDate,
     }
     var LoggedInUser = req.body.LoggedInUser;
 
@@ -137,7 +137,7 @@ const searchmenu = function (req, res) {
                     }
                     ReturnShuttelList.push(ReturnShuttel);
                 }
-                res.render('SearchResult', { "departureShuttleList": DepurtureShuttelList, "ReturnShuttelList": returnShuttleList, 'LoggedInUser': LoggedInUser});
+                res.render('SearchResult', { "departureShuttleList": DepurtureShuttelList, "returnShuttleList": ReturnShuttelList, 'LoggedInUser': LoggedInUser});
             }
         });
     } else {
@@ -175,10 +175,17 @@ const Purchaseform = function (req, res) {
 
     console.log(LoggedInUser);
 
-    if (!LoggedInUser) {
-        console.log("for purchase flight you have to log in your acount or sing in");
-        return;
+    
+    console.log(req.body);
+    if (req.body.skip) {
+        console.log("test");
+        return  res.render('PurchaseForm', req.body);
     }
+
+    // if (!LoggedInUser) {
+    //     console.log("for purchase flight you have to log in your acount or sing in");
+    //     return;
+    // }
     if (!req.body) {
         res.status(400).send({           
             alert: "did not find flights"
@@ -186,15 +193,19 @@ const Purchaseform = function (req, res) {
         return;
     };
     
-    var DepurtureShuttel_ID= req.body.DepurtureShuttel;
-    var ReturnShuttel_ID = req.body.ReturnShuttel;
+    var DepurtureShuttel_ID= req.body.departureShuttle;
+    var ReturnShuttel_ID = req.body.returnShuttle;
 
-    if (DepurtureShuttel_ID || ReturnShuttel_ID) {
+    if (DepurtureShuttel_ID && ReturnShuttel_ID) {
 
         var DepurtureShuttel = [];
         var ReturnShuttel = [];
 
-        sql.query('SELECT * FROM shuttles WHERE ID = ?', DepurtureShuttel_ID, function (err, results) {
+        sql.query('SELECT * FROM shuttles WHERE ID=?', DepurtureShuttel_ID, function (err, results) {
+            if (err) {
+                console.log("HORRAY")
+                console.log(err);
+            }
             if (results.length > 0) {
                 for (var i = 0; i < results.length; i++) {
                     var cDepurtureShuttel = {
@@ -211,25 +222,31 @@ const Purchaseform = function (req, res) {
                 }
 
             }
-        });
-
-        sql.query('SELECT * FROM shuttles WHERE ID = ?', ReturnShuttel_ID, function (err, results) {
-            if (results.length > 0) {
-                for (var i = 0; i < results.length; i++) {
-                    var cReturnShuttel = {
-                        'ID': results[i].ID,
-                        'from': results[i].destination,
-                        'to': results[i].current_location,
-                        'depurtuedate': results[i].departure_date,
-                        'capacity': results[i].capacity, // todo culc function
-                        'price': results[i].ticket_price,
+            if (ReturnShuttel_ID) {
+                sql.query('SELECT * FROM shuttles WHERE ID=?', ReturnShuttel_ID, function (err, results) {
+                    if (err) {
+                        console.log(err);
                     }
-
-                }
-                ReturnShuttel.push(cReturnShuttel);
-                var total_price = DepurtureShuttel[0].price + ReturnShuttel[0].price;
+                    if (results.length > 0) {
+                        for (var i = 0; i < results.length; i++) {
+                            var cReturnShuttel = {
+                                'ID': results[i].ID,
+                                'from': results[i].destination,
+                                'to': results[i].current_location,
+                                'depurtuedate': results[i].departure_date,
+                                'capacity': results[i].capacity, // todo culc function
+                                'price': results[i].ticket_price,
+                            }
+        
+                        }
+                        ReturnShuttel.push(cReturnShuttel);
+                        var total_price = DepurtureShuttel[0].price + ReturnShuttel[0].price;
+                        res.render('PurchaseForm', { 'DepurtureShuttel': DepurtureShuttel[0].ID, 'ReturnShuttel': ReturnShuttel[0].ID, 'total_price': total_price, 'LoggedInUser': LoggedInUser});
+        
+                    }
+                });
+            } else {
                 res.render('PurchaseForm', { 'DepurtureShuttel': DepurtureShuttel[0].ID, 'ReturnShuttel': ReturnShuttel[0].ID, 'total_price': total_price, 'LoggedInUser': LoggedInUser});
-
             }
         });
 
