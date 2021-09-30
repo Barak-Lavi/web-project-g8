@@ -62,7 +62,8 @@ const LogIn = function (request, response) {
                 LoggedInUser = JSON.parse(JSON.stringify(result));
                 
                 console.log(LoggedInUser[0].email + ' has loggedIn');
-                response.render('homepage',  { 'LoggedInUser': LoggedInUser[0].email } );
+                response.render('homepage', { 'LoggedInUser': LoggedInUser[0].email });
+                return ;
             } else {
                 console.log("user name or password are incurrect");
                 response.send(('<script>alert("user name or password are incurrect");window.location.href = "http://localhost:3000/homepage";</script>'));

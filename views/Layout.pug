@@ -38,9 +38,9 @@ form#LogInForm.form-container(action='http://localhost:3000/auth', method='post'
   label(for='psw')
     b Password
   input(type='password', placeholder='Enter Password', oninput='psw',name='psw', required='')
-  button.btn(type='submit') Login
+  button.btn(type='submit' ,onclick="hide('LogInForm')") Login
   button.btn.cancel(type='button', onclick="hide('LogInForm')") Close
- 
+  input(type='hidden' , name='LoggedInUser' , value= LoggedInUser)
 form#regForm.form-container(action='http://localhost:3000/newClient', method='post')
   h1 Register:
   p#error

@@ -26,7 +26,7 @@ const searchmenu = function (req, res) {
     var LoggedInUser = req.body.LoggedInUser;
 
     console.log(LoggedInUser);
-    
+   
     var DepurtureShuttelList = [];
     var ReturnShuttelList = [];
     //var DepurtureShuttel = { 'ID': String, 'from': String, 'to': String, 'depurtuedate': Date, 'capacity': Int16Array, 'price': Int16Array };
@@ -174,6 +174,7 @@ const Purchaseform = function (req, res) {
     var LoggedInUser = req.body.LoggedInUser;
 
     console.log(LoggedInUser);
+  
 
     if (!LoggedInUser) {
         console.log("for purchase flight you have to log in your acount or sing in");
@@ -262,7 +263,7 @@ const MakePurchase = function (req, res) {
     };
     sql.query('SELECT * FROM credit_cards WHERE credit_number = ? AND email =?', [addCredit.credit_number, addCredit.email], function (error, results, fields) {
         if (results.length>0) {
-            console.log("credit card already in use with client" + results);
+            console.log("credit card already in use with client");
 
             
         } else {
@@ -289,7 +290,7 @@ const MakePurchase = function (req, res) {
                     return;
                 }
                 console.log("added to client purchases");
-                return;
+                
             });
         }
         //add to passenger table the purchse
@@ -301,19 +302,40 @@ const MakePurchase = function (req, res) {
                     return;
                 }
                 console.log("added to client purchases");
-                return;
+                
             });
         }
        
        
     });
-   
     var ClientSuttlesList = [];
+
+    sql.query('SELECT * FROM shuttles as s join passengers as p on s.ID=p.ID WHERE p.email = ? group by s.ID order by 4', LoggedInUser, function (req, results) {
+        if (results.length > 0) {
+            for (var j = 0; j < results.length; j++) {
+                        var Shuttel = {
+                            'ID': results[j].ID,
+                            'from': results[j].destination,
+                            'to': results[j].current_location,
+                            'depurtuedate': results[j].departure_date,
+                            'price': results[j].ticket_price,
+                        }
+                        ClientSuttlesList.push(Shuttel);
+            } 
+            console.log(ClientSuttlesList);
+            res.render('myorders', { 'LoggedInUser': LoggedInUser, 'ClientSuttlesList': ClientSuttlesList });
+        }
+    });
+    
+    return;
+}
+ 
+/*var ClientSuttlesList = [];
 
     sql.query('SELECT * FROM passengers WHERE email = ?', LoggedInUser, function (req, result) {
         if (result.length > 0) {
             for (var i = 0; i < result.length; i++) {
-                
+
                 sql.query('SELECT * FROM shuttles WHERE ID = ?', result[i].ID, function (req, results) {
 
                     for (var j = 0; j < results.length; j++) {
@@ -325,19 +347,15 @@ const MakePurchase = function (req, res) {
                             'price': results[j].ticket_price,
                         }
                         ClientSuttlesList.push(Shuttel);
-                        
+
                     }
-                    
+
                 });
             }
             console.log(ClientSuttlesList);
             res.render('myorders', { 'LoggedInUser': LoggedInUser, 'ClientSuttlesList': ClientSuttlesList });
         }
-    });
-    return;
-}
- 
-
+    }); */
 
 
 const getTopShutteles = async function() {
