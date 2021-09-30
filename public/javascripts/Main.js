@@ -68,7 +68,7 @@ var hide = function (id) {
 }
 
 function showTable(id,TableId) {
-    $(id).style.display = 'block';
+    $(`table-${TableId}`).style.display = 'block';
     if (TableId == 'Mars') {
         document.getElementById('Next flights to').innerHTML = "Next flights to " + TableId;
     }

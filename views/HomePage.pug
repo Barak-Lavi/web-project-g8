@@ -42,11 +42,17 @@ block content
     
     
 
-    // .recommandedShutteles(action='/TODO', method='get')
+    .recommandedShutteles
       h1 Future Shutteles
       h2 Recommanded for you
       each val in dests
-        form.recommanded(action='/TODO', method='get')
+        form.recommanded(action='http://localhost:3000/searchResult', method='post')
+          input(type='hidden' , name='ID' , value= val.ID)
+          input(type='hidden' , name='from' , value= val.current_location)
+          input(type='hidden' , name='to' , value= val.destination)
+          input(type='hidden' , name='departureDate' , value= val.departure_date)
+          input(type='hidden' , name='capacity' , value= val.capacity)
+          input(type='hidden' , name='price' , value= val.ticket_price)
           a.bolty= val.destination
           br
           a= 'Departure date: ' + val.departure_date
@@ -57,7 +63,7 @@ block content
           br
           a= val.ticket_price + '$'
           br
-          button.btn(type='button') Go to shuttle
+          button.btn(type='submit') Go to shuttle
   
     br
     br

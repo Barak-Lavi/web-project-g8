@@ -14,16 +14,16 @@ block content
             th(scope='col') Total Price
             th(scope='col')
         tbody
-          for DepurtureShuttel in DepurtureShuttelList
+          for departureShuttle in departureShuttleList
             tr
-              th(scope='row')= DepurtureShuttel.ID
-              td= DepurtureShuttel.from
-              td= DepurtureShuttel.to
-              td= DepurtureShuttel.depurtuedate
-              td= DepurtureShuttel.capacity
-              td= DepurtureShuttel.price
+              th(scope='row')= departureShuttle.ID
+              td= departureShuttle.from
+              td= departureShuttle.to
+              td= departureShuttle.departureDate
+              td= departureShuttle.capacity
+              td= departureShuttle.price
               td.FlightInfoCol
-                input#ChooseFlight(type='checkbox', name='DepurtureShuttel', value= DepurtureShuttel.ID)
+                input#ChooseFlight(type='checkbox', name='departureShuttle', value= departureShuttle.ID)
                 label(for='ChooseFlight')
                 br
       h1 Choose Return Flight
@@ -38,16 +38,16 @@ block content
             th(scope='col') Total Price
             th(scope='col')
         tbody
-          for ReturnShuttel in ReturnShuttelList
+          for returnShuttle in returnShuttleList
             tr
-              th(scope='row')= ReturnShuttel.ID
-              td= ReturnShuttel.from
-              td= ReturnShuttel.to
-              td= ReturnShuttel.depurtuedate
-              td= ReturnShuttel.capacity
-              td= ReturnShuttel.price
+              th(scope='row')= returnShuttle.ID
+              td= returnShuttle.from
+              td= returnShuttle.to
+              td= returnShuttle.departureDate
+              td= returnShuttle.capacity
+              td= returnShuttle.price
               td.FlightInfoCol
-                input#ChooseFlight(type='checkbox', name='ReturnShuttel', value= ReturnShuttel.ID)
+                input#ChooseFlight(type='checkbox', name='returnShuttle', value= returnShuttle.ID)
                 label(for='ChooseFlight')
                 br
                 
