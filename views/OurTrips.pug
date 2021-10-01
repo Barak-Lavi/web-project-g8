@@ -103,13 +103,16 @@ block content
                 th(scope='col') Purchase
             tbody
               each trip in locations_trips[location.location]
-                  form.trip(method='post', action='http://localhost:3000/purchaseForm')
-                    input(type='hidden' , name='total_price' , value= trip['ticket_price'])
-                    input(type='hidden' , name='DepurtureShuttel' , value= trip['destination'])
-                    input(type='hidden' , name='ReturnShuttel' , value= trip['current_location'])
+                  form.trip(method='post', action='http://localhost:3000/searchResult')
+                    input(type='hidden' , name='ID' , value= trip.ID)
+                    input(type='hidden' , name='from' , value= trip.current_location)
+                    input(type='hidden' , name='to' , value= trip.destination)
+                    input(type='hidden' , name='departureDate' , value= trip.departure_date)
+                    input(type='hidden' , name='capacity' , value= trip.capacity)
+                    input(type='hidden' , name='price' , value= trip.ticket_price)
                     tr
                       th(scope='row')=trip['ID']
-                      td=trip['departure_date']
+                      td=trip['departure_date_formatted']
                       td=trip['current_location']
                       td=trip['destination']
                       td=trip['capacity']

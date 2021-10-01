@@ -1,7 +1,9 @@
 const sql = require("../DB/db.js");
+const util = require("util");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+const query = util.promisify(sql.query).bind(sql);
 
 app.use(bodyParser.json());
 // parse requests of contenttype: application/x-www-form-urlencoded
@@ -11,50 +13,28 @@ app.use(bodyParser.urlencoded({
 
 
 
-const TablesOnload = async function (err, res, req) {
-
-    var LoggedInUser = (req.body.LoggedInUser || {});
-    if (LoggedInUser) {
-        var ClientSuttlesList_ID = [];
-        //var ClientSuttlesList = [];
-
-        await sql.query('SELECT * FROM passengers WHERE email = ?', LoggedInUser, async function (err, results) {
-            if (results.length > 0) {
-                for (var i = 0; i < results.length; i++) {
-                    var ClientSuttles = results[i].ID;
-
-                }
-                ClientSuttlesList_ID.push(ClientSuttles);
+const TablesOnload = async function (email) {
+    let orders = [];
+    let Shuttel;
+    if (email) {
+        const shuttles = await query('SELECT * FROM shuttles as s join passengers as p on s.ID=p.ID WHERE p.email = ? group by s.ID order by 4', email);
+        if (shuttles.length > 0) {
+            for (var j = 0; j < shuttles.length; j++) {
+                 Shuttel = {
+                     'ID': shuttles[j].ID,
+                     'from': shuttles[j].destination,
+                     'to': shuttles[j].current_location,
+                     'depurtuedate': new Date(shuttles[j].departure_date).toLocaleDateString(),
+                     'price': shuttles[j].ticket_price,
+                 }
+                 orders.push(Shuttel);
             }
-            for (var j = 0; j < ClientSuttlesList.length; j++) {
-                await sql.query('SELECT * FROM shuttles WHERE ID = ?', ClientSuttlesList_ID[j], function (err, results) {
-                    if (results.length > 0) {
-                        for (var i = 0; i < results.length; i++) {
-                            var Shuttel = {
-                                'ID': results[i].ID,
-                                'from': results[i].destination,
-                                'to': results[i].current_location,
-                                'depurtuedate': results[i].departure_date,
-                                'price': results[i].ticket_price,
-                            }
-                            orders.push(Shuttel);
-                            console.log(Shuttel);
-                        }
-
-
-
-                    }
-
-                });
-
-            }
-            console.log(orders + 'ffff');
-            return orders ;
-        });
-    }
-    
-    return;
+            return { Shuttel, orders };;
+        }
+    } 
+    return { Shuttel, orders };
 };
+
 
 
 

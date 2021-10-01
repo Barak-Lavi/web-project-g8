@@ -1,6 +1,6 @@
 ﻿extends layout
 block content
-    form#searchMenu.Search-form(action='http://localhost:3000/searchResult', method='post')
+    form#searchMenu.Search-form(action='http://localhost:3000/searchResult', method='get')
       .grid-container
         .item1
           label(for='Planets') Current location:
@@ -55,7 +55,7 @@ block content
           input(type='hidden' , name='price' , value= val.ticket_price)
           a.bolty= val.destination
           br
-          a= 'Departure date: ' + val.departure_date
+          a= 'Departure date: ' + val.departure_date_formatted
           br
           a= 'Remaining tickets: ' + val.capacity
           br

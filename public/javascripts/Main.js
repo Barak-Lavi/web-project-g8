@@ -259,4 +259,10 @@ function submitContact() {
     hide('contact');
 }
 
+function submitLogin() {
+    document.getElementById("url_current_location").value = window.location.href;
+    document.getElementById("LogInForm").submit();
+    hide('LogInForm');
+}
+
 /*------------------------------------------------------------------------------- */

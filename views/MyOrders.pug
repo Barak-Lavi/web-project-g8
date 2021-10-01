@@ -1,6 +1,6 @@
 ﻿extends layout
 block content
-    input(type='hidden' , name='LoggedInUser' , value= LoggedInUser)
+    
     .Pagehead
       h1  My Orders 
     .Table1Head
@@ -15,7 +15,7 @@ block content
             th(scope='col') Total Price
             th(scope='col') Cancel Flight
         tbody 
-          for Shuttle in ClientSuttlesList
+          for Shuttle in orders
             tr
               th(scope='row')= Shuttle.ID
               td= Shuttle.from
@@ -23,31 +23,11 @@ block content
               td= Shuttle.depurtuedate
               td= Shuttle.price
               td
-                button.btn(type='button', value='Change Flight', onclick='/TODO') Cancel
-    .Table2Head
-      h2 Flights History
-    .flight-table-wrapper(id='Flights History')
-      table.fl-table
-        thead
-          tr
-            th(scope='col') Flight ID
-            th(scope='col') Departure date
-            th(scope='col') Comeback date
-            th(scope='col') Current location
-            th(scope='col') Destination
-            th(scope='col') Flight time
-            th(scope='col') Tickets amount
-            th(scope='col') Total Price
-        tbody
-          tr
-            th(scope='row') TR-7
-            td 7.6.2021
-            td 7.6.2022
-            td Earth
-            td Mars
-            td 15 months
-            td 1
-            td 15000000
+                form#cancelButton(action='http://localhost:3000/deleteFlight', method='post')
+                  label(for='ShuttleID')
+                  input(type='hidden', name='ShuttleID' value= Shuttle.ID)
+                  input.btn(type='submit' , value='Cancel') 
+                 
     br
     br
     br

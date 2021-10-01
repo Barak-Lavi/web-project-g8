@@ -2,12 +2,8 @@ const sql = require("../DB/db.js");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-
-
-//using session secret to mennage login
-var session = require('express-session');
-app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
-
+const util = require("util");
+const query = util.promisify(sql.query).bind(sql)
 var Loggedin = false;
 var user;
 
@@ -40,8 +36,8 @@ const createNewClient = function (req, res) {
         return;
     });
 };
-//read for log in 
-const LogIn = function (request, response) {
+//read for log in
+const LogIn = function(request, response) {
     var loginClient = {
         "username": request.body.username,
         "password": request.body.psw,
@@ -60,10 +56,14 @@ const LogIn = function (request, response) {
 
                 
                 LoggedInUser = JSON.parse(JSON.stringify(result));
-                
+                const session= request.session;
+                session.userid= LoggedInUser[0].email;
                 console.log(LoggedInUser[0].email + ' has loggedIn');
-                response.render('homepage', { 'LoggedInUser': LoggedInUser[0].email });
-                return ;
+
+
+
+                response.redirect(request.body.url_current_location);
+
             } else {
                 console.log("user name or password are incurrect");
                 response.send(('<script>alert("user name or password are incurrect");window.location.href = "http://localhost:3000/homepage";</script>'));
@@ -136,8 +136,45 @@ const createNewContact = function (req, res) {
     });
 };
 
-
-module.exports = { createNewClient, LogIn, Loggedin, user, createNewWanted, createNewContact};
+const cancelFlight = async function (req, res) {
+    if (!req.body) {
+        res.status(400).send({
+            message: "Content can not be empty!"
+        });
+        return;
+    }
+    var shuttleID = req.body.ShuttleID;
+    console.log(shuttleID);
+    sql.query("delete from passengers where email=? and ID=?", [req.session.userid, shuttleID], (err, mysqlres) => {
+        if (err) {
+            console.log("error: ", err);
+            res.status(400).send({ message: "error with deliting flight: " + err });
+            return;
+        }
+        console.log("Flight deleted succesfully");
+        // res.send({ message: "new customer created successfully" });
+        
+    });
+    let orders = [];
+    let Shuttel;
+    if (req.session.userid) {
+        const shuttles = await query('SELECT * FROM shuttles as s join passengers as p on s.ID=p.ID WHERE p.email = ? group by s.ID order by 4', req.session.userid);
+        if (shuttles.length > 0) {
+            for (var j = 0; j < shuttles.length; j++) {
+                Shuttel = {
+                    'ID': shuttles[j].ID,
+                    'from': shuttles[j].destination,
+                    'to': shuttles[j].current_location,
+                    'depurtuedate': new Date(shuttles[j].departure_date).toLocaleDateString(),
+                    'price': shuttles[j].ticket_price,
+                }
+                orders.push(Shuttel);
+            }
+            res.render('Myorders', { 'Shuttel': Shuttel, 'orders': orders });
+        }
+    }
+}
+module.exports = { createNewClient, LogIn, Loggedin, user, createNewWanted, createNewContact, cancelFlight};
 
 
 

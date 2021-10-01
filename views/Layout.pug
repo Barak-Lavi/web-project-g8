@@ -21,6 +21,7 @@ nav#myTopnav.topnav
   a(href='http://localhost:3000/AboutUs') About Us
   a.icon(href='javascript:void(0);', onclick='responsiveTopnav()')
     i.fa.fa-bars
+  a.b= userEmail
   a.b(onclick="show('LogInForm')") Log In
   a.b(onclick="show('regForm')") Sign Up
 br
@@ -38,9 +39,10 @@ form#LogInForm.form-container(action='http://localhost:3000/auth', method='post'
   label(for='psw')
     b Password
   input(type='password', placeholder='Enter Password', oninput='psw',name='psw', required='')
-  button.btn(type='submit' ,onclick="hide('LogInForm')") Login
+  input(type='text', id='url_current_location', name='url_current_location', hidden)
+  button.btn(type='button', onclick="submitLogin()") Login
   button.btn.cancel(type='button', onclick="hide('LogInForm')") Close
-  input(type='hidden' , name='LoggedInUser' , value= LoggedInUser)
+  
 form#regForm.form-container(action='http://localhost:3000/newClient', method='post')
   h1 Register:
   p#error
@@ -65,7 +67,7 @@ form#regForm.form-container(action='http://localhost:3000/newClient', method='po
     input(name='username', type='text', placeholder='User name...', oninput='username', required='')
     label(for='psw')
       b Password
-    input(name='password', type='password', placeholder='Password...', oninput='psw', required='')
+    input(name='psw', type='password', placeholder='Password...', oninput='psw', required='')
   div(style='overflow:auto;')
     div
       button#prevBtn.btn(type='button', style='float:left;', onclick="nextPrev(-1,'tab register','regForm', 'prevBtn', 'nextBtn')") Previous
