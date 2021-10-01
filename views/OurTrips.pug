@@ -112,7 +112,7 @@ block content
                     input(type='hidden' , name='price' , value= trip.ticket_price)
                     tr
                       th(scope='row')=trip['ID']
-                      td=trip['departure_date']
+                      td=trip['departure_date_formatted']
                       td=trip['current_location']
                       td=trip['destination']
                       td=trip['capacity']

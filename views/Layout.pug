@@ -21,6 +21,7 @@ nav#myTopnav.topnav
   a(href='http://localhost:3000/AboutUs') About Us
   a.icon(href='javascript:void(0);', onclick='responsiveTopnav()')
     i.fa.fa-bars
+  a.b= userEmail
   a.b(onclick="show('LogInForm')") Log In
   a.b(onclick="show('regForm')") Sign Up
 br
@@ -38,7 +39,8 @@ form#LogInForm.form-container(action='http://localhost:3000/auth', method='post'
   label(for='psw')
     b Password
   input(type='password', placeholder='Enter Password', oninput='psw',name='psw', required='')
-  button.btn(type='submit') Login
+  input(type='text', id='url_current_location', name='url_current_location', hidden)
+  button.btn(type='button', onclick="submitLogin()") Login
   button.btn.cancel(type='button', onclick="hide('LogInForm')") Close
  
 form#regForm.form-container(action='http://localhost:3000/newClient', method='post')

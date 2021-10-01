@@ -4,10 +4,6 @@ const bodyParser = require("body-parser");
 const app = express();
 
 
-//using session secret to mennage login
-var session = require('express-session');
-app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
-
 var Loggedin = false;
 var user;
 
@@ -60,8 +56,10 @@ const LogIn = function(request, response) {
 
                 
                 LoggedInUser = JSON.parse(JSON.stringify(result));
+                const session= request.session;
+                session.userid= LoggedInUser[0].email;
                 console.log(LoggedInUser[0].email + ' has loggedIn');
-                response.render('homepage',  { 'LoggedInUser': LoggedInUser[0].email, dests: [] } );
+                response.redirect(request.body.url_current_location);
             } else {
                 console.log("user name or password are incurrect");
                 response.send(('<script>alert("user name or password are incurrect");window.location.href = "http://localhost:3000/homepage";</script>'));
