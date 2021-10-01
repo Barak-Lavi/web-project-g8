@@ -61,9 +61,10 @@ app.get('/AboutUs', function (req, res) {
     res.render('AboutUs');
 });
 
-app.post('/searchResult', function (req, res) {
+app.post('/searchResult', async function (req, res) {
     const departureShuttleList = [req.body]
-    res.render('searchResult', { departureShuttleList, returnShuttleList: [] });
+    const returnShuttleList = await Search_operations.findReturnTrips(req.body.from, req.body.departureDate);
+    res.render('searchResult', { departureShuttleList, returnShuttleList });
 });
 
 app.get('/Layout', function (req, res) {

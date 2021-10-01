@@ -178,7 +178,6 @@ const Purchaseform = function (req, res) {
     
     console.log(req.body);
     if (req.body.skip) {
-        console.log("test");
         return  res.render('PurchaseForm', req.body);
     }
 
@@ -203,7 +202,6 @@ const Purchaseform = function (req, res) {
 
         sql.query('SELECT * FROM shuttles WHERE ID=?', DepurtureShuttel_ID, function (err, results) {
             if (err) {
-                console.log("HORRAY")
                 console.log(err);
             }
             if (results.length > 0) {
@@ -353,9 +351,6 @@ const MakePurchase = function (req, res) {
     });
     return;
 }
- 
-
-
 
 const getTopShutteles = async function() {
     if (true) {
@@ -384,5 +379,19 @@ const getTrips = async function() {
     return { locations, locations_trips };
 }
 
+const findReturnTrips = async function(location, date) {
+    const trips =  await query('SELECT * FROM shuttles WHERE destination=? AND departure_date > ?', [location, date]);
+    return trips.map((trip) => {
+        return {
+            ID: trip.ID,
+            from:  trip.current_location,
+            to: trip.destination,
+            departureDate: trip.departure_date,
+            capacity: trip.capacity,
+            price: trip.ticket_price
+        };
+    });
+}
 
-module.exports = { searchmenu, Purchaseform, MakePurchase, getTopShutteles, getTrips };
+
+module.exports = { findReturnTrips, searchmenu, Purchaseform, MakePurchase, getTopShutteles, getTrips };
