@@ -36,7 +36,6 @@ CREATE TABLE `passengers` (
 
 LOCK TABLES `passengers` WRITE;
 /*!40000 ALTER TABLE `passengers` DISABLE KEYS */;
-INSERT INTO `passengers` VALUES ('baraklavi2009@gmail.com','AA-1');
 /*!40000 ALTER TABLE `passengers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-20 16:35:02
+-- Dump completed on 2021-10-04 15:19:07

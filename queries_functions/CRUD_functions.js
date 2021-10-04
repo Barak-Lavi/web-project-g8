@@ -32,7 +32,6 @@ const createNewClient = function (req, res) {
             return;
         }
         console.log("created client");
-        
         return;
     });
 };
@@ -144,7 +143,7 @@ const cancelFlight = async function (req, res) {
         return;
     }
     var shuttleID = req.body.ShuttleID;
-    console.log(shuttleID);
+  
     sql.query("delete from passengers where email=? and ID=?", [req.session.userid, shuttleID], (err, mysqlres) => {
         if (err) {
             console.log("error: ", err);
@@ -170,6 +169,9 @@ const cancelFlight = async function (req, res) {
                 }
                 orders.push(Shuttel);
             }
+            res.render('Myorders', { 'Shuttel': Shuttel, 'orders': orders });
+        }
+        else {
             res.render('Myorders', { 'Shuttel': Shuttel, 'orders': orders });
         }
     }

@@ -1,17 +1,37 @@
 ﻿extends layout
 block content
     form#purchesForm.form-container(action='http://localhost:3000/myorders', method='post')
-      input(type='hidden' , name='LoggedInUser' , value= LoggedInUser)
       input(type='hidden' , name='DepurtureShuttel' , value= DepurtureShuttel)
       input(type='hidden' , name='ReturnShuttel' , value= ReturnShuttel)
       .purchesForm
+        
         h3 Your tickets:
-        p #{DepurtureShuttel}  
-        p #{ReturnShuttel}
-        p Total price:  #{total_price} $
+        table.fl-table
+          tr
+            th(scope='col') Flight ID
+            th(scope='col') From
+            th(scope='col') To
+            th(scope='col') Depurture Date
+          tr
+              th(scope='row')= DepurtureShuttel
+              td= Dfrom
+              td= Dto
+              td= Ddepurtuedate
+          tr
+              th(scope='row')= ReturnShuttel
+              td= Rfrom
+              td= Rto
+              td= Rdepurtuedate
+        br
+        br
+        table.fl-table
+          tr
+            th(scope='row')= 'Total price:'
+            td= total_price + '$'
       br
       br
       .purchesForm
+        p#error
         h2 Enter Credit Card Information
         label(for='ccnum') Credit card number
         input#ccnum(name='ccnum', type='text', placeholder='1111-2222-3333-4444')

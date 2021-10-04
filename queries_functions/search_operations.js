@@ -228,12 +228,20 @@ const Purchaseform = function (req, res) {
                         }
                         ReturnShuttel.push(cReturnShuttel);
                         var total_price = DepurtureShuttel[0].price + ReturnShuttel[0].price;
-                        res.render('PurchaseForm', { 'DepurtureShuttel': DepurtureShuttel[0].ID, 'ReturnShuttel': ReturnShuttel[0].ID, 'total_price': total_price});
+                        res.render('PurchaseForm', {
+                            'DepurtureShuttel': DepurtureShuttel[0].ID,
+                            'Dfrom': DepurtureShuttel[0].from,
+                            'Dto': DepurtureShuttel[0].to,
+                            'Ddepurtuedate': new Date(DepurtureShuttel[0].depurtuedate).toLocaleDateString(),
+                            'ReturnShuttel': ReturnShuttel[0].ID,
+                            'Rfrom': ReturnShuttel[0].from,
+                            'Rto': ReturnShuttel[0].to,
+                            'Rdepurtuedate': new Date(ReturnShuttel[0].depurtuedate).toLocaleDateString(),
+                            'total_price': total_price
+                        });
 
                     }
                 });
-            } else {
-                res.render('PurchaseForm', { 'DepurtureShuttel': DepurtureShuttel[0].ID, 'ReturnShuttel': ReturnShuttel[0].ID, 'total_price': total_price});
             }
         });
 

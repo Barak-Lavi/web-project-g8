@@ -18,30 +18,29 @@ USE `web-project-g8`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `credit_cards`
+-- Table structure for table `wanted`
 --
 
-DROP TABLE IF EXISTS `credit_cards`;
+DROP TABLE IF EXISTS `wanted`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `credit_cards` (
-  `credit_number` varchar(255) NOT NULL,
-  `exp_month` varchar(255) NOT NULL,
-  `exp_year` varchar(255) NOT NULL,
-  `cvv` varchar(255) NOT NULL,
+CREATE TABLE `wanted` (
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `phone_number` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  PRIMARY KEY (`credit_number`)
+  `submitted_job` varchar(255) NOT NULL,
+  PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `credit_cards`
+-- Dumping data for table `wanted`
 --
 
-LOCK TABLES `credit_cards` WRITE;
-/*!40000 ALTER TABLE `credit_cards` DISABLE KEYS */;
-INSERT INTO `credit_cards` VALUES ('123','5','2025','1','baraklavi2009@gmail.com'),('1234567','07','2025','555','baraklavi2@gmail.com'),('123456789','07','2025','555','baraklavi2009@gmail.com'),('1234567890','07','2025','555','baraklavi200@gmail.com'),('12345678910','07','2025','555','baraklavi20@gmail.com'),('1234567894','07','2025','555','baraklavi200@gmail.com'),('1234567895','07','2025','555','baraklavi@gmail.com'),('1234567896','07','2025','555','baraklavi2009@gmail.com'),('65444','55555','5555','8888','baraklavi2009@gmail.com');
-/*!40000 ALTER TABLE `credit_cards` ENABLE KEYS */;
+LOCK TABLES `wanted` WRITE;
+/*!40000 ALTER TABLE `wanted` DISABLE KEYS */;
+/*!40000 ALTER TABLE `wanted` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

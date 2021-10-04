@@ -68,11 +68,12 @@ form#regForm.form-container(action='http://localhost:3000/newClient', method='po
     label(for='psw')
       b Password
     input(name='psw', type='password', placeholder='Password...', oninput='psw', required='')
+    input(type='text', id='url_current_location', name='url_current_location', hidden)
   div(style='overflow:auto;')
     div
       button#prevBtn.btn(type='button', style='float:left;', onclick="nextPrev(-1,'tab register','regForm', 'prevBtn', 'nextBtn')") Previous
       button#nextBtn.btn(type='button', style='float:right;', onclick="nextPrev(1,'tab register','regForm', 'prevBtn', 'nextBtn')") Next
-  button.btn.cancel(type='submit', onclick="hide('regForm')") Close
+  button.btn.cancel(type='button', onclick="hide('regForm')") Close
   // Circles which indicates the steps of the form:
   div(style='text-align:center;margin-top:40px;')
     span.step

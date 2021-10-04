@@ -38,7 +38,7 @@ CREATE TABLE `search_history` (
 
 LOCK TABLES `search_history` WRITE;
 /*!40000 ALTER TABLE `search_history` DISABLE KEYS */;
-INSERT INTO `search_history` VALUES (1,'baraklavi2009@gmail.com','Mars');
+INSERT INTO `search_history` VALUES (4,'baraklavi2009@gmail.com','Jupiter');
 /*!40000 ALTER TABLE `search_history` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-20 16:35:01
+-- Dump completed on 2021-10-04 15:19:06

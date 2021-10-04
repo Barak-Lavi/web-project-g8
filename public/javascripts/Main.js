@@ -107,7 +107,7 @@ function showTab(n, c, id, prevBtn, nextBtn) {
     if (n == (x.length - 1)) {
         document.getElementById(nextBtn).innerHTML = "Submit";
         document.getElementById(nextBtn).setAttribute('type', 'submit');
-        document.getElementById(nextBtn).setAttribute('onclick', 'hide("regForm")');
+        //document.getElementById(nextBtn).setAttribute('onclick', 'hide("regForm")');
     } else {
         document.getElementById(nextBtn).innerHTML = "Next";
     }
@@ -153,6 +153,7 @@ function nextPrev(n, c, id, prevBtn, nextBtn) {
     if (currentTab >= x.length) {
         //...the form gets submitted:      
         document.getElementById(id).submit();
+        hide(id);
         return false;
     }
     
@@ -198,6 +199,7 @@ function numberOnly(str) {
 }
 
 function validateForm(c) {
+    console.log('go into validforms');
     // This function deals with validation of the form fields
     var x, y, i, valid = true;
     x = document.getElementsByClassName(c);
@@ -232,7 +234,7 @@ function validateForm(c) {
             }
         }
 
-        if (y[i].name === "numberOnlyVisa") {
+        if (y[i].name === "numberOnlyVisa" || y[i].name === "ccnum") {
             if (!numberOnlyVisa(y[i].value)) {
                 y[i].className += " invalid";
                 valid = false;
