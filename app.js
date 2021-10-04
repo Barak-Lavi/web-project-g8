@@ -50,7 +50,7 @@ app.set('view engine', 'pug');
 app.get('/HomePage', async function (req, res) {
     const session=req.session;
     console.log(session.userid);
-    const dests = await Search_operations.getTopShutteles();
+    const dests = await Search_operations.getTopShutteles(session.userid);
     res.render('HomePage', { dests, userEmail: session.userId }); 
 });
 
@@ -83,7 +83,7 @@ app.get('/AboutUs', function (req, res) {
 
 app.post('/searchResult', async function (req, res) {
     const departureShuttleList = [req.body]
-    const returnShuttleList = await Search_operations.findReturnTrips(req.body.from, req.body.departureDate);
+    const returnShuttleList = await Search_operations.findReturnTrips(req.body.to, req.body.from, req.body.departureDate);
     departureShuttleList[0].departureDate = new Date(departureShuttleList[0].departureDate).toLocaleDateString()
     res.render('searchResult', { departureShuttleList, returnShuttleList });
 });

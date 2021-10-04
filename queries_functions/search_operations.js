@@ -32,7 +32,7 @@ const searchmenu = function (req, res) {
             console.log("IN THIS FUNCTION");
             console.log(req.session.userid);
             const email = req.session.userid;
-            sql.query('SELECT * FROM search_history WHERE email = ?', email, function (error, results) {
+            sql.query('SELECT * FROM search_history WHERE email = ? AND destination = ?', [email, req.query.DestinationL], function (error, results) {
                 const searchObj = {
                     email,
                     destination: req.query.DestinationL
@@ -337,9 +337,9 @@ const MakePurchase = async function (req, res) {
                 }
                 orders.push(Shuttel);
             }
-            res.render('Myorders', { 'Shuttel': Shuttel, 'orders':orders });
         }
     }
+    res.redirect('MyOrders');
 
     
 }
@@ -351,8 +351,7 @@ const MakePurchase = async function (req, res) {
 const getTopShutteles = async function (email) {
     let trips = [];
     if (email) {
-
-        const topSearchs = await query('SELECT * FROM search_history WHERE email = ? ORDER BY search_number LIMIT 1', email);
+        const topSearchs = await query('SELECT * FROM search_history WHERE email = ? ORDER BY search_number DESC LIMIT 3', email);
         trips = await query(`SELECT * FROM shuttles ORDER BY departure_date LIMIT 3`);
         for (var i = 0; i < topSearchs.length; i++) {
             const trip = await query('SELECT * FROM shuttles WHERE destination = ? ORDER BY departure_date LIMIT 1', topSearchs[i].destination);
@@ -360,9 +359,10 @@ const getTopShutteles = async function (email) {
                 trips[i] = trip[0];
             }
         }
-        return trips;
     }
-    trips =  await query('SELECT * FROM shuttles ORDER BY departure_date LIMIT 3');
+    if (trips.length === 0) {
+        trips =  await query('SELECT * FROM shuttles ORDER BY departure_date LIMIT 3');
+    }
     trips.forEach(trip => {
         trip.departure_date_formatted = new Date(trip.departure_date).toLocaleDateString();
     });
@@ -383,8 +383,8 @@ const getTrips = async function () {
     return { locations, locations_trips };
 }
 
-const findReturnTrips = async function (location, date) {
-    const trips = await query('SELECT * FROM shuttles WHERE destination=? AND departure_date > ?', [location, date]);
+const findReturnTrips = async function (to, location, date) {
+    const trips = await query('SELECT * FROM shuttles WHERE current_location=? AND destination=? AND departure_date > ?', [to, location, date]);
     return trips.map((trip) => {
         return {
             ID: trip.ID,
