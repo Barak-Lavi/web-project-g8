@@ -42,7 +42,6 @@ const LogIn = function(request, response) {
         "password": request.body.psw,
 
     };
-    
     if (loginClient.username && loginClient.password) {
         sql.query('SELECT * FROM clients WHERE user_name=? AND password = ?', [loginClient.username, loginClient.password], function (err ,result) {
             if (err) {
@@ -96,7 +95,6 @@ const createNewWanted = function (req, res) {
         "email": req.body.email,
         "submitted_job": req.body.job
     };
-    
     sql.query("INSERT INTO wanted SET ?", newWanted, (err, mysqlres) => {
         if (err) {
             console.log("error: ", err);

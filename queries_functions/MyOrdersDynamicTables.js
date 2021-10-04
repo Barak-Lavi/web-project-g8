@@ -35,7 +35,4 @@ const TablesOnload = async function (email) {
     return { Shuttel, orders };
 };
 
-
-
-
 module.exports = { TablesOnload };

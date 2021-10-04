@@ -347,7 +347,7 @@ const MakePurchase = async function (req, res) {
 
 
 
-
+//the function return the top 3 searchs fot client, if their are less then 3 locations, the function will choose the closest flights by depurture date
 const getTopShutteles = async function (email) {
     let trips = [];
     if (email) {
@@ -368,7 +368,7 @@ const getTopShutteles = async function (email) {
     });
     return trips;
 }
-
+//the function sort all flights by destination sort by date
 const getTrips = async function () {
     const locations_trips = {};
     const locations = await query('SELECT * FROM locations');
